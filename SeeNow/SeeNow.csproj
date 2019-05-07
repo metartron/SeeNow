@@ -158,6 +158,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\adminsController.cs" />
+    <Compile Include="Controllers\announcementsController.cs" />
+    <Compile Include="Controllers\announcement_logController.cs" />
+    <Compile Include="Controllers\categoriesController.cs" />
+    <Compile Include="Controllers\category_logController.cs" />
     <Compile Include="Controllers\friendshipsController.cs" />
     <Compile Include="Controllers\guardianshipsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -391,6 +396,31 @@
     <Content Include="Views\guardianships\Details.cshtml" />
     <Content Include="Views\guardianships\Edit.cshtml" />
     <Content Include="Views\guardianships\Index.cshtml" />
+    <Content Include="Views\admins\Create.cshtml" />
+    <Content Include="Views\admins\Delete.cshtml" />
+    <Content Include="Views\admins\Details.cshtml" />
+    <Content Include="Views\admins\Edit.cshtml" />
+    <Content Include="Views\admins\Index.cshtml" />
+    <Content Include="Views\announcement_log\Create.cshtml" />
+    <Content Include="Views\announcement_log\Delete.cshtml" />
+    <Content Include="Views\announcement_log\Details.cshtml" />
+    <Content Include="Views\announcement_log\Edit.cshtml" />
+    <Content Include="Views\announcement_log\Index.cshtml" />
+    <Content Include="Views\announcements\Create.cshtml" />
+    <Content Include="Views\announcements\Delete.cshtml" />
+    <Content Include="Views\announcements\Details.cshtml" />
+    <Content Include="Views\announcements\Edit.cshtml" />
+    <Content Include="Views\announcements\Index.cshtml" />
+    <Content Include="Views\categories\Create.cshtml" />
+    <Content Include="Views\categories\Delete.cshtml" />
+    <Content Include="Views\categories\Details.cshtml" />
+    <Content Include="Views\categories\Edit.cshtml" />
+    <Content Include="Views\categories\Index.cshtml" />
+    <Content Include="Views\category_log\Create.cshtml" />
+    <Content Include="Views\category_log\Delete.cshtml" />
+    <Content Include="Views\category_log\Details.cshtml" />
+    <Content Include="Views\category_log\Edit.cshtml" />
+    <Content Include="Views\category_log\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
