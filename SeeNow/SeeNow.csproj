@@ -163,6 +163,8 @@
     <Compile Include="Controllers\announcement_logController.cs" />
     <Compile Include="Controllers\categoriesController.cs" />
     <Compile Include="Controllers\category_logController.cs" />
+    <Compile Include="Controllers\difficulty_levelController.cs" />
+    <Compile Include="Controllers\difficulty_level_logController.cs" />
     <Compile Include="Controllers\friendshipsController.cs" />
     <Compile Include="Controllers\guardianshipsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -421,6 +423,16 @@
     <Content Include="Views\category_log\Details.cshtml" />
     <Content Include="Views\category_log\Edit.cshtml" />
     <Content Include="Views\category_log\Index.cshtml" />
+    <Content Include="Views\difficulty_level\Create.cshtml" />
+    <Content Include="Views\difficulty_level\Delete.cshtml" />
+    <Content Include="Views\difficulty_level\Details.cshtml" />
+    <Content Include="Views\difficulty_level\Edit.cshtml" />
+    <Content Include="Views\difficulty_level\Index.cshtml" />
+    <Content Include="Views\difficulty_level_log\Create.cshtml" />
+    <Content Include="Views\difficulty_level_log\Delete.cshtml" />
+    <Content Include="Views\difficulty_level_log\Details.cshtml" />
+    <Content Include="Views\difficulty_level_log\Edit.cshtml" />
+    <Content Include="Views\difficulty_level_log\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
