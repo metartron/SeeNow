@@ -161,6 +161,8 @@
     <Compile Include="Controllers\adminsController.cs" />
     <Compile Include="Controllers\announcementsController.cs" />
     <Compile Include="Controllers\announcement_logController.cs" />
+    <Compile Include="Controllers\BagsController.cs" />
+    <Compile Include="Controllers\Buy_listController.cs" />
     <Compile Include="Controllers\categoriesController.cs" />
     <Compile Include="Controllers\category_logController.cs" />
     <Compile Include="Controllers\difficulty_levelController.cs" />
@@ -172,6 +174,8 @@
     <Compile Include="Controllers\messagesController.cs" />
     <Compile Include="Controllers\play_recordController.cs" />
     <Compile Include="Controllers\play_record_answerController.cs" />
+    <Compile Include="Controllers\PostsController.cs" />
+    <Compile Include="Controllers\Post_violationsController.cs" />
     <Compile Include="Controllers\quiz_answerController.cs" />
     <Compile Include="Controllers\quiz_violationsController.cs" />
     <Compile Include="Controllers\rolesController.cs" />
@@ -493,6 +497,26 @@
     <Content Include="Views\use_record\Details.cshtml" />
     <Content Include="Views\use_record\Edit.cshtml" />
     <Content Include="Views\use_record\Index.cshtml" />
+    <Content Include="Views\Bags\Create.cshtml" />
+    <Content Include="Views\Bags\Delete.cshtml" />
+    <Content Include="Views\Bags\Details.cshtml" />
+    <Content Include="Views\Bags\Edit.cshtml" />
+    <Content Include="Views\Bags\Index.cshtml" />
+    <Content Include="Views\Buy_list\Create.cshtml" />
+    <Content Include="Views\Buy_list\Delete.cshtml" />
+    <Content Include="Views\Buy_list\Details.cshtml" />
+    <Content Include="Views\Buy_list\Edit.cshtml" />
+    <Content Include="Views\Buy_list\Index.cshtml" />
+    <Content Include="Views\Posts\Create.cshtml" />
+    <Content Include="Views\Posts\Delete.cshtml" />
+    <Content Include="Views\Posts\Details.cshtml" />
+    <Content Include="Views\Posts\Edit.cshtml" />
+    <Content Include="Views\Posts\Index.cshtml" />
+    <Content Include="Views\Post_violations\Create.cshtml" />
+    <Content Include="Views\Post_violations\Delete.cshtml" />
+    <Content Include="Views\Post_violations\Details.cshtml" />
+    <Content Include="Views\Post_violations\Edit.cshtml" />
+    <Content Include="Views\Post_violations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
