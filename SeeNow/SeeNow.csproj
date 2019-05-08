@@ -176,7 +176,9 @@
     <Compile Include="Controllers\play_record_answerController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\Post_violationsController.cs" />
+    <Compile Include="Controllers\quizzesController.cs" />
     <Compile Include="Controllers\quiz_answerController.cs" />
+    <Compile Include="Controllers\quiz_groupController.cs" />
     <Compile Include="Controllers\quiz_violationsController.cs" />
     <Compile Include="Controllers\rolesController.cs" />
     <Compile Include="Controllers\role_logController.cs" />
@@ -517,6 +519,16 @@
     <Content Include="Views\Post_violations\Details.cshtml" />
     <Content Include="Views\Post_violations\Edit.cshtml" />
     <Content Include="Views\Post_violations\Index.cshtml" />
+    <Content Include="Views\quiz_group\Create.cshtml" />
+    <Content Include="Views\quiz_group\Delete.cshtml" />
+    <Content Include="Views\quiz_group\Details.cshtml" />
+    <Content Include="Views\quiz_group\Edit.cshtml" />
+    <Content Include="Views\quiz_group\Index.cshtml" />
+    <Content Include="Views\quizzes\Create.cshtml" />
+    <Content Include="Views\quizzes\Delete.cshtml" />
+    <Content Include="Views\quizzes\Details.cshtml" />
+    <Content Include="Views\quizzes\Edit.cshtml" />
+    <Content Include="Views\quizzes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
