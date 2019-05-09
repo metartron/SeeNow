@@ -1,18 +1,17 @@
 ﻿@model IEnumerable<SeeNow.Models.profile>
 
 @{
-    ViewBag.Title = "💖💖 SeeNow 會員註冊 💖💖";
+    ViewBag.Title = "Index";
 }
 
-<h2 style="font-size:30px;color:red">會員註冊</h2>
+<h2>Index</h2>
 
 <p>
-    @*@Html.ActionLink("註冊", "Registered", "Home")*@
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            
             @Html.DisplayNameFor(model => model.profile_name)
         </th>
         <th>
@@ -30,9 +29,9 @@
             @Html.DisplayFor(modelItem => item.profile_path)
         </td>
         <td>
-            @*@Html.ActionLink("Edit", "Edit", new { id=item.profile_id }) |
+            @Html.ActionLink("Edit", "Edit", new { id=item.profile_id }) |
             @Html.ActionLink("Details", "Details", new { id=item.profile_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.profile_id })*@
+            @Html.ActionLink("Delete", "Delete", new { id=item.profile_id })
         </td>
     </tr>
 }

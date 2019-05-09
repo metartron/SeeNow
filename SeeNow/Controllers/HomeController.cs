@@ -26,5 +26,15 @@ namespace SeeNow.Controllers
 
             return View();
         }
+
+        public ActionResult Registered()
+        {
+            return View();
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
     }
 }
