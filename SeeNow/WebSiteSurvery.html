@@ -27,16 +27,20 @@
             var str = new Array("admins", "announcements", "announcement_log", "Bags", "Buy_list", "categories", "category_log", "Classes", "Classes_Member", "difficulty_level", "difficulty_level_log", "friendships", "guardianships", "Mall", "Mall_Log", "managers", "messages", "play_record", "play_record_answer", "Posts", "Post_violations", "Profiles", "Profile_Log", "quizzes", "quiz_answer", "quiz_group", "quiz_violations", "roles", "role_log", "Users", "user_violations", "use_record");
             var str1 = "";
             
-            if (i < str.length) {
-                str1 = "WebSite Survery，目前顯示網頁共" + (i+1) + "頁";
+            if (i <= str.length) {
+                
+                str1 = "SeeNow WebSite Survery，目前顯示網頁共 " + (i+1) + " 頁";
                 $('#nPage').html(str1);
 
-                $('#ifr').attr('src', "http://localhost:63733/" + str[i] +"/Index");
-                
+                if(i<str.length)
+                    $('#ifr').attr('src', "http://localhost:63733/" + str[i] + "/Index");
+                else
+                    $('#ifr').attr('src', "http://localhost:63733/404.mp4");
                 //console.log(str[i]);
                 i++;
                 setTimeout(test, 3000);
             }
+
 
 
         }

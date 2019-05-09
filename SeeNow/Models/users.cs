@@ -12,7 +12,8 @@ namespace SeeNow.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class users
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -38,14 +39,20 @@ namespace SeeNow.Models
         }
 
         [DisplayName("帳號")]
+        [Required(ErrorMessage = "帳號不可空白")]
         public string account { get; set; }
         [DisplayName("身分類別編號")]
+        [Required(ErrorMessage = "身分類別編號不可空白")]
         public string role_id { get; set; }
         [DisplayName("密碼")]
+        [Required(ErrorMessage = "密碼不可空白")]
         public string password { get; set; }
         [DisplayName("暱稱")]
+        [Required(ErrorMessage = "暱稱不可空白")]
         public string nick_name { get; set; }
         [DisplayName("郵箱")]
+        [Required(ErrorMessage = "郵箱不可空白")]
+        [EmailAddress(ErrorMessage = "郵箱格式錯誤")]
         public string e_mail { get; set; }
         [DisplayName("目前積分")]
         public int score { get; set; }
