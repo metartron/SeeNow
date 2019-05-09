@@ -1,31 +1,209 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "💖💖 SeeNow 💖💖";
 }
+<head>
+    <style>
+        /*#container{
+            padding-top:7%;
+        }*/
+        #main {
+            width: 100%;
+            height: 900px;
+            margin: auto;
+            position: relative;
+        }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+        #B-img {
+            width: 100%;
+            height: 95%;
+        }
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        #B-cloud {
+            top: 5%;
+            right: 5%;
+            width: 300px;
+            height: 150px;
+        }
+
+        #S-cloud {
+            top: 10%;
+            left: 5%;
+            width: 300px;
+            height: 200px;
+        }
+
+        #castle {
+            top: 5%;
+            left: 5%;
+            width: 250px;
+            height: 150px;
+        }
+
+        #Y-star {
+            top: -100px;
+            right: 70px;
+            width: 200px;
+            height: 200px;
+        }
+
+        #G-star {
+            top: 700px;
+            left: -100px;
+            width: 150px;
+            height: 100px;
+        }
+
+        #B-star {
+            bottom: 50px;
+            right: -100px;
+            width: 200px;
+            height: 150px;
+        }
+
+        #M-img {
+            top: 15%;
+            left: 11%;
+            width: 900px;
+            height: 500px;
+        }
+
+        #LOGO-06 {
+            top: -1000px;
+            left: 30%;
+            width: 200px;
+            height: 50px;
+        }
+
+        .position {
+            position: absolute;
+        }
+
+        #Billboard, #About, #Contact, #HotProduct {
+            font-size: 40px;
+        }        
+        #top {
+            position: absolute;
+            top: 5%;
+            right: 21%;
+            font-size: 20px;
+        }
+
+            #top a {
+                display: inline;
+                font-size: 20px
+            }
+    </style>
+</head>
+
+    <div id="top">
+        <a href="#About">關於我們</a>
+        <a href=@Url.Action("Registered","users")>註冊</a>
+        <a href=@Url.Action("Login","users")>登入</a>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <div id="container">
+        <div id="main">
+            <img src="~/Image/B-img.jpg" id="B-img" />
+            <img src="~/Image/B-cloud.png" id="B-cloud" />
+            <img src="~/Image/S-cloud.png" id="S-cloud" />
+            <img src="~/Image/castle.png" id="castle" />
+            <img src="~/Image/Y-star.gif" id="Y-star" />
+            <img src="~/Image/G-star.gif" id="G-star" />
+            <img src="~/Image/B-star.gif" id="B-star" />
+            <img src="~/Image/M-img.png" id="M-img" />
+            <img src="~/Image/LOGO-06.png" id="LOGO-06" />
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+
+    <hr />
+    <p id="Billboard">風雲榜</p>
+    <div class="row">
+        <div class="col-md-4">
+            <h2>積分第一</h2>
+            <p>張三豐</p>
+            <p>積分:1千萬</p>
+        </div>
+        <div class="col-md-4">
+            <h2>積分第二</h2>
+            <p>洪七公</p>
+            <p>積分:8百萬</p>
+        </div>
+        <div class="col-md-4">
+            <h2>積分第三</h2>
+            <p>楊過</p>
+            <p>積分:6百萬</p>
+        </div>
     </div>
-</div>
+
+    <hr />
+    <p id="HotProduct">熱門商品</p>
+    <div class="row">
+        <div class="col-md-4">
+            <h2>超級賽亞人</h2>
+            <p>兌換積分:500</p>
+        </div>
+        <div class="col-md-4">
+            <h2>花朵</h2>
+            <p>兌換積分:350</p>
+        </div>
+        <div class="col-md-4">
+            <h2>花朵</h2>
+            <p>兌換積分:200</p>
+        </div>
+    </div>
+
+    <hr />
+    <div id="About"><p>關於我們</p></div>
+    <div>
+        <p>我們是一個積極，向上，陽光的團隊</p>
+        <p>倡導快樂的教學法，在遊戲中快樂學習，顛覆傳統刻板的沈悶教學</p>
+        <p>因而運用中文‘洗腦’的音譯，來命名</p>
+        <p>讓使用者，通過使用，來感受新式教學法的快樂！</p>
+        <br />
+        <p>希望大家結訓後,能找到自己的方向,勇往直前</p>
+        <p>指導老師:廖仁宏</p>
+        <p>組員:林秋輝01,盧鑫美07,謝光欣12,鄭宇舒20,曾科綸24,劉玉慧31</p>
+    </div>
+
+    <hr />
+    <p id="Contact">聯絡方式</p>
+    <div>
+        <p>勞動部勞動力發展署高屏澎東分署</p>
+        地址 :<br />
+        高雄市<br />
+        前鎮區凱旋四路105號<br />
+        <abbr title="Phone">Tel:</abbr>
+        07 821 0171
+    </div>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script>
+        $('#main').children().addClass('position');
+        $('#B-img').hide();
+        $('#B-cloud').hide();
+        $('#S-cloud').hide();
+        $('#castle').hide();
+        $('#Y-star').hide();
+        $('#G-star').hide();
+        $('#B-star').hide();
+        $('#M-img').hide();
+
+        $('#B-img').fadeIn(1500, function () {
+            $('#B-cloud').fadeIn(500, function () {
+                $('#S-cloud').fadeIn(550, function () {
+                    $('#castle').fadeIn(600, function () {
+                        $('#Y-star').show().animate({ 'top': '70%', 'right': '5%' }, 650, function () {
+                            $('#G-star').show().animate({ 'top': '5%', 'left': '78%' }, 700, function () {
+                                $('#B-star').show().animate({ 'bottom': '15%', 'left': '5%' }, 750, function () {
+                                    $('#M-img').fadeIn(800, function () {
+                                        $('#LOGO-06').animate({ 'top': '50%' }, 500).animate({ 'width': '100px' }, 400)
+                                            .animate({ 'width': '300px' }, 400).animate({ 'width': '150px' }, 400)
+                                            .animate({ 'width': '500px', 'height': '300px' }, 400).animate({ 'top': '25%' }, 200);
+                                    });
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+        });
+
+    </script>

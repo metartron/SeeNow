@@ -187,6 +187,7 @@
     <Compile Include="Controllers\difficulty_level_logController.cs" />
     <Compile Include="Controllers\friendshipsController.cs" />
     <Compile Include="Controllers\guardianshipsController.cs" />
+    <Compile Include="Controllers\backendHomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\managersController.cs" />
     <Compile Include="Controllers\messagesController.cs" />
@@ -200,6 +201,7 @@
     <Compile Include="Controllers\quiz_violationsController.cs" />
     <Compile Include="Controllers\rolesController.cs" />
     <Compile Include="Controllers\role_logController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\user_violationsController.cs" />
     <Compile Include="Controllers\use_recordController.cs" />
     <Compile Include="Global.asax.cs">
@@ -332,10 +334,24 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="img\TOP-02.jpg" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Image\antelope_icon_s.png" />
+    <Content Include="Image\B-cloud.png" />
+    <Content Include="Image\B-img.jpg" />
+    <Content Include="Image\B-star.gif" />
+    <Content Include="Image\castle.png" />
+    <Content Include="Image\cow_icon-s.png" />
+    <Content Include="Image\fox_icon_s.png" />
+    <Content Include="Image\G-star.gif" />
+    <Content Include="Image\leopard_icon-s.png" />
+    <Content Include="Image\LOGO-06.png" />
+    <Content Include="Image\M-img.png" />
+    <Content Include="Image\rabi_icon-s.png" />
+    <Content Include="Image\S-cloud.png" />
+    <Content Include="Image\sheep2_icon-s.png" />
+    <Content Include="Image\Y-star.gif" />
     <Content Include="Models\SeeNowModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SeeNowModel.edmx</DependentUpon>
@@ -409,10 +425,10 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_BackEndLayout.cshtml" />
+    <Content Include="Views\backendHome\About.cshtml" />
+    <Content Include="Views\backendHome\Contact.cshtml" />
+    <Content Include="Views\backendHome\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -422,7 +438,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\backendHome\Login.cshtml" />
     <Content Include="Views\Shared\_Login.cshtml" />
     <Content Include="Views\Shared\_Layout - 複製.cshtml" />
     <Content Include="Views\friendships\Create.cshtml" />
@@ -550,6 +566,15 @@
     <Content Include="Views\quizzes\Details.cshtml" />
     <Content Include="Views\quizzes\Edit.cshtml" />
     <Content Include="Views\quizzes\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\users\Create.cshtml" />
+    <Content Include="Views\users\Delete.cshtml" />
+    <Content Include="Views\users\Details.cshtml" />
+    <Content Include="Views\users\Edit.cshtml" />
+    <Content Include="Views\users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

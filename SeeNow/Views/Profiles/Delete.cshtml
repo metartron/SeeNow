@@ -1,23 +1,30 @@
-﻿@model SeeNow.Models.guardianship
+﻿@model SeeNow.Models.profile
 
 @{
     ViewBag.Title = "Delete";
-    
 }
 
 <h2>Delete</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>guardianship</h4>
+    <h4>profile</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.users.role_id)
+            @Html.DisplayNameFor(model => model.profile_name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.users.role_id)
+            @Html.DisplayFor(model => model.profile_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.profile_path)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.profile_path)
         </dd>
 
     </dl>
