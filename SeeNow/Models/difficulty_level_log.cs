@@ -11,19 +11,13 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class difficulty_level_log
     {
-        [DisplayName("管理員帳號")]
         public string manager_id { get; set; }
-        [DisplayName("難易度編號")]
         public short difficulty_id { get; set; }
-        [DisplayName("難易度描述")]
         public string difficulty_desc { get; set; }
-        [DisplayName("異動狀態")]
         public string status { get; set; }
-        [DisplayName("異動時間")]
         public System.DateTime datetime { get; set; }
     
         public virtual difficulty_level difficulty_level { get; set; }

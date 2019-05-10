@@ -11,13 +11,10 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class admin
     {
-        [DisplayName("帳號")]
         public string admin_id { get; set; }
-        [DisplayName("密碼")]
         public string password { get; set; }
     }
 }

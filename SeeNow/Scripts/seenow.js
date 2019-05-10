@@ -1,9 +1,31 @@
-﻿"use strict";
+﻿//"use strict";
 //var audio = new Audio('../music/gone_fishin_by_memoraphile_CC0.mp3');
 //audio.play();
 
-$('#sendGroupBtn').attr("disabled", true);
-//答題倒數計數器
+//$(function () {
+//    // Reference the auto-generated proxy for the hub.
+//    var chat = $.connection.gameHub;
+//    // Create a function that the hub can call back to display messages.
+//    chat.client.addNewMessageToPage = function (name, message) {
+//        // Add the message to the page.
+//        $('#discussion').append('<li><strong>' + htmlEncode(name)
+//            + '</strong>: ' + htmlEncode(message) + '</li>');
+//    };
+//    // Get the user name and store it to prepend to messages.
+//    $('#displayname').val(prompt('Enter your name:', ''));
+//    // Set initial focus to message input box.
+//    $('#message').focus();
+//    // Start the connection.
+//    $.connection.hub.start().done(function () {
+//        $('#sendmessage').click(function () {
+//            // Call the Send method on the hub.
+//            chat.server.chatSend($('#displayname').val(), $('#message').val());
+//            // Clear text box and reset focus for next comment.
+//            $('#message').val('').focus();
+//        });
+//    });
+//});
+
 var Timer_1;
 var timerT = function (c) {
     $('#audio')[0].play();
@@ -21,12 +43,12 @@ var timerT = function (c) {
     }, 1000);
 };
 
-//signalR hub setting ,Without the generated proxy.
-var hubCon = $.hubConnection();
-var hubConProxy = hubCon.createHubProxy('gameHub');
+var hubCon = $.connection.gameHub;
+
+$('#sendGroupBtn').attr("disabled", true);
 
 //Start the connection.
-hubCon.start().done(function () {
+$.connection.hub.start().done(function () {
     $('#sendGroupBtn').attr("disabled", false);
 }).catch(function (err) {
     return console.error(err.toString());
@@ -37,22 +59,21 @@ $('#addGroupBtn').click(function (event) {
     var user = $('#name').val();
     var group = $('#group').val();
     $('#autoBtn').attr("disabled", false);
-    hubConProxy.invoke('AddGroup', group, user).catch(function (err) {
+    hubCon.server.addGroup(group, user).catch(function (err) {
         return console.error(err.toString());
     });
     event.preventDefault();
 });
 
 //顯示加入訊息
-hubConProxy.on("RecAddGroupMsg", function (msg) {
+hubCon.client.recAddGroupMsg = function (msg) {
     //var li = document.createElement("li");
     //li.textContent = msg+"&#13;&#10;";
     //$('#message').append(li);
     var msgTxtarea = $('#message');
     msgTxtarea.val(msgTxtarea.val() + msg + "\n");
     $('#message').scrollTop($('#message')[0].scrollHeight);
-
-});
+};
 
 //送訊息給群組
 $('#sendGroupBtn').click(function () {
@@ -61,25 +82,25 @@ $('#sendGroupBtn').click(function () {
     var message = $('#msg').val();
     var msg2grp = { "group": group, "name": user, "message": message };
     var msgJSON = JSON.stringify(msg2grp);
-    hubConProxy.invoke('MsgToGroup', group, msgJSON).catch(function (err) {
+    hubCon.server.msgToGroup(group, msgJSON).catch(function (err) {
         return console.error(err.toString());
     });
 });
 
-hubConProxy.on("FromGroupMsg", function (msgGroup) {
+//接收訊息
+hubCon.client.fromGroupMsg = function (msgGroup) {
     //var li = document.createElement("li");
     //li.textContent = msg+"&#13;&#10;";
     //$('#message').append(li);
     var msgTxtarea = $('#message');
     msgTxtarea.val(msgTxtarea.val() + msgGroup + "\n");
     $('#message').scrollTop($('#message')[0].scrollHeight);
+};
 
-});
-
-
-hubConProxy.on("ReceiveGroupQuiz", function (groupName, user, message, msgJSON) {
+//接收題目
+hubCon.client.receiveGroupQuiz = (function (groupName, user, message, msgJSON) {
     var mJson = JSON.parse(msgJSON);
-    var msg = `[群組(${groupName})]${user}：${message}`;
+    var msg = '[群組(${groupName})]${user}：${message}';
     //var li = document.createElement("li");
     //li.textContent = msg;
     //document.getElementById("msgDiv").appendChild(li);
@@ -112,7 +133,7 @@ function autoQuiz() {
             yellowBtn = $(tbRows[i]).find('td:eq(5)').html();
             var msg2grp = { "group": group, "name": user, "message": tbRowsIndexVal, "interval_Time": interval_Time, "redBtn": redBtn, "blueBtn": blueBtn, "greenBtn": greenBtn, "yellowBtn": yellowBtn };
             var msgJSON = JSON.stringify(msg2grp);
-            hubConProxy.invoke("SendQuizToGroup", group, user, "quiz:" + (i + 1), msgJSON).catch(function (err) {
+            hubCon.server.sendQuizToGroup(group, user, "quiz:" + (i + 1), msgJSON).catch(function (err) {
                 return console.error(err.toString());
             });
             i++;
@@ -126,6 +147,7 @@ function autoQuiz() {
     }
     q_display();
 }
+
 //接收4個答案鈕
 function choicBtn(choic) {
     var user = $('#name').val();
@@ -133,7 +155,8 @@ function choicBtn(choic) {
     var message = choic.name;
     var msg2grp = { "group": group, "name": user, "message": message };
     var msgJSON = JSON.stringify(msg2grp);
-    hubConProxy.invoke("MsgToGroup", group, msgJSON).catch(function (err) {
+    hubCon.server.msgToGroup(group, msgJSON).catch(function (err) {
         return console.error(err.toString());
     });
 }
+

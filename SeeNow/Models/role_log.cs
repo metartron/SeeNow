@@ -11,19 +11,13 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class role_log
     {
-        [DisplayName("管理員帳號")]
         public string manager_id { get; set; }
-        [DisplayName("身分編號")]
         public string role_id { get; set; }
-        [DisplayName("身分描述")]
         public string role_desc { get; set; }
-        [DisplayName("異動狀態")]
         public string status { get; set; }
-        [DisplayName("異動時間")]
         public System.DateTime datetime { get; set; }
     
         public virtual manager manager { get; set; }

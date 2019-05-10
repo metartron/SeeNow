@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("新增身分", "Create")
 </p>
-<table class="table">
+<table class="table table-striped table-danger table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.role_id)
@@ -29,7 +29,7 @@
             @Html.DisplayFor(modelItem => item.role_desc)
         </td>
         <td>
-            @Html.ActionLink("編輯身分", "Edit", new { id = item.role_id }) |
+            @Html.ActionLink("編輯身分", "Edit", new { id = item.role_id }) @*|*@
             @*@Html.ActionLink("Details", "Details", new { id=item.role_id }) |*@
             @*@Html.ActionLink("Delete", "Delete", new { id=item.role_id })*@
         </td>

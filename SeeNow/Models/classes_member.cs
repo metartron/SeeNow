@@ -11,15 +11,11 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class classes_member
     {
-        [DisplayName("帳號")]
         public string student_id { get; set; }
-        [DisplayName("班級編號")]
         public int class_id { get; set; }
-        [DisplayName("加入班級時間")]
         public System.DateTime datetime { get; set; }
     
         public virtual classes classes { get; set; }

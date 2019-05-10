@@ -11,8 +11,7 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class post
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,18 +19,12 @@ namespace SeeNow.Models
         {
             this.post_violations = new HashSet<post_violations>();
         }
-
-        [DisplayName("貼文流水號")]
+    
         public int post_quid { get; set; }
-        [DisplayName("遊戲題目流水號")]
         public int quiz_guid { get; set; }
-        [DisplayName("內容")]
         public string content { get; set; }
-        [DisplayName("發文時間")]
         public System.DateTime datetime { get; set; }
-        [DisplayName("是否鎖定")]
         public bool lock_flag { get; set; }
-        [DisplayName("帳號")]
         public string account { get; set; }
     
         public virtual users users { get; set; }

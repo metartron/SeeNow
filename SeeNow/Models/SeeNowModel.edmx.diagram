@@ -90,6 +90,7 @@
         <AssociationConnector Association="SeeNowModel.FK__user_viol__repot__32AB8735" ManuallyRouted="false" />
         <AssociationConnector Association="SeeNowModel.like_record" ManuallyRouted="false" />
         <EntityTypeShape EntityType="SeeNowModel.sysdiagrams" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SeeNowModel.setting_menu" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

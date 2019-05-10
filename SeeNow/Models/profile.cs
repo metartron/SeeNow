@@ -11,8 +11,7 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class profile
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,12 +20,9 @@ namespace SeeNow.Models
             this.profile_log = new HashSet<profile_log>();
             this.users = new HashSet<users>();
         }
-
-        [DisplayName("頭像編號")]
+    
         public short profile_id { get; set; }
-        [DisplayName("頭像名稱")]
         public string profile_name { get; set; }
-        [DisplayName("頭像路徑")]
         public string profile_path { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

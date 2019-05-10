@@ -11,8 +11,7 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class classes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,18 +19,12 @@ namespace SeeNow.Models
         {
             this.classes_member = new HashSet<classes_member>();
         }
-
-        [DisplayName("班級編號")]
+    
         public int class_id { get; set; }
-        [DisplayName("老師帳號")]
         public string teacher_id { get; set; }
-        [DisplayName("班級名稱")]
         public string class_name { get; set; }
-        [DisplayName("是否可見")]
         public bool visible { get; set; }
-        [DisplayName("開班時間")]
         public System.DateTime datetime { get; set; }
-        [DisplayName("班級代碼")]
         public string class_code { get; set; }
     
         public virtual users users { get; set; }

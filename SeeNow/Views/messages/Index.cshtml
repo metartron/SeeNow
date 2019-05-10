@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<SeeNow.Models.message>
 
 @{
-    ViewBag.Title = "後台管理--信箱";
+    ViewBag.Title = "後台管理--信件";
 }
 
-<h2>後台管理--信箱</h2>
+<h2>後台管理--信件</h2>
 
 <p>
-    @*@Html.ActionLink("Create New", "Create")*@
+    @Html.ActionLink("新增信件", "Create")
 </p>
-<table class="table">
+<table class="table table-striped table-danger table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.message1)
@@ -52,11 +52,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.users1.account)
         </td>
-        @*<td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.message_guid }) |
-            @Html.ActionLink("Details", "Details", new { id=item.message_guid }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.message_guid })
-        </td>*@
+        <td>
+            @Html.ActionLink("編輯", "Edit", new { id=item.message_guid }) @*|*@
+            @*@Html.ActionLink("Details", "Details", new { id=item.message_guid }) |*@
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.message_guid })*@
+        </td>
     </tr>
 }
 

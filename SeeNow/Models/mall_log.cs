@@ -11,27 +11,17 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class mall_log
     {
-        [DisplayName("管理員帳號")]
         public string manager_id { get; set; }
-        [DisplayName("產品編號")]
         public string product_id { get; set; }
-        [DisplayName("產品名稱")]
         public string product_desc { get; set; }
-        [DisplayName("兌換所需積分")]
         public Nullable<int> price { get; set; }
-        [DisplayName("是否上架")]
         public Nullable<bool> active { get; set; }
-        [DisplayName("產品圖")]
         public string img_path { get; set; }
-        [DisplayName("產品使用效果圖")]
         public string used_img_path { get; set; }
-        [DisplayName("異動狀態")]
         public string status { get; set; }
-        [DisplayName("異動時間")]
         public System.DateTime datetime { get; set; }
     
         public virtual mall mall { get; set; }

@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("新增公告", "Create")
 </p>
-<table class="table">
+<table class="table table-striped table-secondary table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.title)
@@ -41,9 +41,9 @@
             @Html.DisplayFor(modelItem => item.priority)
         </td>
         <td>
-            @Html.ActionLink("修改公告", "Edit", new { id=item.id }) |
+            @Html.ActionLink("修改公告", "Edit", new { id=item.id }) @*|*@
             @*@Html.ActionLink("Details", "Details", new { id=item.id }) |*@
-            @Html.ActionLink("刪除公告", "Delete", new { id=item.id })
+            @*@Html.ActionLink("刪除公告", "Delete", new { id=item.id })*@
         </td>
     </tr>
 }

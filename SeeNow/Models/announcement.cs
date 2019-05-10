@@ -11,8 +11,7 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class announcement
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,16 +19,11 @@ namespace SeeNow.Models
         {
             this.announcement_log = new HashSet<announcement_log>();
         }
-
-        [DisplayName("公告編號")]
+    
         public int id { get; set; }
-        [DisplayName("公告標題")]
         public string title { get; set; }
-        [DisplayName("公告內容")]
         public string content { get; set; }
-        [DisplayName("釋出時間")]
         public System.DateTime publish_time { get; set; }
-        [DisplayName("優先順序")]
         public int priority { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

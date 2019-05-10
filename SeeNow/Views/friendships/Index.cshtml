@@ -1,16 +1,16 @@
 ﻿@model IEnumerable<SeeNow.Models.friendship>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "好友列表";
    
 }
 
-<h2>Index</h2>
+<h2>好友列表</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @*@Html.ActionLink("Create New", "Create")*@
 </p>
-<table class="table">
+<table class="table table-striped table-warning table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.friend_id)
@@ -41,11 +41,11 @@
         @*<td>
             @Html.DisplayFor(modelItem => item.users.role_id)
         </td>*@
-        <td>
+        @*<td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
+        </td>*@
     </tr>
 }
 

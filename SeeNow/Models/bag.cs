@@ -11,15 +11,11 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class bag
     {
-        [DisplayName("帳號")]
         public string account { get; set; }
-        [DisplayName("產品編號")]
         public string product_id { get; set; }
-        [DisplayName("剩餘數量")]
         public int remaining_quantity { get; set; }
     
         public virtual users users { get; set; }

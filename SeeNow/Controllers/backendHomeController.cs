@@ -23,14 +23,13 @@ namespace SeeNow.Controllers
         /// <param name="ReturnUrl">使用者原本Request的Url</param>
         /// <returns></returns>
         [AllowAnonymous]
-        public ActionResult Login(string ReturnUrl)
+        public ActionResult Login()//string ReturnUrl
         {
             //ReturnUrl字串是使用者在未登入情況下要求的的Url
-            manager vm = new manager() {  }; //ReturnUrl = ReturnUrl
-            //return PartialView(vm);
-            return View(vm);
-
-            
+            //manager vm = new manager() {  }; //ReturnUrl = ReturnUrl
+            ////return PartialView(vm);
+            //return View(vm);
+            return View();
         }
 
         ///// <summary>
@@ -86,7 +85,12 @@ namespace SeeNow.Controllers
                 if (pwd == PD)
                 {
                     //登入成功 
+                    //進行表單登入 ※之後使用User.Identity.Name的值就是vm.Account帳號的值
+                    FormsAuthentication.SetAuthCookie(Account, true);
                     //進行表單登入  之後User.Identity.Name的值就是Account帳號的值
+
+                    //第二個參數如果是true則cookie留存30分鐘；false則視窗關閉自動失效
+                    //並根據web.config的設定自動跳轉道登入後頁面
                     FormsAuthentication.RedirectFromLoginPage(Account, false);
 
                     //↓這行不會執行到，亂回傳XD
@@ -94,11 +98,13 @@ namespace SeeNow.Controllers
                 }
                 else
                 {
+                    FormsAuthentication.SetAuthCookie(Account, false);
                     return Content("Login fail");
                 }
             }
             else
             {
+                FormsAuthentication.SetAuthCookie(Account, false);
                 return Content("Login fail");
             }
 
@@ -113,6 +119,7 @@ namespace SeeNow.Controllers
         /// </summary>
         /// <returns></returns>
         [AllowAnonymous]
+        [OutputCache(Duration = 1)]
         public ActionResult Logout()
         {
             //清除Session中的資料
@@ -123,14 +130,16 @@ namespace SeeNow.Controllers
             return RedirectToAction("Login", "backendHome");
         }
 
+        /// <summary>
+        /// 登入後預設進入的畫面
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             //登入帳號
             ViewData["Login_Account"] = User.Identity.Name;
             //是否登入(boolean值)
             ViewData["isLogin"] = User.Identity.IsAuthenticated;
-
-
             return View();
         }
 

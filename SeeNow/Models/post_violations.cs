@@ -11,23 +11,15 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class post_violations
     {
-        [DisplayName("檢舉流水號")]
         public int violation_quid { get; set; }
-        [DisplayName("檢舉人帳號")]
         public string reporter_id { get; set; }
-        [DisplayName("貼文流水號")]
         public int post_quid { get; set; }
-        [DisplayName("管理員帳號")]
         public string manager_id { get; set; }
-        [DisplayName("是否處理")]
         public bool check_flag { get; set; }
-        [DisplayName("檢舉時間")]
         public System.DateTime datetime { get; set; }
-        [DisplayName("檢舉原因")]
         public string violation_reason { get; set; }
     
         public virtual manager manager { get; set; }

@@ -11,8 +11,7 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class message
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,20 +19,13 @@ namespace SeeNow.Models
         {
             this.use_record = new HashSet<use_record>();
         }
-
-        [DisplayName("信箱流水號")]
+    
         public long message_guid { get; set; }
-        [DisplayName("寄件人")]
         public string from_id { get; set; }
-        [DisplayName("收件人")]
         public string to_id { get; set; }
-        [DisplayName("內容")]
         public string message1 { get; set; }
-        [DisplayName("寄信時間")]
         public System.DateTime datetime { get; set; }
-        [DisplayName("是否閱讀")]
         public Nullable<bool> read_flag { get; set; }
-        [DisplayName("是否刪除")]
         public Nullable<bool> delete_flag { get; set; }
     
         public virtual users users { get; set; }

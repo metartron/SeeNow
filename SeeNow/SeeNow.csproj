@@ -61,8 +61,8 @@
       <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
@@ -188,6 +188,7 @@
     <Compile Include="Controllers\difficulty_levelController.cs" />
     <Compile Include="Controllers\difficulty_level_logController.cs" />
     <Compile Include="Controllers\friendshipsController.cs" />
+    <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\guardianshipsController.cs" />
     <Compile Include="Controllers\backendHomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -207,6 +208,7 @@
     <Compile Include="Controllers\quiz_violationsController.cs" />
     <Compile Include="Controllers\rolesController.cs" />
     <Compile Include="Controllers\role_logController.cs" />
+    <Compile Include="Controllers\setting_menuController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\user_violationsController.cs" />
     <Compile Include="Controllers\use_recordController.cs" />
@@ -316,6 +318,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SeeNowModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\setting_menu.cs">
+      <DependentUpon>SeeNowModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\type.cs">
       <DependentUpon>SeeNowModel.tt</DependentUpon>
     </Compile>
@@ -330,6 +335,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\setting_menuViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="404.html" />
@@ -629,6 +635,15 @@
     <Content Include="Views\Profile_Log\Edit.cshtml" />
     <Content Include="Views\Profile_Log\Index.cshtml" />
     <Content Include="Views\Home\Registered.cshtml" />
+    <Content Include="Views\setting_menu\menuPartial.cshtml" />
+    <Content Include="Views\setting_menu\Create.cshtml" />
+    <Content Include="Views\setting_menu\Delete.cshtml" />
+    <Content Include="Views\setting_menu\Details.cshtml" />
+    <Content Include="Views\setting_menu\Edit.cshtml" />
+    <Content Include="Views\setting_menu\Index.cshtml" />
+    <Content Include="Views\Game\Index.cshtml" />
+    <Content Include="Views\Game\PlayerStart.cshtml" />
+    <Content Include="Views\Game\QuizzesIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

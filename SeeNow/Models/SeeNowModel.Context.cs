@@ -58,5 +58,6 @@ namespace SeeNow.Models
         public virtual DbSet<use_record> use_record { get; set; }
         public virtual DbSet<user_violations> user_violations { get; set; }
         public virtual DbSet<users> users { get; set; }
+        public virtual DbSet<setting_menu> setting_menu { get; set; }
     }
 }

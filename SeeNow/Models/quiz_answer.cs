@@ -11,21 +11,14 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class quiz_answer
     {
-        [DisplayName("遊戲答案流水號")]
         public int quiz_guid { get; set; }
-        [DisplayName("答案編號")]
         public int answer_id { get; set; }
-        [DisplayName("型態編號")]
         public string type_id { get; set; }
-        [DisplayName("文字答案")]
         public string answer_text { get; set; }
-        [DisplayName("圖片答案")]
         public string answer_img_path { get; set; }
-        [DisplayName("是否正確")]
         public bool is_correct { get; set; }
     
         public virtual quizzes quizzes { get; set; }

@@ -11,13 +11,10 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class guardianship
     {
-        [DisplayName("家長帳號")]
         public string parent_id { get; set; }
-        [DisplayName("小孩帳號")]
         public string account { get; set; }
     
         public virtual users users { get; set; }

@@ -11,8 +11,7 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class manager
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -28,10 +27,8 @@ namespace SeeNow.Models
             this.role_log = new HashSet<role_log>();
             this.user_violations = new HashSet<user_violations>();
         }
-
-        [DisplayName("管理員帳號")]
+    
         public string manager_id { get; set; }
-        [DisplayName("密碼")]
         public string password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

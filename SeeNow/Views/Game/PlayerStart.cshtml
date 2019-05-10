@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "PlayerStart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var nameBtn = ViewBag.NameBtn;
+}
+
+<div class="container">
+    <p></p>
+    <div class="row">
+        @*site .quesion-txt自定 button size*@
+        <div class="jumbotron quesion-txt">
+            <div id="quizDiv">quizDiv</div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-12 ">
+            @* <input id="redBtn" name="a_RED" class="btn btn-round quiztext red-bg" value="紅紅紅" onclick="choicBtn(this)" type="button" style="margin:2px;width:120px;height:120px" />*@
+            @*site .quiztext自定 button size*@
+            <input id="redBtn" name="a_RED" class=" btn btn-round quiztext red-bg" value="A" onclick="choicBtn(this)" type="button" />
+            <input id="blueBtn" name="b_BLUE" class="btn btn-round quiztext blue-bg" value="B" onclick="choicBtn(this)" type="button" />
+
+        </div>
+        <div class="col-12">
+            <input id="greenBtn" name="c_GREEN" class="btn btn-round quiztext green-bg" value="C" onclick="choicBtn(this)" type="button" />
+            <input id="yellowBtn" name="d_YELLOW" class="btn btn-round quiztext yellow-bg" value="D" onclick="choicBtn(this)" type="button" />
+        </div>
+        <h2 id="countTime"></h2>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <textarea id="message" class="form-control" style="min-width: 90%; height:auto"></textarea>
+        </div>
+        <div class="col-sm-12">
+            訊息:<input id="msg" type="text" value="">
+            <button type="Button" id="sendGroupBtn">送群組</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            群組:<input id="group" type="text" style="width:100px">
+        </div>
+        <div class="col-sm-3">
+            姓名:<input id="name" type="text" style="width:100px">
+        </div>
+        <div class="col-sm-3">
+            加入:<input type="Button" id="addGroupBtn" style="width:100px" value="Add">
+        </div>
+
+    </div>
+</div>
+
+<audio controls="controls" id="audio">
+    <source src="~/asset/music/gone_fishin_by_memoraphile_CC0.mp3" type="audio/mpeg" />
+</audio>
+
+@section scripts {
+    <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script src="~/Scripts/seenow.js"></script>
+}

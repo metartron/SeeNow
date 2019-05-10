@@ -11,8 +11,7 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class mall
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,18 +22,12 @@ namespace SeeNow.Models
             this.mall_log = new HashSet<mall_log>();
             this.use_record = new HashSet<use_record>();
         }
-
-        [DisplayName("產品編號")]
+    
         public string product_id { get; set; }
-        [DisplayName("產品名稱")]
         public string product_desc { get; set; }
-        [DisplayName("兌換所需積分")]
         public int price { get; set; }
-        [DisplayName("是否上架")]
         public bool active { get; set; }
-        [DisplayName("產品圖")]
         public string img_path { get; set; }
-        [DisplayName("產品使用效果圖")]
         public string used_img_path { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

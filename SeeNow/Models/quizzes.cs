@@ -11,8 +11,7 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class quizzes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,30 +24,18 @@ namespace SeeNow.Models
             this.use_record = new HashSet<use_record>();
             this.users = new HashSet<users>();
         }
-
-        [DisplayName("遊戲題目流水號")]
+    
         public int quiz_guid { get; set; }
-        [DisplayName("題庫類別編號")]
         public string type_id { get; set; }
-        [DisplayName("文字題目")]
         public string tittle_text { get; set; }
-        [DisplayName("圖片題目")]
         public string title_img_path { get; set; }
-        [DisplayName("影音題目")]
         public string title_video_path { get; set; }
-        [DisplayName("難易度編號")]
         public short difficulty_id { get; set; }
-        [DisplayName("答題時間(秒)")]
         public int time { get; set; }
-        [DisplayName("可獲得積分")]
         public short score { get; set; }
-        [DisplayName("需花費精力值")]
         public int energy { get; set; }
-        [DisplayName("是否可見")]
         public bool visible { get; set; }
-        [DisplayName("點讚總數")]
         public int like_num { get; set; }
-        [DisplayName("遊戲題組編號")]
         public int quiz_group { get; set; }
     
         public virtual difficulty_level difficulty_level { get; set; }

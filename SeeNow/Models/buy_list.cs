@@ -11,19 +11,13 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class buy_list
     {
-        [DisplayName("帳號")]
         public string account { get; set; }
-        [DisplayName("產品編號")]
         public string product_id { get; set; }
-        [DisplayName("購買流水號")]
         public long quid { get; set; }
-        [DisplayName("購買數量")]
         public short number { get; set; }
-        [DisplayName("購買時間")]
         public System.DateTime datetime { get; set; }
     
         public virtual users users { get; set; }

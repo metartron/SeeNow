@@ -1,0 +1,21 @@
+﻿@*@model SeeNow.Models.setting_menu*@
+@*@model IEnumerable<SeeNow.ViewModels.setting_menuViewModel>*@
+@using Newtonsoft.Json.Linq;
+@{
+
+    //List<SeeNow.ViewModels.setting_menuViewModel> data =ViewBag.settingmenu;
+    //JObject data=JObject.Parse(ViewBag.settingmenu);
+}
+
+<ul class="app-menu">
+    @foreach (var item in ViewBag.settingmenu)
+    {
+        <li class="treeview is-expanded">
+            <a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">@JObject.Parse("Id")</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+            <ul class="treeview-menu">
+                <li><a class="treeview-item" href=@Url.Action("index","admins")><i class="icon fa fa-circle-o"></i> 最高級管理員</a></li>
+                <li><a class="treeview-item" href=@Url.Action("index","managers")><i class="icon fa fa-circle-o"></i> 管理員</a></li>
+            </ul>
+        </li>
+    }
+</ul>

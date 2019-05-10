@@ -11,8 +11,7 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class difficulty_level
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,10 +20,8 @@ namespace SeeNow.Models
             this.difficulty_level_log = new HashSet<difficulty_level_log>();
             this.quizzes = new HashSet<quizzes>();
         }
-
-        [DisplayName("難易度編號")]
+    
         public short difficulty_id { get; set; }
-        [DisplayName("難易度描述")]
         public string difficulty_desc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

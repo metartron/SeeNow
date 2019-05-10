@@ -22,10 +22,15 @@
           <Property Name="publish_time" Type="datetime" Nullable="false" />
           <Property Name="priority" Type="int" Nullable="false" />
         </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'SeeNow.dbo.announcement_log' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
         <EntityType Name="announcement_log">
           <Key>
             <PropertyRef Name="manager_id" />
             <PropertyRef Name="id" />
+            
+            
+            
           </Key>
           <Property Name="manager_id" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="id" Type="int" Nullable="false" />
@@ -64,10 +69,14 @@
           <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="category_desc" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'SeeNow.dbo.category_log' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
         <EntityType Name="category_log">
           <Key>
             <PropertyRef Name="manager_id" />
             <PropertyRef Name="category_id" />
+            
+            
           </Key>
           <Property Name="manager_id" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="category_id" Type="int" Nullable="false" />
@@ -79,7 +88,7 @@
           <Key>
             <PropertyRef Name="class_id" />
           </Key>
-          <Property Name="class_id" Type="int" Nullable="false" />
+          <Property Name="class_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="teacher_id" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="class_name" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="visible" Type="bit" Nullable="false" />
@@ -102,10 +111,15 @@
           <Property Name="difficulty_id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="difficulty_desc" Type="nvarchar" MaxLength="10" Nullable="false" />
         </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'SeeNow.dbo.difficulty_level_log' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
         <EntityType Name="difficulty_level_log">
           <Key>
             <PropertyRef Name="manager_id" />
             <PropertyRef Name="difficulty_id" />
+            
+            
+            
           </Key>
           <Property Name="manager_id" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="difficulty_id" Type="smallint" Nullable="false" />
@@ -149,10 +163,16 @@
           <Property Name="img_path" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="used_img_path" Type="nvarchar" MaxLength="200" Nullable="false" />
         </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'SeeNow.dbo.mall_log' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
         <EntityType Name="mall_log">
           <Key>
             <PropertyRef Name="manager_id" />
             <PropertyRef Name="product_id" />
+            
+            
+            
+            
           </Key>
           <Property Name="manager_id" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="product_id" Type="char" MaxLength="5" Nullable="false" />
@@ -233,14 +253,19 @@
           <Key>
             <PropertyRef Name="profile_id" />
           </Key>
-          <Property Name="profile_id" Type="smallint" Nullable="false" />
+          <Property Name="profile_id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="profile_name" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="profile_path" Type="nvarchar" MaxLength="200" />
         </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'SeeNow.dbo.profile_log' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
         <EntityType Name="profile_log">
           <Key>
             <PropertyRef Name="manager_id" />
             <PropertyRef Name="profile_id" />
+            
+            
+            
           </Key>
           <Property Name="manager_id" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="profile_id" Type="smallint" Nullable="false" />
@@ -306,16 +331,31 @@
           <Property Name="role_id" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="role_desc" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'SeeNow.dbo.role_log' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
         <EntityType Name="role_log">
           <Key>
             <PropertyRef Name="manager_id" />
             <PropertyRef Name="role_id" />
+            
+            
           </Key>
           <Property Name="manager_id" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="role_id" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="role_desc" Type="nvarchar" MaxLength="20" />
           <Property Name="status" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="setting_menu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="menu_name_tw" Type="nvarchar" MaxLength="30" />
+          <Property Name="view" Type="nvarchar" MaxLength="30" />
+          <Property Name="page" Type="nvarchar" MaxLength="30" />
+          <Property Name="parent_id" Type="int" />
+          <Property Name="order_num" Type="int" />
         </EntityType>
         <EntityType Name="type">
           <Key>
@@ -997,20 +1037,16 @@
         <EntityContainer Name="SeeNowModelStoreContainer">
           <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="announcement" EntityType="Self.announcement" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="announcement_log" EntityType="Self.announcement_log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bag" EntityType="Self.bag" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="buy_list" EntityType="Self.buy_list" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="category_log" EntityType="Self.category_log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="classes" EntityType="Self.classes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="classes_member" EntityType="Self.classes_member" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="difficulty_level" EntityType="Self.difficulty_level" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="difficulty_level_log" EntityType="Self.difficulty_level_log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="friendship" EntityType="Self.friendship" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="guardianship" EntityType="Self.guardianship" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="like_record" EntityType="Self.like_record" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mall" EntityType="Self.mall" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="mall_log" EntityType="Self.mall_log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="manager" EntityType="Self.manager" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="message" EntityType="Self.message" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="play_record" EntityType="Self.play_record" Schema="dbo" store:Type="Tables" />
@@ -1018,17 +1054,78 @@
           <EntitySet Name="post" EntityType="Self.post" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="post_violations" EntityType="Self.post_violations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="profile" EntityType="Self.profile" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="profile_log" EntityType="Self.profile_log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="quiz_answer" EntityType="Self.quiz_answer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="quiz_group" EntityType="Self.quiz_group" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="quiz_violations" EntityType="Self.quiz_violations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="quizzes" EntityType="Self.quizzes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="role" EntityType="Self.role" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="role_log" EntityType="Self.role_log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="setting_menu" EntityType="Self.setting_menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="type" EntityType="Self.type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="use_record" EntityType="Self.use_record" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user_violations" EntityType="Self.user_violations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="announcement_log" EntityType="Self.announcement_log" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [announcement_log].[manager_id] AS [manager_id], 
+    [announcement_log].[id] AS [id], 
+    [announcement_log].[title] AS [title], 
+    [announcement_log].[content] AS [content], 
+    [announcement_log].[publish_time] AS [publish_time], 
+    [announcement_log].[priority] AS [priority], 
+    [announcement_log].[status] AS [status], 
+    [announcement_log].[datetime] AS [datetime]
+    FROM [dbo].[announcement_log] AS [announcement_log]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="category_log" EntityType="Self.category_log" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [category_log].[manager_id] AS [manager_id], 
+    [category_log].[category_id] AS [category_id], 
+    [category_log].[category_desc] AS [category_desc], 
+    [category_log].[status] AS [status], 
+    [category_log].[datetime] AS [datetime]
+    FROM [dbo].[category_log] AS [category_log]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="difficulty_level_log" EntityType="Self.difficulty_level_log" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [difficulty_level_log].[manager_id] AS [manager_id], 
+    [difficulty_level_log].[difficulty_id] AS [difficulty_id], 
+    [difficulty_level_log].[difficulty_desc] AS [difficulty_desc], 
+    [difficulty_level_log].[status] AS [status], 
+    [difficulty_level_log].[datetime] AS [datetime]
+    FROM [dbo].[difficulty_level_log] AS [difficulty_level_log]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="mall_log" EntityType="Self.mall_log" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [mall_log].[manager_id] AS [manager_id], 
+    [mall_log].[product_id] AS [product_id], 
+    [mall_log].[product_desc] AS [product_desc], 
+    [mall_log].[price] AS [price], 
+    [mall_log].[active] AS [active], 
+    [mall_log].[img_path] AS [img_path], 
+    [mall_log].[used_img_path] AS [used_img_path], 
+    [mall_log].[status] AS [status], 
+    [mall_log].[datetime] AS [datetime]
+    FROM [dbo].[mall_log] AS [mall_log]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="profile_log" EntityType="Self.profile_log" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [profile_log].[manager_id] AS [manager_id], 
+    [profile_log].[profile_id] AS [profile_id], 
+    [profile_log].[profile_name] AS [profile_name], 
+    [profile_log].[profile_path] AS [profile_path], 
+    [profile_log].[status] AS [status], 
+    [profile_log].[datetime] AS [datetime]
+    FROM [dbo].[profile_log] AS [profile_log]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="role_log" EntityType="Self.role_log" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [role_log].[manager_id] AS [manager_id], 
+    [role_log].[role_id] AS [role_id], 
+    [role_log].[role_desc] AS [role_desc], 
+    [role_log].[status] AS [status], 
+    [role_log].[datetime] AS [datetime]
+    FROM [dbo].[role_log] AS [role_log]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__announcem__manag__31B762FC" Association="Self.FK__announcem__manag__31B762FC">
             <End Role="manager" EntitySet="manager" />
             <End Role="announcement_log" EntitySet="announcement_log" />
@@ -2543,7 +2640,19 @@
             <End Role="users" EntitySet="users" />
             <End Role="quizzes" EntitySet="quizzes" />
           </AssociationSet>
+          <EntitySet Name="setting_menu" EntityType="SeeNowModel.setting_menu" />
         </EntityContainer>
+        <EntityType Name="setting_menu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="menu_name_tw" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="view" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="page" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="parent_id" Type="Int32" />
+          <Property Name="order_num" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2925,6 +3034,18 @@
               <ScalarProperty Name="quiz_guid" ColumnName="quiz_guid" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="setting_menu">
+            <EntityTypeMapping TypeName="SeeNowModel.setting_menu">
+              <MappingFragment StoreEntitySet="setting_menu">
+                <ScalarProperty Name="order_num" ColumnName="order_num" />
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+                <ScalarProperty Name="page" ColumnName="page" />
+                <ScalarProperty Name="view" ColumnName="view" />
+                <ScalarProperty Name="menu_name_tw" ColumnName="menu_name_tw" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

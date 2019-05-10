@@ -11,21 +11,14 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class use_record
     {
-        [DisplayName("使用流水號")]
         public int use_guid { get; set; }
-        [DisplayName("帳號")]
         public string account { get; set; }
-        [DisplayName("產品編號")]
         public string product_id { get; set; }
-        [DisplayName("使用數量")]
         public int used_quantity { get; set; }
-        [DisplayName("信箱流水號")]
         public Nullable<long> message_guid { get; set; }
-        [DisplayName("遊戲題目流水號")]
         public Nullable<int> quiz_guid { get; set; }
     
         public virtual mall mall { get; set; }
