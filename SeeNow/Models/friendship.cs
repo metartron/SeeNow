@@ -11,12 +11,22 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class friendship
     {
+        [DisplayName("好友帳號")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        [StringLength(20, ErrorMessage = "欄位長度20字內")]
         public string friend_id { get; set; }
+        [DisplayName("帳號")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        [StringLength(20, ErrorMessage = "欄位長度20字內")]
         public string account { get; set; }
-        public bool active { get; set; }
+        [DisplayName("是否確認")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        public bool active { get; set; } = false;
     
         public virtual users users { get; set; }
     }

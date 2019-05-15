@@ -11,7 +11,9 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class announcement
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,12 +21,30 @@ namespace SeeNow.Models
         {
             this.announcement_log = new HashSet<announcement_log>();
         }
-    
+
+        [DisplayName("公告編號")]
         public int id { get; set; }
+        [DisplayName("公告標題")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        [StringLength(100, ErrorMessage = "欄位長度100字內")]
         public string title { get; set; }
+        [DisplayName("公告內容")]
+        [StringLength(510, ErrorMessage = "欄位長度510字內")]
         public string content { get; set; }
-        public System.DateTime publish_time { get; set; }
-        public int priority { get; set; }
+        private DateTime _SetDefaultDate = DateTime.Now;
+        [DisplayName("釋出時間")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
+        public DateTime publish_time
+        {
+            get { return _SetDefaultDate; }
+            set { _SetDefaultDate = value; }
+        }
+        //public System.DateTime publish_time { get; set; } = DateTime.Now;
+        [DisplayName("優先順序")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        [Range(0,999)]
+        public int priority { get; set; } = 999;
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<announcement_log> announcement_log { get; set; }

@@ -11,7 +11,9 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class post
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,12 +21,28 @@ namespace SeeNow.Models
         {
             this.post_violations = new HashSet<post_violations>();
         }
-    
+
+        [DisplayName("貼文流水號")]
+        [Required(ErrorMessage = "欄位不可空白")]
         public int post_quid { get; set; }
+        [DisplayName("遊戲題目流水號")]
+        [Required(ErrorMessage = "欄位不可空白")]
         public int quiz_guid { get; set; }
+        [DisplayName("內容")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        [StringLength(510, ErrorMessage = "欄位長度510字內")]
         public string content { get; set; }
+        [DisplayName("發文時間")]
+        //[Required(ErrorMessage = "欄位不可空白")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public System.DateTime datetime { get; set; }
-        public bool lock_flag { get; set; }
+        [DisplayName("是否鎖定")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        public bool lock_flag { get; set; } = false;
+        [DisplayName("帳號")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        [StringLength(20, ErrorMessage = "欄位長度20字內")]
         public string account { get; set; }
     
         public virtual users users { get; set; }

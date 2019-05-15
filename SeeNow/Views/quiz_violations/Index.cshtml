@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "後台管理--遊戲題目檢舉";
+    Layout = "~/Views/Shared/_BackEndLayout.cshtml";
 }
 
 <h2>後台管理--遊戲題目檢舉</h2>
@@ -27,7 +28,8 @@
             @Html.DisplayNameFor(model => model.manager.manager_id)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.quizzes.quiz_guid)
+            @*@Html.DisplayNameFor(model => model.quizzes.quiz_guid)*@
+            @Html.DisplayNameFor(model => model.quizzes.tittle_text)
         </th>
         <th>
             @*@Html.DisplayNameFor(model => model.users.role_id)*@
@@ -55,12 +57,13 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.quizzes.quiz_guid)
+            @Html.DisplayFor(modelItem => item.quizzes.tittle_text)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.users.account)
         </td>
         <td>
-            @Html.ActionLink("編輯", "Edit", new { id = item.violation_quid }) |
+            @Html.ActionLink("編輯", "Edit", new { id = item.violation_quid }) @*|*@
             @*@Html.ActionLink("Details", "Details", new { id=item.violation_quid }) |*@
             @*@Html.ActionLink("刪除", "Delete", new { id = item.violation_quid })*@
         </td>

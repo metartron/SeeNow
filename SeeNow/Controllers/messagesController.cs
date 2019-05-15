@@ -49,7 +49,7 @@ namespace SeeNow.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "message_guid,from_id,to_id,message1,datetime,read_flag,delete_flag")] message message)
+        public ActionResult Create([Bind(Include = "message_guid,from_id,to_id,msg,datetime,read_flag,delete_flag")] message message)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace SeeNow.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "message_guid,from_id,to_id,message1,datetime,read_flag,delete_flag")] message message)
+        public ActionResult Edit([Bind(Include = "message_guid,from_id,to_id,msg,datetime,read_flag,delete_flag")] message message)
         {
             if (ModelState.IsValid)
             {

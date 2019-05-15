@@ -11,11 +11,22 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class classes_member
     {
+        [DisplayName("帳號")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        [StringLength(20, ErrorMessage = "欄位長度20字內")]
         public string student_id { get; set; }
+        [DisplayName("班級編號")]
+        [Required(ErrorMessage = "欄位不可空白")]
         public int class_id { get; set; }
+        [DisplayName("加入班級時間")]
+        //[Required(ErrorMessage = "欄位不可空白")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public System.DateTime datetime { get; set; }
     
         public virtual classes classes { get; set; }

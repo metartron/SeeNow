@@ -1,56 +1,63 @@
 ﻿@model SeeNow.Models.quiz_group
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "編輯遊戲題組";
 }
 
-<h2>Edit</h2>
+<h2>編輯遊戲題組</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>quiz_group</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.quiz_group1)
-
-        <div class="form-group">
-           @Html.Label("題組名稱", htmlAttributes: new { @class = "control-label col-md-2" })
-            @*@Html.LabelFor(model => model.group_name, htmlAttributes: new { @class = "control-label col-md-2" })*@
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.group_name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.group_name, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @*@Html.LabelFor(model => model.account, "account", htmlAttributes: new { @class = "control-label col-md-2" })*@
-            @Html.Label("用戶", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("account", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.account, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @*@Html.LabelFor(model => model.category_id, "category_id", htmlAttributes: new { @class = "control-label col-md-2" })*@
-            @Html.Label("類別描述", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("category_id", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.category_id, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+<div class="form-horizontal">
+    <h4>quiz_group</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.quiz_group1)
+    <div class="form-group">
+        @Html.LabelFor(model => model.quiz_group1, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.quiz_group1, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.quiz_group1, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        @*@Html.Label("題組名稱", htmlAttributes: new { @class = "control-label col-md-2" })*@
+        @Html.LabelFor(model => model.group_name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.group_name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.group_name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.users.account, htmlAttributes: new { @class = "control-label col-md-2" })
+        @*@Html.Label("用戶", htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-10">
+            @Html.DropDownList("account", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.users.account, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.category.category_id, htmlAttributes: new { @class = "control-label col-md-2" })
+        @*@Html.Label("類別描述", htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-10">
+            @Html.DropDownList("category_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.category.category_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="確認" class="btn btn-default" />
+        </div>
+    </div>
+</div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("返回遊戲題組列表", "Index")
 </div>

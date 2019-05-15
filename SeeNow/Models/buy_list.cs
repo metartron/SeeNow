@@ -11,13 +11,27 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class buy_list
     {
+        [DisplayName("帳號")]
+        [Required(ErrorMessage = "帳號不可空白")]
+        [StringLength(20, ErrorMessage = "欄位長度20字內")]
         public string account { get; set; }
+        [DisplayName("產品編號")]
+        [Required(ErrorMessage = "產品編號不可空白")]
+        [StringLength(5, ErrorMessage = "欄位長度5字內")]
         public string product_id { get; set; }
+        [DisplayName("購買流水號")]
         public long quid { get; set; }
-        public short number { get; set; }
+        [DisplayName("購買數量")]
+        [Range(0, 999)]
+        public short number { get; set; } = 0;
+        [DisplayName("購買時間")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public System.DateTime datetime { get; set; }
     
         public virtual users users { get; set; }

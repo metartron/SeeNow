@@ -11,16 +11,33 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class announcement_log
     {
+        [DisplayName("管理員帳號")]
+        [Required(ErrorMessage = "公告編號不可空白")]
         public string manager_id { get; set; }
+        [DisplayName("公告編號")]
+        [Required(ErrorMessage = "公告編號不可空白")]
         public int id { get; set; }
+        [DisplayName("公告標題")]
+        [Required(ErrorMessage = "公告編號不可空白")]
         public string title { get; set; }
+        [DisplayName("公告內容")]
         public string content { get; set; }
+        [DisplayName("釋出時間")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public Nullable<System.DateTime> publish_time { get; set; }
+        [DisplayName("優先順序")]
         public Nullable<int> priority { get; set; }
+        [DisplayName("異動狀態")]
         public string status { get; set; }
+        [DisplayName("異動時間")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public System.DateTime datetime { get; set; }
     
         public virtual announcement announcement { get; set; }

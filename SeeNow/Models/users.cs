@@ -11,11 +11,15 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class users
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public users()
+        
+public users()
         {
             this.bag = new HashSet<bag>();
             this.buy_list = new HashSet<buy_list>();
@@ -24,7 +28,7 @@ namespace SeeNow.Models
             this.friendship = new HashSet<friendship>();
             this.guardianship = new HashSet<guardianship>();
             this.message = new HashSet<message>();
-            this.message1 = new HashSet<message>();
+            this.msg = new HashSet<message>();
             this.play_record = new HashSet<play_record>();
             this.post = new HashSet<post>();
             this.post_violations = new HashSet<post_violations>();
@@ -35,18 +39,50 @@ namespace SeeNow.Models
             this.user_violations1 = new HashSet<user_violations>();
             this.quizzes = new HashSet<quizzes>();
         }
-    
+
+        [DisplayName("帳號")]
+        [Required(ErrorMessage = "帳號不可空白")]
+        [StringLength(20, ErrorMessage = "欄位長度20字內")]
         public string account { get; set; }
+        [DisplayName("身分類別編號")]
+        [Required(ErrorMessage = "身分類別編號不可空白")]
         public string role_id { get; set; }
+        [DisplayName("密碼")]
+        [Required(ErrorMessage = "密碼不可空白")]
+        [DataType(DataType.Password)]
+        [StringLength(20, MinimumLength = 8, ErrorMessage = "密碼長度8~20碼")]
         public string password { get; set; }
+
+        //[NotMapped]
+        [Display(Name = "確認密碼：")]
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "請您再次輸入密碼！")]
+        //與Password做比對，再次確認使用者輸入的密碼
+        [Compare("password", ErrorMessage = "兩次輸入的密碼必須相符！")]
+        public string ConfirmPassword { get; set; }
+
+        [DisplayName("暱稱")]
+        [Required(ErrorMessage = "暱稱不可空白")]
+        [StringLength(44, ErrorMessage = "欄位長度44字內")]
         public string nick_name { get; set; }
+        [DisplayName("郵箱")]
+        [Required(ErrorMessage = "郵箱不可空白")]
+        [EmailAddress(ErrorMessage = "郵箱格式錯誤")]
+        [StringLength(40, ErrorMessage = "欄位長度40字內")]
         public string e_mail { get; set; }
+        [DisplayName("目前積分")]
         public int score { get; set; }
+        [DisplayName("目前精力")]
         public int energy { get; set; }
+        [DisplayName("頭像")]
         public short profile_id { get; set; }
+        [DisplayName("背包格數")]
         public int bag_number { get; set; }
+        [DisplayName("是否鎖定")]
         public bool lock_flag { get; set; }
+        [DisplayName("是否驗證")]
         public bool validation_flag { get; set; }
+        [DisplayName("是否重設密碼")]
         public bool resetable { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -64,7 +100,7 @@ namespace SeeNow.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<message> message { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<message> message1 { get; set; }
+        public virtual ICollection<message> msg { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<play_record> play_record { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

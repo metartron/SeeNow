@@ -11,12 +11,17 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class play_record_answer
     {
+        [DisplayName("遊戲紀錄流水號")]
         public int play_guid { get; set; }
+        [DisplayName("帳號")]
         public string account { get; set; }
+        [DisplayName("答題答案")]
         public int select_answer { get; set; }
+        [DisplayName("遊戲題目流水號")]
         public int quiz_guid { get; set; }
     
         public virtual play_record play_record { get; set; }

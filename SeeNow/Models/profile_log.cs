@@ -11,14 +11,24 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class profile_log
     {
+        [DisplayName("管理員編號")]
         public string manager_id { get; set; }
+        [DisplayName("頭像編號")]
         public short profile_id { get; set; }
+        [DisplayName("頭像名稱")]
         public string profile_name { get; set; }
+        [DisplayName("頭像路徑")]
         public string profile_path { get; set; }
+        [DisplayName("異動狀態")]
         public string status { get; set; }
+        [DisplayName("異動時間")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public System.DateTime datetime { get; set; }
     
         public virtual manager manager { get; set; }

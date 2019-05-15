@@ -11,15 +11,31 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class quiz_answer
     {
+        [DisplayName("遊戲答案流水號")]
+        [Required(ErrorMessage = "欄位不可空白")]
         public int quiz_guid { get; set; }
+        [DisplayName("答案編號")]
+        [Required(ErrorMessage = "欄位不可空白")]
         public int answer_id { get; set; }
+        [DisplayName("型態編號")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        [StringLength(1, ErrorMessage = "欄位長度1字內")]
         public string type_id { get; set; }
+        [DisplayName("文字答案")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        [StringLength(510, ErrorMessage = "欄位長度510字內")]
         public string answer_text { get; set; }
+        [DisplayName("圖片答案")]
+        [StringLength(200, ErrorMessage = "欄位長度200字內")]
         public string answer_img_path { get; set; }
-        public bool is_correct { get; set; }
+        [DisplayName("是否正確")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        public bool is_correct { get; set; } = false;
     
         public virtual quizzes quizzes { get; set; }
         public virtual type type { get; set; }

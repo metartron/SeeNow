@@ -11,7 +11,9 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class role
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,8 +22,14 @@ namespace SeeNow.Models
             this.role_log = new HashSet<role_log>();
             this.users = new HashSet<users>();
         }
-    
+
+        [DisplayName("身分編號")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        [StringLength(1, ErrorMessage = "欄位長度1字內")]
         public string role_id { get; set; }
+        [DisplayName("身分描述")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        [StringLength(40, ErrorMessage = "欄位長度40字內")]
         public string role_desc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -11,11 +11,22 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class bag
     {
+        [DisplayName("帳號")]
+        [Required(ErrorMessage = "帳號不可空白")]
+        [StringLength(20, ErrorMessage = "欄位長度20字內")]
         public string account { get; set; }
+        [DisplayName("產品編號")]
+        [Required(ErrorMessage = "產品編號不可空白")]
+        [StringLength(5, ErrorMessage = "欄位長度5字內")]
         public string product_id { get; set; }
+        [DisplayName("剩餘數量")]
+        [Required(ErrorMessage = "剩餘數量不可空白")]
+        [Range(0,999)]
         public int remaining_quantity { get; set; }
     
         public virtual users users { get; set; }

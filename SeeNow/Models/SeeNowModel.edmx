@@ -198,7 +198,7 @@
           <Property Name="message_guid" Type="bigint" Nullable="false" />
           <Property Name="from_id" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="to_id" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="message" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="msg" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="datetime" Type="datetime" Nullable="false" />
           <Property Name="read_flag" Type="bit" />
           <Property Name="delete_flag" Type="bit" />
@@ -1540,7 +1540,7 @@
           <Property Name="message_guid" Type="Int64" Nullable="false" />
           <Property Name="from_id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="to_id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="message1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="msg" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="read_flag" Type="Boolean" />
           <Property Name="delete_flag" Type="Boolean" />
@@ -1781,7 +1781,7 @@
           <NavigationProperty Name="friendship" Relationship="Self.FK__friendshi__accou__0A9D95DB" FromRole="users" ToRole="friendship" />
           <NavigationProperty Name="guardianship" Relationship="Self.FK__guardians__accou__0B91BA14" FromRole="users" ToRole="guardianship" />
           <NavigationProperty Name="message" Relationship="Self.FK__message__from_id__0C85DE4D" FromRole="users" ToRole="message" />
-          <NavigationProperty Name="message1" Relationship="Self.FK__message__to_id__151B244E" FromRole="users" ToRole="message" />
+          <NavigationProperty Name="msg" Relationship="Self.FK__message__to_id__151B244E" FromRole="users" ToRole="message" />
           <NavigationProperty Name="play_record" Relationship="Self.FK__play_reco__accou__0F624AF8" FromRole="users" ToRole="play_record" />
           <NavigationProperty Name="post" Relationship="Self.FK__post__account__3A179ED3" FromRole="users" ToRole="post" />
           <NavigationProperty Name="post_violations" Relationship="Self.FK__post_viol__repor__3493CFA7" FromRole="users" ToRole="post_violations" />
@@ -2829,7 +2829,7 @@
                 <ScalarProperty Name="message_guid" ColumnName="message_guid" />
                 <ScalarProperty Name="from_id" ColumnName="from_id" />
                 <ScalarProperty Name="to_id" ColumnName="to_id" />
-                <ScalarProperty Name="message1" ColumnName="message" />
+                <ScalarProperty Name="msg" ColumnName="msg" />
                 <ScalarProperty Name="datetime" ColumnName="datetime" />
                 <ScalarProperty Name="read_flag" ColumnName="read_flag" />
                 <ScalarProperty Name="delete_flag" ColumnName="delete_flag" />

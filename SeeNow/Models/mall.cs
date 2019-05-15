@@ -11,7 +11,9 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class mall
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,12 +24,28 @@ namespace SeeNow.Models
             this.mall_log = new HashSet<mall_log>();
             this.use_record = new HashSet<use_record>();
         }
-    
+
+        [DisplayName("產品編號")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        [StringLength(5, ErrorMessage = "欄位長度5字內")]
         public string product_id { get; set; }
+        [DisplayName("產品名稱")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        [StringLength(40, ErrorMessage = "欄位長度40字內")]
         public string product_desc { get; set; }
+        [DisplayName("兌換所需積分")]
+        [Required(ErrorMessage = "欄位不可空白")]
         public int price { get; set; }
-        public bool active { get; set; }
+        [DisplayName("是否上架")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        public bool active { get; set; } = true;
+        [DisplayName("產品圖")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        [StringLength(400, ErrorMessage = "欄位長度400字內")]
         public string img_path { get; set; }
+        [DisplayName("產品使用效果圖")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        [StringLength(400, ErrorMessage = "欄位長度400字內")]
         public string used_img_path { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

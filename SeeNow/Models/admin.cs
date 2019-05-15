@@ -11,10 +11,27 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class admin
     {
+        [DisplayName("帳號")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        [StringLength(20, ErrorMessage = "欄位長度20字內")]
         public string admin_id { get; set; }
+        [DisplayName("密碼")]
+        [Required(ErrorMessage = "密碼不可空白")]
+        [DataType(DataType.Password)]
+        [StringLength(20, MinimumLength = 8, ErrorMessage = "密碼長度8~20字")]
         public string password { get; set; }
+
+        [Display(Name = "確認密碼：")]
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "請您再次輸入密碼！")]
+        //與Password做比對，再次確認使用者輸入的密碼
+        [Compare("password", ErrorMessage = "兩次輸入的密碼必須相符！")]
+        public string ConfirmPassword { get; set; }
+
     }
 }

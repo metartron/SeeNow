@@ -1,10 +1,10 @@
 ﻿@model SeeNow.Models.category
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "編輯題庫類別";
 }
 
-<h2>Edit</h2>
+<h2>編輯題庫類別</h2>
 
 @using (Html.BeginForm())
 {
@@ -26,12 +26,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="確認" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("返回題庫類別清單", "Index")
 </div>

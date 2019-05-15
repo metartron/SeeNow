@@ -11,13 +11,28 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class difficulty_level_log
     {
+        [DisplayName("管理員帳號")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        [StringLength(20, ErrorMessage = "欄位長度20字內")]
         public string manager_id { get; set; }
+        [DisplayName("難易度編號")]
+        [Required(ErrorMessage = "欄位不可空白")]
         public short difficulty_id { get; set; }
+        [DisplayName("難易度描述")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        [StringLength(20, ErrorMessage = "欄位長度20字內")]
         public string difficulty_desc { get; set; }
+        [DisplayName("異動狀態")]
+        [Required(ErrorMessage = "欄位不可空白")]
         public string status { get; set; }
+        [DisplayName("異動時間")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public System.DateTime datetime { get; set; }
     
         public virtual difficulty_level difficulty_level { get; set; }

@@ -25,6 +25,25 @@ namespace SeeNow
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/layui").Include(
+                      "~/Scripts/layui/css/layui.css",
+                      "~/Scripts/layui/layui.js"));
+
+            bundles.Add(new StyleBundle("~/vender/magnific-popup/css").Include(
+                     "~/vender/magnific-popup/jquery.magnific-popup.css",
+                      "~/vender/magnific-popup/magnific-popup.css"));
+
+            bundles.Add(new StyleBundle("~/vender/fontawesome-free/css/css").Include(
+                     "~/vender/fontawesome-free/css/all.min.css"));
+
+            bundles.Add(new StyleBundle("~/css/css").Include(
+                     "~/css/freelancer.min.css"));
+
+            bundles.Add(new StyleBundle("~/vender/bootstrap/css/css").Include(
+                    "~/vender/bootstrap/css/bootstrap.min.css"));
+
+
         }
     }
 }

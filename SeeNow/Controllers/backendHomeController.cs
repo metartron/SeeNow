@@ -140,6 +140,7 @@ namespace SeeNow.Controllers
             ViewData["Login_Account"] = User.Identity.Name;
             //是否登入(boolean值)
             ViewData["isLogin"] = User.Identity.IsAuthenticated;
+
             return View();
         }
 
@@ -154,6 +155,10 @@ namespace SeeNow.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        public ActionResult LayuiIndex() {
             return View();
         }
 

@@ -260,3 +260,5 @@ paket-files/
 __pycache__/
 *.pyc
 /SeeNow/Views/Views_20190510.rar
+/SeeNow/App_Start/Extention.UrlHelper.cs
+/SeeNow/Extention

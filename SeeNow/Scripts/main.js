@@ -25,3 +25,4 @@
     $("[data-toggle='tooltip']").tooltip();
 
 })();
+

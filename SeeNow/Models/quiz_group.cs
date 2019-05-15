@@ -11,7 +11,9 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class quiz_group
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,10 +21,20 @@ namespace SeeNow.Models
         {
             this.quizzes = new HashSet<quizzes>();
         }
-    
+
+        [DisplayName("遊戲題組編號")]
+        [Required(ErrorMessage = "欄位不可空白")]
         public int quiz_group1 { get; set; }
+        [DisplayName("遊戲題組名稱")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        [StringLength(510, ErrorMessage = "欄位長度510字內")]
         public string group_name { get; set; }
+        [DisplayName("老師帳號")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        [StringLength(20, ErrorMessage = "欄位長度20字內")]
         public string account { get; set; }
+        [DisplayName("題庫類別編號")]
+        [Required(ErrorMessage = "欄位不可空白")]
         public int category_id { get; set; }
     
         public virtual category category { get; set; }

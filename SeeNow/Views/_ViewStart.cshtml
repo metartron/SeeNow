@@ -6,7 +6,17 @@
     string ControllerName = Convert.ToString(HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"]);
     switch (ControllerName)
     {
+
+
+        case "backendHome":
+
+
+
+            Layout = "~/Views/Shared/_BackEndLayout.cshtml";
+            break;
+        case "LayuiIndex":
         case "admins":
+        case "managers":
         case "announcement_log":
         case "announcements":
         case "Bags":
@@ -21,8 +31,6 @@
         case "guardianships":
         case "Mall":
         case "Mall_Log":
-        case "backendHome":
-        case "managers":
         case "messages":
         case "play_record":
         case "play_record_answer":
@@ -39,10 +47,7 @@
         case "use_record":
         case "user_violations":
         case "users":
-            Layout = "~/Views/Shared/_BackEndLayout.cshtml";
-            break;
-        case "Home":
-            Layout = "~/Views/Shared/_Layout.cshtml";
+            Layout = null;
             break;
         default:
             Layout = "~/Views/Shared/_Layout.cshtml";

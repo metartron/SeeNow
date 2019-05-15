@@ -12,13 +12,18 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.difficulty_id)
+        </dt>
+        <dt>
             @Html.DisplayNameFor(model => model.difficulty_desc)
         </dt>
 
         <dd>
+            @Html.DisplayFor(model => model.difficulty_id)
+        </dd>
+        <dd>
             @Html.DisplayFor(model => model.difficulty_desc)
         </dd>
-
     </dl>
 
     @using (Html.BeginForm()) {

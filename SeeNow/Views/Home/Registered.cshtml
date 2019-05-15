@@ -4,13 +4,13 @@
     ViewBag.Title = "💖💖 SeeNow 會員註冊 💖💖";
 }
 
-<h2 style="color:deeppink">會員註冊</h2>
+@*<h2 style="color:deeppink">會員註冊</h2>*@
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
-<div class="form-horizontal" style="color:red;font-size:20px">
+<div class="form-horizontal" style="color:red;font-size:20px;margin-top:3%">
     @*<h4>users</h4>*@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })

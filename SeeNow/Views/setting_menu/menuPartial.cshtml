@@ -1,21 +1,39 @@
-﻿@*@model SeeNow.Models.setting_menu*@
-@*@model IEnumerable<SeeNow.ViewModels.setting_menuViewModel>*@
-@using Newtonsoft.Json.Linq;
-@{
+﻿
 
-    //List<SeeNow.ViewModels.setting_menuViewModel> data =ViewBag.settingmenu;
-    //JObject data=JObject.Parse(ViewBag.settingmenu);
-}
+<head></head>
+<body>
 
-<ul class="app-menu">
+</body>
+
+@*<ul class="app-menu">
     @foreach (var item in ViewBag.settingmenu)
     {
-        <li class="treeview is-expanded">
-            <a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">@JObject.Parse("Id")</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-            <ul class="treeview-menu">
-                <li><a class="treeview-item" href=@Url.Action("index","admins")><i class="icon fa fa-circle-o"></i> 最高級管理員</a></li>
-                <li><a class="treeview-item" href=@Url.Action("index","managers")><i class="icon fa fa-circle-o"></i> 管理員</a></li>
-            </ul>
-        </li>
+
+        id = SeeNow.Extention.GetPropertyValueByName("Id", item);
+        topMenu = SeeNow.Extention.GetPropertyValueByName("TopMenu", item);
+        secondMenu = SeeNow.Extention.GetPropertyValueByName("SecondMenu", item);
+        view = SeeNow.Extention.GetPropertyValueByName("View", item);
+        page = SeeNow.Extention.GetPropertyValueByName("Page", item);
+        secondParentId = SeeNow.Extention.GetPropertyValueByName("SecondParentId", item);
+
+
+
+        if (tempId != id)
+        {
+
+            tempId = id;
+
+            @Html.Raw("<li class='treeview is -expanded'>");
+            @Html.Raw("<a class='app - menu__item' href='#' data-toggle='treeview'><i class='app-menu__icon fa fa-laptop'></i><span class='app-menu__label'>" + topMenu + "</span><i class='treeview-indicator fa fa-angle-right'></i></a>");
+        }
+
+        @Html.Raw("<ul class='treeview - menu'>");
+        @Html.Raw("<li><a class='treeview - item' href=" + Url.Action(page, view) + "><i class='icon fa fa - circle - o'></i> " + secondMenu + "</a></li>");
+        @Html.Raw("</ul>");
+
+        if (tempId != id)
+        {
+            @Html.Raw("</li>");
+        }
     }
-</ul>
+</ul>*@

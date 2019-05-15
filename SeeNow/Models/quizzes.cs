@@ -11,7 +11,9 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class quizzes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,18 +26,45 @@ namespace SeeNow.Models
             this.use_record = new HashSet<use_record>();
             this.users = new HashSet<users>();
         }
-    
+
+        [DisplayName("遊戲題目流水號")]
+        [Required(ErrorMessage = "欄位不可空白")]
         public int quiz_guid { get; set; }
+        [DisplayName("題庫類別編號")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        [StringLength(1, ErrorMessage = "欄位長度1字內")]
         public string type_id { get; set; }
+        [DisplayName("文字題目")]
+        [StringLength(100, ErrorMessage = "欄位長度100字內")]
         public string tittle_text { get; set; }
+        [DisplayName("圖片題目")]
+        [StringLength(200, ErrorMessage = "欄位長度200字內")]
         public string title_img_path { get; set; }
+        [DisplayName("影音題目")]
+        [StringLength(255, ErrorMessage = "欄位長度255字內")]
         public string title_video_path { get; set; }
+        [DisplayName("難易度編號")]
+        [Required(ErrorMessage = "欄位不可空白")]
         public short difficulty_id { get; set; }
-        public int time { get; set; }
-        public short score { get; set; }
-        public int energy { get; set; }
-        public bool visible { get; set; }
-        public int like_num { get; set; }
+        [DisplayName("答題時間(秒)")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        [Range(5, 60)]
+        public int time { get; set; } = 5;
+        [DisplayName("可獲得積分")]
+        [Range(0, 100)]
+        [Required(ErrorMessage = "欄位不可空白")]
+        public short score { get; set; } = 10;
+        [DisplayName("需花費精力值")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        [Range(5, 50)]
+        public int energy { get; set; } = 5;
+        [DisplayName("是否可見")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        public bool visible { get; set; } = true;
+        [DisplayName("點讚總數")]
+        public int like_num { get; set; } = 0;
+        [DisplayName("遊戲題組編號")]
+        [Required(ErrorMessage = "欄位不可空白")]
         public int quiz_group { get; set; }
     
         public virtual difficulty_level difficulty_level { get; set; }

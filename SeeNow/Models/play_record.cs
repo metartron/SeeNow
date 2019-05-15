@@ -11,13 +11,23 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class play_record
     {
+        [DisplayName("遊戲紀錄流水號")]
         public int play_guid { get; set; }
+        [DisplayName("帳號")]
+        [StringLength(20, ErrorMessage = "欄位長度20字內")]
         public string account { get; set; }
+        [DisplayName("獲得分數")]
         public int score { get; set; }
+        [DisplayName("紀錄時間")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public System.DateTime datetime { get; set; }
+        [DisplayName("遊戲題目流水號")]
         public int quiz_guid { get; set; }
     
         public virtual users users { get; set; }

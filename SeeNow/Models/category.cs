@@ -11,7 +11,9 @@ namespace SeeNow.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class category
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,8 +22,13 @@ namespace SeeNow.Models
             this.category_log = new HashSet<category_log>();
             this.quiz_group = new HashSet<quiz_group>();
         }
-    
+
+        [DisplayName("題庫類別編號")]
+        [Required(ErrorMessage = "欄位不可空白")]
         public int category_id { get; set; }
+        [DisplayName("題庫類別名稱")]
+        [Required(ErrorMessage = "欄位不可空白")]
+        [StringLength(60, ErrorMessage = "欄位長度60字內")]
         public string category_desc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
