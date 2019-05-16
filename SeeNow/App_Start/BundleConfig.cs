@@ -26,22 +26,25 @@ namespace SeeNow
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
-            bundles.Add(new StyleBundle("~/layui").Include(
-                      "~/Scripts/layui/css/layui.css",
+            //Meta 後台用
+            bundles.Add(new StyleBundle("~/layui/css").Include(
+                      "~/Scripts/layui/css/layui.css"));
+            bundles.Add(new ScriptBundle("~/layui/js").Include(
                       "~/Scripts/layui/layui.js"));
 
-            bundles.Add(new StyleBundle("~/vender/magnific-popup/css").Include(
-                     "~/vender/magnific-popup/jquery.magnific-popup.css",
-                      "~/vender/magnific-popup/magnific-popup.css"));
+            //Legai 前台用
+            bundles.Add(new StyleBundle("~/magnific-popup/css").Include(
+                      "~/Content/magnific-popup/magnific-popup.css"));
 
-            bundles.Add(new StyleBundle("~/vender/fontawesome-free/css/css").Include(
-                     "~/vender/fontawesome-free/css/all.min.css"));
+            //字形
+            bundles.Add(new StyleBundle("~/fontawesome-free/css").Include(
+                     "~/Content/fontawesome-free/all.min.css"));
 
-            bundles.Add(new StyleBundle("~/css/css").Include(
-                     "~/css/freelancer.min.css"));
+            //Legai 前台用
+            bundles.Add(new StyleBundle("~/freelancer/css").Include(
+                     "~/Content/freelancers/freelancer.min.css"));
 
-            bundles.Add(new StyleBundle("~/vender/bootstrap/css/css").Include(
-                    "~/vender/bootstrap/css/bootstrap.min.css"));
+            
 
 
         }
