@@ -53,6 +53,14 @@
             @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
         </div>
     </div>
+    @*ConfirmPassword*@
+    <div class="form-group">
+        @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+        </div>
+    </div>
     <div style="padding-right:350px">
         <div style="width:100px;height:100px;float:right">
             <img src="~/Image/leopard_icon-s.png" />

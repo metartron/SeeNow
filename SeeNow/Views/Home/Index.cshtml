@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "💖💖 SeeNow 💖💖";
-
+    Layout = null;
 }
 @*<!DOCTYPE html>*@
 
@@ -12,9 +12,10 @@
     <meta name="author" content="">
     @*<title>Freelancer - Start Bootstrap Theme</title>*@
     <!-- Bootstrap core CSS -->
-    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <!-- Custom fonts for this template -->
-    <link href="~/Content/fontawesome-free/all.min.css" rel="stylesheet" type="text/css">
+    @*<link href="~/Content/fontawesome-free/all.min.css" rel="stylesheet" type="text/css">*@
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <!-- Plugin CSS -->
@@ -42,7 +43,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio" style="color:white">Portfolio</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio" style="color:white">風雲榜</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">
                         <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about" style="color:white">關於我們</a>
@@ -72,7 +73,7 @@
     <!-- Portfolio Grid Section -->
     <section class="portfolio" id="portfolio">
         <div class="container">
-            <h2 class="text-center text-uppercase text-secondary mb-0">Portfolio</h2>
+            <h2 class="text-center text-uppercase text-secondary mb-0">風雲榜</h2>
             <hr class="star-dark mb-5">
             <div class="row">
                 <div class="col-md-6 col-lg-4">
@@ -403,15 +404,15 @@
     </div>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.min.js"></script>
 
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>
     <!-- Plugin JavaScript -->
     <script src="~/Scripts/jquery-easing/jquery.easing.min.js"></script>
     <script src="~/Scripts/magnific-popup/jquery.magnific-popup.min.js"></script>
     <!-- Contact Form JavaScript -->
-    <script src="~/Scripts/freelancers/jqBootstrapValidation.js"></script>
-    <script src="~/Scripts/freelancers/contact_me.js"></script>
+    @*<script src="~/Scripts/freelancers/jqBootstrapValidation.min.js"></script>*@
+    @*<script src="~/Scripts/freelancers/contact_me.min.js"></script>*@
     <!-- Custom scripts for this template -->
     <script src="~/Scripts/freelancers/freelancer.min.js"></script>
 
