@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "後台管理--題庫類別";
 }
-
+@Styles.Render("~/Content/css")
 <h2>後台管理--題庫類別</h2>
 
 <p>
@@ -20,20 +20,21 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.category_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.category_desc)
-        </td>
-        <td>
-            @Html.ActionLink("修改", "Edit", new { id = item.category_id }) @*|*@
-            @*@Html.ActionLink("Details", "Details", new { id=item.category_id }) |*@
-            @*@Html.ActionLink("刪除", "Delete", new { id = item.category_id })*@
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.category_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.category_desc)
+            </td>
+            <td>
+                @Html.ActionLink("修改", "Edit", new { id = item.category_id }) @*|*@
+                @*@Html.ActionLink("Details", "Details", new { id=item.category_id }) |*@
+                @*@Html.ActionLink("刪除", "Delete", new { id = item.category_id })*@
+            </td>
+        </tr>
+    }
 
 </table>

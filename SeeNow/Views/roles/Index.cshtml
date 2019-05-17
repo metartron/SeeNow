@@ -2,9 +2,9 @@
 
 @{
     ViewBag.Title = "後台管理--身分";
-    Layout = "~/Views/Shared/_BackEndLayout.cshtml";
-}
 
+}
+@Styles.Render("~/Content/css")
 <h2>後台管理--身分</h2>
 
 <p>
@@ -21,20 +21,21 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.role_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.role_desc)
-        </td>
-        <td>
-            @Html.ActionLink("編輯身分", "Edit", new { id = item.role_id }) @*|*@
-            @*@Html.ActionLink("Details", "Details", new { id=item.role_id }) |*@
-            @*@Html.ActionLink("Delete", "Delete", new { id=item.role_id })*@
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.role_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.role_desc)
+            </td>
+            <td>
+                @Html.ActionLink("編輯身分", "Edit", new { id = item.role_id }) @*|*@
+                @*@Html.ActionLink("Details", "Details", new { id=item.role_id }) |*@
+                @*@Html.ActionLink("Delete", "Delete", new { id=item.role_id })*@
+            </td>
+        </tr>
+    }
 
 </table>

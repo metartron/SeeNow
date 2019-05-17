@@ -3,13 +3,13 @@
 @{
     ViewBag.Title = "編輯公告";
 }
-
+@Styles.Render("~/Content/css")
 <h2>編輯公告</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>announcement</h4>
         <hr />
@@ -35,7 +35,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.publish_time, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.publish_time, new { htmlAttributes = new { @class = "form-control"  } })
+                @Html.EditorFor(model => model.publish_time, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.publish_time, "", new { @class = "text-danger" })
             </div>
         </div>

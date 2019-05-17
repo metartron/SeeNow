@@ -1,0 +1,48 @@
+﻿@model SeeNow.ViewModels.QQA
+
+@{
+    ViewBag.Title = "測驗答案列表";
+}
+
+<h2>測驗答案列表</h2>
+
+<div class="row">
+
+    <div class="col-md-4">
+        @foreach (var item in Model.quizzes)
+        {
+            <p>
+                @Html.ActionLink(item.tittle_text, "Index", new { id = item.quiz_guid })
+                
+            </p>
+        }
+    </div>
+    <div class="col-md-8">
+        <table class="table">
+            <tr>
+                <th>遊戲答案流水號</th>
+                <th>答案編號</th>
+                <th>型態編號</th>
+                <th>文字答案</th>
+                <th>圖片答案</th>
+                <th>是否正確</th>
+            </tr>
+
+            @foreach (var item in Model.answers)
+            {
+                <tr>
+                    <td>@item.quiz_guid</td>
+                    <td>@item.answer_id</td>
+                    <td>@item.type_id</td>
+                    <td>@item.answer_text</td>
+                    <td>@item.answer_img_path</td>
+                    <td>@item.is_correct</td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
+</div>
+
+

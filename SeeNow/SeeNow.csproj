@@ -202,6 +202,7 @@
     <Compile Include="Controllers\Post_violationsController.cs" />
     <Compile Include="Controllers\ProfilesController.cs" />
     <Compile Include="Controllers\Profile_LogController.cs" />
+    <Compile Include="Controllers\QQAController.cs" />
     <Compile Include="Controllers\quizzesController.cs" />
     <Compile Include="Controllers\quiz_answerController.cs" />
     <Compile Include="Controllers\quiz_groupController.cs" />
@@ -212,6 +213,7 @@
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\user_violationsController.cs" />
     <Compile Include="Controllers\use_recordController.cs" />
+    <Compile Include="Extention\Validation.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -335,6 +337,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\QQA.cs" />
     <Compile Include="ViewModels\setting_menuViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -804,6 +807,8 @@
     <Content Include="Scripts\layui\font\iconfont.woff" />
     <None Include="Views\backendHome\LayuiIndex.cshtml" />
     <Content Include="Views\Shared\_BackEndLayout - 複製.cshtml" />
+    <Content Include="Views\Home\Registered - 複製.cshtml" />
+    <Content Include="Views\QQA\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

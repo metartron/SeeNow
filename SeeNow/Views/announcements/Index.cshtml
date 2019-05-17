@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "後台管理--公告";
 }
-
+@Styles.Render("~/Content/css")
 <h2>後台管理--公告</h2>
 
 <p>
@@ -26,26 +26,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.content)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.publish_time)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.priority)
-        </td>
-        <td>
-            @Html.ActionLink("修改公告", "Edit", new { id=item.id }) @*|*@
-            @*@Html.ActionLink("Details", "Details", new { id=item.id }) |*@
-            @*@Html.ActionLink("刪除公告", "Delete", new { id=item.id })*@
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.publish_time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.priority)
+            </td>
+            <td>
+                @Html.ActionLink("修改公告", "Edit", new { id = item.id }) @*|*@
+                @*@Html.ActionLink("Details", "Details", new { id=item.id }) |*@
+                @*@Html.ActionLink("刪除公告", "Delete", new { id=item.id })*@
+            </td>
+        </tr>
+    }
 
 </table>

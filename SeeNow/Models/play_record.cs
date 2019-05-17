@@ -29,7 +29,9 @@ namespace SeeNow.Models
         public System.DateTime datetime { get; set; }
         [DisplayName("遊戲題目流水號")]
         public int quiz_guid { get; set; }
-    
+        [DisplayName("遊戲空間編號")]
+        public Nullable<int> round_no { get; set; }
+
         public virtual users users { get; set; }
         public virtual quizzes quizzes { get; set; }
         public virtual play_record_answer play_record_answer { get; set; }

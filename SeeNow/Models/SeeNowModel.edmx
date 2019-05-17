@@ -214,6 +214,7 @@
           <Property Name="score" Type="int" Nullable="false" />
           <Property Name="datetime" Type="datetime" Nullable="false" />
           <Property Name="quiz_guid" Type="int" Nullable="false" />
+          <Property Name="round_no" Type="int"  />
         </EntityType>
         <EntityType Name="play_record_answer">
           <Key>
@@ -1559,6 +1560,7 @@
           <Property Name="score" Type="Int32" Nullable="false" />
           <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="quiz_guid" Type="Int32" Nullable="false" />
+          <Property Name="round_no" Type="Int32"  />
           <NavigationProperty Name="users" Relationship="Self.FK__play_reco__accou__0F624AF8" FromRole="play_record" ToRole="users" />
           <NavigationProperty Name="quizzes" Relationship="Self.FK__play_reco__quiz___1F98B2C1" FromRole="play_record" ToRole="quizzes" />
           <NavigationProperty Name="play_record_answer" Relationship="Self.FK__play_record_answ__22751F6C" FromRole="play_record" ToRole="play_record_answer" />
@@ -2844,6 +2846,7 @@
                 <ScalarProperty Name="score" ColumnName="score" />
                 <ScalarProperty Name="datetime" ColumnName="datetime" />
                 <ScalarProperty Name="quiz_guid" ColumnName="quiz_guid" />
+                <ScalarProperty Name="round_no" ColumnName="round_no" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
