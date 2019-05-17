@@ -53,13 +53,14 @@ public users()
         [StringLength(20, MinimumLength = 8, ErrorMessage = "密碼長度8~20碼")]
         public string password { get; set; }
 
-        //[NotMapped]
-        [Display(Name = "確認密碼：")]
-        [DataType(DataType.Password)]
-        [Required(ErrorMessage = "請您再次輸入密碼！")]
-        //與Password做比對，再次確認使用者輸入的密碼
-        [Compare("password", ErrorMessage = "兩次輸入的密碼必須相符！")]
-        public string ConfirmPassword { get; set; }
+
+        //[Display(Name = "確認密碼：")]
+        //[DataType(DataType.Password)]
+        //////[Required(ErrorMessage = "請您再次輸入密碼！")]
+        //////與Password做比對，再次確認使用者輸入的密碼
+        ////[NotMapped]
+        ////[Compare("password", ErrorMessage = "兩次輸入的密碼必須相符！")]
+        //public string ConfirmPassword { get; set; }
 
         [DisplayName("暱稱")]
         [Required(ErrorMessage = "暱稱不可空白")]

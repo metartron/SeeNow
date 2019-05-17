@@ -792,7 +792,6 @@
     <Content Include="Views\Profile_Log\Details.cshtml" />
     <Content Include="Views\Profile_Log\Edit.cshtml" />
     <Content Include="Views\Profile_Log\Index.cshtml" />
-    <Content Include="Views\Home\Registered.cshtml" />
     <Content Include="Views\setting_menu\menuPartial.cshtml" />
     <Content Include="Views\setting_menu\Create.cshtml" />
     <Content Include="Views\setting_menu\Delete.cshtml" />
@@ -807,8 +806,9 @@
     <Content Include="Scripts\layui\font\iconfont.woff" />
     <None Include="Views\backendHome\LayuiIndex.cshtml" />
     <Content Include="Views\Shared\_BackEndLayout - 複製.cshtml" />
-    <Content Include="Views\Home\Registered - 複製.cshtml" />
     <Content Include="Views\QQA\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Registered.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

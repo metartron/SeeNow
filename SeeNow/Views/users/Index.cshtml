@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "後台管理--會員列表";
 }
-
+@Styles.Render("~/Content/css")
 <h2>後台管理--會員列表</h2>
 
 <p>
@@ -47,47 +47,48 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.account)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nick_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.e_mail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.score)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.energy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.bag_number)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lock_flag)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.validation_flag)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.resetable)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.profile.profile_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.role.role_desc)
-        </td>
-        <td>
-            @Html.ActionLink("編輯", "Edit", new { id=item.account }) |
-            @*@Html.ActionLink("Details", "Details", new { id=item.account }) |*@
-            @Html.ActionLink("刪除", "Delete", new { id=item.account })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.account)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nick_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.e_mail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.score)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.energy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bag_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lock_flag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.validation_flag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.resetable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.profile.profile_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.role.role_desc)
+            </td>
+            <td>
+                @Html.ActionLink("編輯", "Edit", new { id = item.account }) |
+                @*@Html.ActionLink("Details", "Details", new { id=item.account }) |*@
+                @Html.ActionLink("刪除", "Delete", new { id = item.account })
+            </td>
+        </tr>
+    }
 
 </table>
