@@ -6,8 +6,11 @@
     string ControllerName = Convert.ToString(HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"]);
     switch (ControllerName)
     {
-
-
+        case "Home":
+        case "AuthOK":
+        case "SendAuthMail":
+            Layout = "~/Views/Shared/_Layout.cshtml";
+            break;
         case "backendHome":
 
 

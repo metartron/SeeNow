@@ -7,7 +7,7 @@ using SeeNow.Models;
 using System.Data.Entity;
 using System.Net;
 using System.Web.Security;
-
+using System.Net.Mail;
 
 
 namespace SeeNow.Controllers
@@ -37,48 +37,64 @@ namespace SeeNow.Controllers
         }
 
 
+        #region Registered 初始註冊頁面
         public ActionResult Registered()
         {
             ViewBag.profile = new SelectList(db.profile, "profile_id", "profile_path");
             ViewBag.role_id = new SelectList(db.role, "role_id", "role_desc");
             return View();
         }
-        // POST: Users/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        #endregion
+
+        #region Registered 註冊
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //public ActionResult Registered([Bind(Include = "account,role_id,password,nick_name,e_mail,score,energy,profile_id,bag_number,lock_flag,validation_flag,resetable")] users users)
         public ActionResult Registered(string account,string role_id,string password,string nick_name,string e_mail,short profile_id)
         {
-            users user = new users();
-            user.account = account;
-            user.role_id = role_id;
-            user.password = password;
-            user.nick_name = nick_name;
-            user.e_mail = e_mail;
-            user.profile_id = profile_id;
+            //檢查帳號或email是否存在，存在則不可重複申請
+            var user = db.users.Where(m => m.account == account || m.e_mail== e_mail).FirstOrDefault();
+            if (user != null)
+            {
+                Response.Write("<script>alert('帳號或信箱重複，請修改!！');</script>");
+                ViewBag.profile = new SelectList(db.profile, "profile_id", "profile_path");
+                ViewBag.role_id = new SelectList(db.role, "role_id", "role_desc");
+                return View();
+            }
+            else
+            {
 
-            db.users.Add(user);
-            db.SaveChanges();
-            ////if (ModelState.IsValid)
-            ////{
-            //    db.users.Add(users);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            ////}
+                users newuser = new users();
+                newuser.account = account;
+                newuser.role_id = role_id;
+                newuser.password = password;
+                newuser.nick_name = nick_name;
+                newuser.e_mail = e_mail;
+                newuser.profile_id = profile_id;
 
-            //ViewBag.profile = new SelectList(db.profile, "profile_id", "profile_path", users.profile_id);
-            //ViewBag.role_id = new SelectList(db.role, "role_id", "role_desc", users.role_id);
-            return RedirectToAction("Login");
+                db.users.Add(newuser);
+                db.SaveChanges();
+
+                ViewBag.mail = e_mail;
+                ViewBag.account = account;
+
+                SendAuthMail(e_mail, account);
+                return View("SendAuthMail");
+                
+            }
+            
         }
+        #endregion
 
+        #region Login
         public ActionResult Login()
         {
             //ViewBag.profile_id = new SelectList(db.profile, "profile_id", "profile_name");
             ViewBag.role_id = new SelectList(db.role, "role_id", "role_desc");
             return View();
         }
+        #endregion
+
+        #region Login post
         // POST: Users/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -128,6 +144,7 @@ namespace SeeNow.Controllers
                 return Content("Login fail");
             }
         }
+        #endregion
 
         public ActionResult GetValidateCode()
         {
@@ -137,5 +154,58 @@ namespace SeeNow.Controllers
             vCode.GetValidateCode(out code,out bytes);
             return File(bytes, @"image/jpeg");
         }
+
+        #region SendAuthMail 寄認證信 無頁面
+        protected void SendAuthMail(string toMail, string account)
+        {
+            //string toMail; string account;
+            //toMail = ViewBag.mail;
+            //account = ViewBag.account;
+
+            SmtpClient myMail = new SmtpClient("msa.hinet.net");
+            MailAddress from = new MailAddress("metartron+seenow@gmail.com", "SeeNow服務中心");
+            MailAddress to = new MailAddress(toMail);
+            MailMessage Msg = new MailMessage(from, to);
+            Msg.Subject = "SeeNow會員註冊認證信";
+            Msg.Body = "請點擊下列超連結完成會員註冊認證<br /> <br /><a href='http://10.10.3.200/"+Url.Action("AuthOK","Home")+"?account=" + account + "' >請點我</a>";
+
+            Msg.IsBodyHtml = true;
+
+            myMail.Send(Msg);
+
+        }
+        #endregion
+
+        #region AuthOK 認證信驗證頁面
+        public ActionResult AuthOK(string account)
+        {
+            var user = db.users.Where(m => m.account == account).FirstOrDefault();
+            if (user != null)
+            {
+                if (user.validation_flag != true)
+                {
+                    user.validation_flag = true;
+                    db.SaveChanges();
+
+                    Response.Write("<header class='masthead'><div class='container'><h2 class='text-center'>恭喜您完成會員認證！</h2></div></header>");
+                    return View();
+                }
+                else
+                {
+                    Response.Write("<header class='masthead'><div class='container'><h2 class='text-center'>會員已認證過，請不要重複認證!！!</h2></div></header>");
+                    return View();
+                }
+                //return RedirectToAction("Login");
+            }
+            else
+            {
+                Response.Write("<header class='masthead'><div class='container'><h2 class='text-center'>查無此會員,請註冊!!</h2></div></header>");
+                return View();
+                //return RedirectToAction("Registered");
+            }
+
+            
+        }
+        #endregion
     }
 }

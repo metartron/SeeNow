@@ -16,7 +16,7 @@
     <!-- Plugin CSS -->
     <link href="~/Content/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template -->
-    <link href="~/Content/freelancers/freelancer.min.css" rel="stylesheet">
+    <link href="~/Content/freelancers/freelancer.css" rel="stylesheet">
     <style>
         #LOGO-06 {
             top: -1000px;
@@ -38,61 +38,87 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="@Url.Action("Index","Home")#portfolio" style="color:white">風雲榜</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="@Url.Action("Index","Home")#portfolio" >風雲榜</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="@Url.Action("Index","Home")#about" style="color:white">關於我們</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="@Url.Action("Index","Home")#about" >關於我們</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="@Url.Action("Index","Home")#contact" style="color:white">聯絡我們</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="@Url.Action("Index","Home")#contact">聯絡我們</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@Url.Action("Registered","Home") style="color:white">註冊</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@Url.Action("Registered","Home") >註冊</a>
                     </li>
-                    <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@Url.Action("Login","Home") style="color:white">登入</a>
+                    <li class="nav-item mx-0 mx-lg-1 ">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@Url.Action("Login","Home")>登入</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
     @*<div class="container body-content">*@
-        @RenderBody()
-        <hr />
+    @RenderBody()
+    <hr />
 
-        <!-- Footer -->
-        <footer class="footer text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 mb-5 mb-lg-0">
-                        <h4 class="text-uppercase mb-4">Address</h4>
-                        <p class="lead mb-0">
-                            勞動部勞動力發展署高屏澎東分署
-                            <br>高雄市<br>前鎮區凱旋四路105號<br>
-                        </p>
-                    </div>
-                    <div class="col-md-4 mb-5 mb-lg-0">
-
-                    </div>
-                    <div class="col-md-4">
-                        <h4 class="text-uppercase mb-4">Telephone Number</h4>
-                        <p class="lead mb-0">
-                            (07) 821-0171
-                        </p>
-                    </div>
+    <!-- Footer -->
+    <footer class="footer text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-5 mb-lg-0">
+                    <h4 class="text-uppercase mb-4">Address</h4>
+                    <p class="lead mb-0">
+                        勞動部勞動力發展署高屏澎東分署
+                        <br>高雄市<br>前鎮區凱旋四路105號<br>
+                    </p>
                 </div>
-                <div class="col">
-                    <p>&copy; @DateTime.Now.Year - SeeNow</p>
+                <div class="col-md-4 mb-5 mb-lg-0">
+
+                </div>
+                <div class="col-md-4">
+                    <h4 class="text-uppercase mb-4">Telephone Number</h4>
+                    <p class="lead mb-0">
+                        (07) 821-0171
+                    </p>
                 </div>
             </div>
-</footer>
+            <div class="col">
+                <p>&copy; @DateTime.Now.Year - SeeNow</p>
+            </div>
+        </div>
+    </footer>
 
-        @*<footer class="footer text-center">
-            
+    @*<footer class="footer text-center">
+
         </footer>*@
     @*</div>*@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @*@RenderSection("scripts", required: false)*@
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/Scripts/jquery.min.js"></script>
+
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="~/Scripts/jquery-easing/jquery.easing.min.js"></script>
+    <script src="~/Scripts/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <!-- Contact Form JavaScript -->
+    @*<script src="~/Scripts/freelancers/jqBootstrapValidation.min.js"></script>*@
+    @*<script src="~/Scripts/freelancers/contact_me.min.js"></script>*@
+    <!-- Custom scripts for this template -->
+    <script src="~/Scripts/freelancers/freelancer.min.js"></script>
+
+    <script>
+        $('#LOGO-06').hide();
+        $('#LOGO-06').animate({ 'top': '50%' }, 500).animate({ 'width': '100px' }, 400)
+            .animate({ 'width': '300px' }, 400).animate({ 'width': '150px' }, 400)
+            .animate({ 'width': '500px', 'height': '300px' }, 400).animate({ 'top': '25%' }, 200);
+
+       
+    </script>
 </body>
 </html>
