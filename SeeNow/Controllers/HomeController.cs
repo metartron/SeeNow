@@ -100,48 +100,66 @@ namespace SeeNow.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(string account,string role_id,string password)
+        public ActionResult Login(string account,string role_id,string password,string txtcode)
         {
-            //檢查必填欄位
-            if (string.IsNullOrEmpty(account) || string.IsNullOrEmpty(password))
+            if (Session["ValiCode"] == null)
             {
-                ModelState.AddModelError("accout", "請輸入必填欄位");
-                ModelState.AddModelError("password", "請輸入必填欄位");
+                ViewBag.msg="閒置時間過長，請重新輸入!!";
                 return View();
             }
-            //把輸入的密碼加密
-            //string base64PD = Convert.ToBase64String(Encoding.UTF8.GetBytes(PD));
-
-            //todo 和DB裡的資料做比對
-            var user = db.users.Where(m => m.account == account).FirstOrDefault();
-            if (user != null)
+            if (Session["ValiCode"].ToString() != txtcode)
             {
-                string pwd = user.password;
-
-                if (pwd == password)
-                {
-                    //登入成功 
-                    //進行表單登入 ※之後使用User.Identity.Name的值就是vm.Account帳號的值
-                    FormsAuthentication.SetAuthCookie(account, true);
-                    //進行表單登入  之後User.Identity.Name的值就是Account帳號的值
-
-                    //第二個參數如果是true則cookie留存30分鐘；false則視窗關閉自動失效
-                    //並根據web.config的設定自動跳轉道登入後頁面
-                    FormsAuthentication.RedirectFromLoginPage(account, false);
-
-                    //↓這行不會執行到，亂回傳XD
-                    return RedirectToAction("Index", "QQA");
-                }
-                else
-                {
-                    FormsAuthentication.SetAuthCookie(account, false);
-                    return Content("Login fail");
-                }
+                ViewBag.msg="驗證碼錯誤，請重新輸入!!";
+                return View();
             }
             else
             {
-                FormsAuthentication.SetAuthCookie(account, false);
-                return Content("Login fail");
+
+                //檢查必填欄位
+                if (string.IsNullOrEmpty(account) || string.IsNullOrEmpty(password))
+                {
+                    ModelState.AddModelError("accout", "請輸入必填欄位");
+                    ModelState.AddModelError("password", "請輸入必填欄位");
+                    return View();
+                }
+                //把輸入的密碼加密
+                //string base64PD = Convert.ToBase64String(Encoding.UTF8.GetBytes(PD));
+
+                //todo 和DB裡的資料做比對
+                var user = db.users.Where(m => m.account == account).FirstOrDefault();
+                if (user != null)
+                {
+                    string pwd = user.password;
+
+                    if (pwd == password)
+                    {
+                        //登入成功 
+                        //進行表單登入 ※之後使用User.Identity.Name的值就是vm.Account帳號的值
+                        //FormsAuthentication.SetAuthCookie(account, true);
+                        //進行表單登入  之後User.Identity.Name的值就是Account帳號的值
+
+                        //第二個參數如果是true則cookie留存30分鐘；false則視窗關閉自動失效
+                        //並根據web.config的設定自動跳轉道登入後頁面
+                        //FormsAuthentication.RedirectFromLoginPage(account, false);
+
+                        //↓這行不會執行到，亂回傳XD
+                        return RedirectToAction("Index", "QQA");
+                    }
+                    else
+                    {
+                        //FormsAuthentication.SetAuthCookie(account, false);
+                        ViewBag.msg = "帳號或密碼錯誤!!";
+                        return View();
+                        //return Content("Login fail");
+                    }
+                }
+                else
+                {
+                    //FormsAuthentication.SetAuthCookie(account, false);
+                    ViewBag.msg = "帳號或密碼錯誤!!";
+                    return View();
+                    //return Content("Login fail");
+                }
             }
         }
         #endregion
@@ -152,6 +170,7 @@ namespace SeeNow.Controllers
             byte[] bytes;
             string code;
             vCode.GetValidateCode(out code,out bytes);
+            Session["ValiCode"] = code;
             return File(bytes, @"image/jpeg");
         }
 
