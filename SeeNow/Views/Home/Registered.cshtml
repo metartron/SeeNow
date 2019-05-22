@@ -22,8 +22,8 @@
     }
     /*for radio*/
     input[type=radio]:checked + img {
-        border: 2px solid #0094ff;
-        background-color: aquamarine;
+        //border: 2px solid #0094ff;
+        //background-color: aquamarine;
     }
     /*for radio IE problem*/
     label img {
@@ -96,11 +96,11 @@
                 <div class="control-label col-md-2">
                     頭像選擇
                 </div>
-                <div class="col-md-10">
+                <div class="col-md-10 btn-group btn-group-toggle"  data-toggle="buttons">
 
                     @foreach (var profile in ViewBag.profile)
                     {
-                        <label class="readiogroup" for="@profile.Value">
+                        <label class="btn btn-light" for="@profile.Value">
                             <input id="@profile.Value" type="radio" name="profile_id" value="@profile.Value" />
                             <img src="~/Image/@profile.Text" />
                         </label>
