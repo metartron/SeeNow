@@ -188,6 +188,7 @@
     <Compile Include="Controllers\difficulty_levelController.cs" />
     <Compile Include="Controllers\difficulty_level_logController.cs" />
     <Compile Include="Controllers\friendshipsController.cs" />
+    <Compile Include="Controllers\FrontNavigationController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\guardianshipsController.cs" />
     <Compile Include="Controllers\backendHomeController.cs" />
@@ -252,6 +253,9 @@
       <DependentUpon>SeeNowModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\friendship.cs">
+      <DependentUpon>SeeNowModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\frontend_menu.cs">
       <DependentUpon>SeeNowModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\guardianship.cs">
@@ -605,6 +609,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Views\FrontNavigation\_topNav.cshtml" />
     <Content Include="Views\Profiles\Create.cshtml" />
     <Content Include="Views\Profiles\Delete.cshtml" />
     <Content Include="Views\Profiles\Details.cshtml" />
@@ -814,7 +819,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -18,6 +18,7 @@ namespace SeeNow.Controllers
 
         public ActionResult Index()
         {
+            
             var users = db.users.Include(u => u.profile).Include(u => u.role);
             return View(users.ToList());
         }
@@ -35,6 +36,8 @@ namespace SeeNow.Controllers
 
             return View();
         }
+
+
 
 
         #region Registered 初始註冊頁面
@@ -88,11 +91,14 @@ namespace SeeNow.Controllers
         #region Login
         public ActionResult Login()
         {
+            
             //ViewBag.profile_id = new SelectList(db.profile, "profile_id", "profile_name");
             ViewBag.role_id = new SelectList(db.role, "role_id", "role_desc");
             return View();
         }
         #endregion
+
+
 
         #region Login post
         // POST: Users/Create
@@ -102,6 +108,8 @@ namespace SeeNow.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(string account,string role_id,string password,string txtcode)
         {
+           
+
             if (Session["ValiCode"] == null)
             {
                 ViewBag.msg="閒置時間過長，請重新輸入!!";
@@ -141,7 +149,10 @@ namespace SeeNow.Controllers
                         //第二個參數如果是true則cookie留存30分鐘；false則視窗關閉自動失效
                         //並根據web.config的設定自動跳轉道登入後頁面
                         //FormsAuthentication.RedirectFromLoginPage(account, false);
-
+                        Session["user_role"] = user.role_id;
+                        Session["user_name"] = user.nick_name;
+                        Session["user_id"] = user.account;
+                        Session["profile"] = user.profile_id;
                         //↓這行不會執行到，亂回傳XD
                         return RedirectToAction("Index", "QQA");
                     }
@@ -164,6 +175,13 @@ namespace SeeNow.Controllers
         }
         #endregion
 
+        public ActionResult Logout() {
+            Session["user_role"] = null;
+            return RedirectToAction("Index", "Home");
+        }
+
+
+        #region GetValidateCode 繪製驗證碼圖形
         public ActionResult GetValidateCode()
         {
             Validation vCode = new Validation();
@@ -173,6 +191,7 @@ namespace SeeNow.Controllers
             Session["ValiCode"] = code;
             return File(bytes, @"image/jpeg");
         }
+        #endregion
 
         #region SendAuthMail 寄認證信 無頁面
         protected void SendAuthMail(string toMail, string account)
