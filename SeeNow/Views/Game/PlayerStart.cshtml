@@ -1,62 +1,82 @@
 ﻿@{
     ViewBag.Title = "PlayerStart";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_GameLayout.cshtml";
     var nameBtn = ViewBag.NameBtn;
+    var account = Session["user_id"];//var account = Session["account"];
+    var nickName = Session["user_name"];//var account = Session["nickname"];
 }
+<header class="masthead form ">
 
-<div class="container">
-    <p></p>
-    <div class="row">
-        @*site .quesion-txt自定 button size*@
-        <div class="jumbotron quesion-txt">
-            <div id="quizDiv">quizDiv</div>
+    <div class="jumbotron">
+        <div class="container">
+            <h1 id="quizDiv"><strong>quizDiv</strong></h1>
+            @*<div class="quesion-txt" id="quizDiv">quizDiv</div>*@
         </div>
-
     </div>
+
     <div class="row">
-        <div class="col-12 ">
-            @* <input id="redBtn" name="a_RED" class="btn btn-round quiztext red-bg" value="紅紅紅" onclick="choicBtn(this)" type="button" style="margin:2px;width:120px;height:120px" />*@
+        <div class="col-md-6 d-flex justify-content-around">
             @*site .quiztext自定 button size*@
-            <input id="redBtn" name="a_RED" class=" btn btn-round quiztext red-bg" value="A" onclick="choicBtn(this)" type="button" />
-            <input id="blueBtn" name="b_BLUE" class="btn btn-round quiztext blue-bg" value="B" onclick="choicBtn(this)" type="button" />
+            <input id="redBtn" name="1" class="btn btn-danger btn-round quiztext " value="A" onclick="choicBtn(this)" type="button">
+            <input id="blueBtn" name="2" class="btn btn-primary btn-round quiztext   " value="B" onclick="choicBtn(this)" type="button">
+        </div>
+        <div class="col-md-6 d-flex justify-content-around">
+            <input id="greenBtn" name="3" class="btn btn-success btn-round quiztext " value="C" onclick="choicBtn(this)" type="button">
+            <input id="yellowBtn" name="4" class="btn btn-warning btn-round quiztext " value="D" onclick="choicBtn(this)" type="button">
+        </div>
 
+        <div id="countPogress" class="row col-12 progress" style="height:30px">
+            <div class="progress-bar bg-danger progress-bar-striped " style="width:1px;height:30px"></div>
         </div>
-        <div class="col-12">
-            <input id="greenBtn" name="c_GREEN" class="btn btn-round quiztext green-bg" value="C" onclick="choicBtn(this)" type="button" />
-            <input id="yellowBtn" name="d_YELLOW" class="btn btn-round quiztext yellow-bg" value="D" onclick="choicBtn(this)" type="button" />
+        <div class="row col-12">
+            <div id="countTime">11</div>
         </div>
-        <h2 id="countTime"></h2>
+
+        <div class="row col-12 ">
+            <div class="input-group">
+                <div class="input-group-append">
+                    <span class="input-group-text bg-transparent text-primary" id="">訊息</span>
+                </div>
+                <textarea id="message" class="form-control bg-transparent"></textarea>
+            </div>
+            <div class="input-group">
+                <input id="msg" class="form-control bg-transparent w-100" type="text" placeholder="輸人訊息!" value="">
+                <div class="input-group-append">
+                    <input type="Button" class="form-control  btn-info " id="sendGroupBtn" value="送出">
+                    @*<span class="input-group-addon" style="font-size:30px;color:indigo;"><i class="fa fa-edit"></i></span>*@
+                </div>
+            </div>
+        </div>
+        <div class="row col-12">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-transparent text-primary" id="">PIN</span>
+                </div>
+                <input id="group" class="form-control bg-transparent disabled" type="text" value="">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-transparent text-primary" id="">帳號</span>
+                </div>
+                <input id="name" class="form-control bg-transparent" type="text" value="@account">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-transparent text-primary" id="">暱稱</span>
+                </div>
+                <input id="nickname" class="form-control bg-transparent" type="text" value="@nickName">
+                <input type="Button" id="addGroupBtn" class="form-control btn-primary text-danger" value="建立群組">
+            </div>
+            <div class="offset-1">
+                <label for="showScore">離開</label>
+                <input type="Button" id="showScore" class="form-control btn-warning" value="Exit">
+            </div>
+        </div>
+
     </div>
+</header>
+    <audio id="audio">
+        <source src="~/assets/music/ajourneyawaits.mp3" type="audio/mpeg" />
+    </audio>
 
-    <div class="row">
-        <div class="col-sm-12">
-            <textarea id="message" class="form-control" style="min-width: 90%; height:auto"></textarea>
-        </div>
-        <div class="col-sm-12">
-            訊息:<input id="msg" type="text" value="">
-            <button type="Button" id="sendGroupBtn">送群組</button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-3">
-            群組:<input id="group" type="text" style="width:100px">
-        </div>
-        <div class="col-sm-3">
-            姓名:<input id="name" type="text" style="width:100px">
-        </div>
-        <div class="col-sm-3">
-            加入:<input type="Button" id="addGroupBtn" style="width:100px" value="Add">
-        </div>
-
-    </div>
-</div>
-
-<audio controls="controls" id="audio">
-    <source src="~/asset/music/gone_fishin_by_memoraphile_CC0.mp3" type="audio/mpeg" />
-</audio>
-
-@section scripts {
-    <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
-    <script src="~/signalr/hubs"></script>
-    <script src="~/Scripts/seenow.js"></script>
-}
+    @section scripts {
+        <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+        <script src="~/signalr/hubs"></script>
+        <script src="~/Scripts/seenow.js"></script>
+    }

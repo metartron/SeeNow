@@ -7,19 +7,19 @@
 
 }
 
+
+
 @using (Html.BeginForm())
 {
+
     @Html.AntiForgeryToken()
 
     <header class="masthead form ">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-
-
-
         <div class="container ">
 
-            <div class="row justify-content-center">
+            <div class="row justify-content-center" id="login">
                 <aside class="col-sm-4">
                     <div class="card">
                         <article class="card-body">
@@ -27,52 +27,53 @@
                             <hr>
                             <p class="text-success text-center">@ViewBag.msg</p>@*Some message goes here*@
                             @*<form>*@
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                                        </div>
-                                        <input name="account" class="form-control" placeholder="請輸入帳號" type="text">
-                                    </div> <!-- input-group.// -->
-                                </div> <!-- form-group// -->
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                                        </div>
-                                        <input name="password" class="form-control" placeholder="******" type="password">
-                                    </div> <!-- input-group.// -->
-                                </div> <!-- form-group// -->
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <img id="valiCode" class="validcode" src="/Home/GetValidateCode" alt="驗證碼" title="點擊刷新" />
-                                        <input id="txtcode" name="txtcode" class="form-control" placeholder="請輸入驗證碼" type="text">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                                     </div>
-                                </div> <!-- form-group// -->
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-info btn-block"> 登入  </button>
-                                </div> <!-- form-group// -->
-                                <p class="text-center"><a href="#" class="btn small" style="color:#138496;">忘記密碼?</a></p>
+                                    <input name="account" class="form-control" placeholder="請輸入帳號" type="text">
+                                </div> <!-- input-group.// -->
+                            </div> <!-- form-group// -->
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                    </div>
+                                    <input name="password" class="form-control" placeholder="******" type="password">
+                                </div> <!-- input-group.// -->
+                            </div> <!-- form-group// -->
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <img id="valiCode" class="validcode" src="/Home/GetValidateCode" alt="驗證碼" title="點擊刷新" />
+                                    <input id="txtcode" name="txtcode" class="form-control" placeholder="請輸入驗證碼" type="text">
+                                </div>
+                            </div> <!-- form-group// -->
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-info btn-block" name="Login"> 登入  </button>
+                            </div> <!-- form-group// -->
+                            <p class="text-center"><a href="@Url.Action("ForgetPWD","Home")" class="btn small" style="color:#138496;" >忘記密碼?</a></p>
                             @*</form>*@
                         </article>
                     </div> <!-- card.// -->
                 </aside>
             </div>
+         
+            
         </div>
     </header>
 
-    <script src = "~/Scripts/jquery-3.3.1.min.js" ></script>
-    <script type = "text/javascript" >
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
 
         var valicode = document.getElementById("valiCode");
-        valicode.addEventListener("click", function () { reflash(); });
+        valicode.addEventListener("click", function () { reflash(valicode); });
 
-        function reflash() {
-           
-            valicode.src = null;
-            valicode.src = "/Home/GetValidateCode?time=" + (new Date()).getTime();
+        function reflash(obj) {
+            //obj.src = null;
+            obj.src = "/Home/GetValidateCode?time=" + (new Date()).getTime();
         };
-       
-        </script>
+
+    </script>
 
 }

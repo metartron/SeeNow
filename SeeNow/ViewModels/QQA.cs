@@ -10,6 +10,8 @@ namespace SeeNow.ViewModels
     {
         public List<quizzes> quizzes { get; set; }
         public List<quiz_answer> answers { get; set; }
+        public List<quizzes> quiz { get; set; }
 
+        public List<quiz_group> quiz_Groups { get; set; }
     }
 }

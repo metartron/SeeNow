@@ -11,7 +11,7 @@ namespace SeeNow
     public class Validation
     {
         #region RandomCode 隨機生成指定長度的驗證碼字符串
-        private string RandomCode(int length)
+        public string RandomCode(int length)
         {
             
             string s = "23456789zxcvbnmasdfghjkqwertyuip";

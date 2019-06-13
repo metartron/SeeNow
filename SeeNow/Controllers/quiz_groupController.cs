@@ -97,6 +97,7 @@ namespace SeeNow.Controllers
                 db.Entry(quiz_group).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
+
             }
             ViewBag.category_id = new SelectList(db.category, "category_id", "category_desc", quiz_group.category_id);
             ViewBag.account = new SelectList(db.users, "account", "role_id", quiz_group.account);

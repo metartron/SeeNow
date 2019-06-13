@@ -26,5 +26,6 @@ namespace SeeNow.Models
         public bool student_auth { get; set; }
         public bool parent_auth { get; set; }
         public bool guest_auth { get; set; }
+        public string icon_name { get; set; }
     }
 }

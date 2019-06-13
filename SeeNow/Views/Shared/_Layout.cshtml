@@ -29,34 +29,39 @@
 </head>
 <body id="page-top">
     <!-- Navigation -->
-   
+    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+        <div class="container">
 
-            @Html.Action("TopNav", "FrontNavigation", new { role_type = Session["user_role"] })
+            @Html.Action("TopNav", "Home", new { role_type = Session["user_role"] })
 
-            @*<div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="@Url.Action("Index","Home")#portfolio">風雲榜</a>
-                    </li>
+            @Html.Action("UserNav", "Home", new { role_type = Session["user_role"] })
+        </div>
+    </nav>
 
-                    <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="@Url.Action("Index","Home")#about">關於我們</a>
-                    </li>
+    @*<div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="@Url.Action("Index","Home")#portfolio">風雲榜</a>
+                </li>
 
-                    <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="@Url.Action("Index","Home")#contact">聯絡我們</a>
-                    </li>
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="@Url.Action("Index","Home")#about">關於我們</a>
+                </li>
 
-                    <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@Url.Action("Registered","Home")>註冊</a>
-                    </li>
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="@Url.Action("Index","Home")#contact">聯絡我們</a>
+                </li>
 
-                    <li class="nav-item mx-0 mx-lg-1 ">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@Url.Action("Login","Home")>登入</a>
-                    </li>
-                </ul>
-            </div>*@
-   
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@Url.Action("Registered","Home")>註冊</a>
+                </li>
+
+                <li class="nav-item mx-0 mx-lg-1 ">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@Url.Action("Login","Home")>登入</a>
+                </li>
+            </ul>
+        </div>*@
+
     @*<div class="container body-content">*@
     @RenderBody()
     <hr />
@@ -96,12 +101,12 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @*@RenderSection("scripts", required: false)*@
+
+    @*@Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")*@
 
     <!-- Bootstrap core JavaScript -->
-    <script src="~/Scripts/jquery.min.js"></script>
+    @*<script src="~/Scripts/jquery.min.js"></script> 20190613 meta mark*@
 
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>
     <!-- Plugin JavaScript -->
@@ -119,7 +124,15 @@
             .animate({ 'width': '300px' }, 400).animate({ 'width': '150px' }, 400)
             .animate({ 'width': '500px', 'height': '300px' }, 400).animate({ 'top': '25%' }, 200);
 
-       
+
+        function changerole(role_id, value) {
+            //alert(value);
+            //$('#navrole').text(value);
+            //SetSession.setAttribute('user_role', value);
+            //sessionStorage.setItem('user_role', role_id);
+            //request.getSession().setAttribute('user_role',role_id);
+        }
+
     </script>
 </body>
 </html>

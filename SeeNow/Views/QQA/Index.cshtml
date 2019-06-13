@@ -2,47 +2,61 @@
 
 @{
     ViewBag.Title = "測驗答案列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>測驗答案列表</h2>
+<header class="masthead form ">
 
-<div class="row">
+    <div class="row">
 
-    <div class="col-md-4">
-        @foreach (var item in Model.quizzes)
-        {
-            <p>
-                @Html.ActionLink(item.tittle_text, "Index", new { id = item.quiz_guid })
-                
-            </p>
-        }
-    </div>
-    <div class="col-md-8">
-        <table class="table">
-            <tr>
-                <th>遊戲答案流水號</th>
-                <th>答案編號</th>
-                <th>型態編號</th>
-                <th>文字答案</th>
-                <th>圖片答案</th>
-                <th>是否正確</th>
-            </tr>
 
-            @foreach (var item in Model.answers)
+        <div class="col-md-4 col text-center">
+            <input id="Button1" type="button" value="題目列表" class="btn btn-info m-2" onclick="location.href='@Url.Action("QZIndex","QQA")'" />
+
+            @foreach (var item in Model.quizzes)
             {
-                <tr>
-                    <td>@item.quiz_guid</td>
-                    <td>@item.answer_id</td>
-                    <td>@item.type_id</td>
-                    <td>@item.answer_text</td>
-                    <td>@item.answer_img_path</td>
-                    <td>@item.is_correct</td>
-                </tr>
-            }
+                <p>
+                    @Html.ActionLink(item.tittle_text, "Index", new { id = item.quiz_guid })
 
-        </table>
+                </p>
+            }
+        </div>
+        <div class="col-md-8">
+            <input id="Button1" type="button" value="答案列表" class="btn btn-warning m-2" onclick="location.href='@Url.Action("QAIndex","QQA")'" />
+
+            <table class="table">
+                <tr>
+                    <th>遊戲答案流水號</th>
+                    <th>答案編號</th>
+                    <th>型態編號</th>
+                    <th>文字答案</th>
+                    <th>圖片答案</th>
+                    <th>是否正確</th>
+                </tr>
+
+                @foreach (var item in Model.answers)
+                {
+                    <tr>
+                        <td>@item.quiz_guid</td>
+                        <td>@item.answer_id</td>
+                        <td>@item.type_id</td>
+                        <td>@item.answer_text</td>
+                        <td>@item.answer_img_path</td>
+                        <td>@item.is_correct</td>
+                    </tr>
+                }
+
+            </table>
+            <hr />
+            <br />
+            @*測試傳參數*@
+
+        </div>
+
+
+
     </div>
 
-</div>
-
+</header>
 

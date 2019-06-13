@@ -132,9 +132,26 @@
             <PropertyRef Name="friend_id" />
             <PropertyRef Name="account" />
           </Key>
-          <Property Name="friend_id" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="friend_id" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="account" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="frontend_menu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="menu_name_tw" Type="nvarchar" MaxLength="30" />
+          <Property Name="controller" Type="nvarchar" MaxLength="30" />
+          <Property Name="action" Type="nvarchar" MaxLength="30" />
+          <Property Name="point" Type="nvarchar" MaxLength="30" />
+          <Property Name="is_parent" Type="bit" Nullable="false" />
+          <Property Name="parent_id" Type="int" />
+          <Property Name="order_num" Type="int" />
+          <Property Name="teacher_auth" Type="bit" Nullable="false" />
+          <Property Name="student_auth" Type="bit" Nullable="false" />
+          <Property Name="parent_auth" Type="bit" Nullable="false" />
+          <Property Name="guest_auth" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="guardianship">
           <Key>
@@ -214,7 +231,7 @@
           <Property Name="score" Type="int" Nullable="false" />
           <Property Name="datetime" Type="datetime" Nullable="false" />
           <Property Name="quiz_guid" Type="int" Nullable="false" />
-          <Property Name="round_no" Type="int"  />
+          <Property Name="round_no" Type="int" />
         </EntityType>
         <EntityType Name="play_record_answer">
           <Key>
@@ -659,30 +676,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__play_reco__accou__0F624AF8">
-          <End Role="users" Type="Self.users" Multiplicity="1" />
-          <End Role="play_record" Type="Self.play_record" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="users">
-              <PropertyRef Name="account" />
-            </Principal>
-            <Dependent Role="play_record">
-              <PropertyRef Name="account" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__play_reco__quiz___1F98B2C1">
-          <End Role="quizzes" Type="Self.quizzes" Multiplicity="1" />
-          <End Role="play_record" Type="Self.play_record" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="quizzes">
-              <PropertyRef Name="quiz_guid" />
-            </Principal>
-            <Dependent Role="play_record">
-              <PropertyRef Name="quiz_guid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__play_record_answ__22751F6C">
           <End Role="play_record" Type="Self.play_record" Multiplicity="1" />
           <End Role="play_record_answer" Type="Self.play_record_answer" Multiplicity="0..1" />
@@ -1045,6 +1038,7 @@
           <EntitySet Name="classes_member" EntityType="Self.classes_member" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="difficulty_level" EntityType="Self.difficulty_level" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="friendship" EntityType="Self.friendship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="frontend_menu" EntityType="Self.frontend_menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="guardianship" EntityType="Self.guardianship" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="like_record" EntityType="Self.like_record" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mall" EntityType="Self.mall" Schema="dbo" store:Type="Tables" />
@@ -1210,14 +1204,6 @@
           <AssociationSet Name="FK__message__to_id__151B244E" Association="Self.FK__message__to_id__151B244E">
             <End Role="users" EntitySet="users" />
             <End Role="message" EntitySet="message" />
-          </AssociationSet>
-          <AssociationSet Name="FK__play_reco__accou__0F624AF8" Association="Self.FK__play_reco__accou__0F624AF8">
-            <End Role="users" EntitySet="users" />
-            <End Role="play_record" EntitySet="play_record" />
-          </AssociationSet>
-          <AssociationSet Name="FK__play_reco__quiz___1F98B2C1" Association="Self.FK__play_reco__quiz___1F98B2C1">
-            <End Role="quizzes" EntitySet="quizzes" />
-            <End Role="play_record" EntitySet="play_record" />
           </AssociationSet>
           <AssociationSet Name="FK__play_record_answ__22751F6C" Association="Self.FK__play_record_answ__22751F6C">
             <End Role="play_record" EntitySet="play_record" />
@@ -1472,7 +1458,7 @@
             <PropertyRef Name="friend_id" />
             <PropertyRef Name="account" />
           </Key>
-          <Property Name="friend_id" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="friend_id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="account" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="active" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="users" Relationship="Self.FK__friendshi__accou__0A9D95DB" FromRole="friendship" ToRole="users" />
@@ -2643,6 +2629,7 @@
             <End Role="quizzes" EntitySet="quizzes" />
           </AssociationSet>
           <EntitySet Name="setting_menu" EntityType="SeeNowModel.setting_menu" />
+          <EntitySet Name="frontend_menu" EntityType="SeeNowModel.frontend_menu" />
         </EntityContainer>
         <EntityType Name="setting_menu">
           <Key>
@@ -2654,6 +2641,23 @@
           <Property Name="page" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="parent_id" Type="Int32" />
           <Property Name="order_num" Type="Int32" />
+        </EntityType>
+        <EntityType Name="frontend_menu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="menu_name_tw" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="controller" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="action" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="point" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="is_parent" Type="Boolean" Nullable="false" />
+          <Property Name="parent_id" Type="Int32" />
+          <Property Name="order_num" Type="Int32" />
+          <Property Name="teacher_auth" Type="Boolean" Nullable="false" />
+          <Property Name="student_auth" Type="Boolean" Nullable="false" />
+          <Property Name="parent_auth" Type="Boolean" Nullable="false" />
+          <Property Name="guest_auth" Type="Boolean" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3044,6 +3048,24 @@
                 <ScalarProperty Name="parent_id" ColumnName="parent_id" />
                 <ScalarProperty Name="page" ColumnName="page" />
                 <ScalarProperty Name="view" ColumnName="view" />
+                <ScalarProperty Name="menu_name_tw" ColumnName="menu_name_tw" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="frontend_menu">
+            <EntityTypeMapping TypeName="SeeNowModel.frontend_menu">
+              <MappingFragment StoreEntitySet="frontend_menu">
+                <ScalarProperty Name="guest_auth" ColumnName="guest_auth" />
+                <ScalarProperty Name="parent_auth" ColumnName="parent_auth" />
+                <ScalarProperty Name="student_auth" ColumnName="student_auth" />
+                <ScalarProperty Name="teacher_auth" ColumnName="teacher_auth" />
+                <ScalarProperty Name="order_num" ColumnName="order_num" />
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+                <ScalarProperty Name="is_parent" ColumnName="is_parent" />
+                <ScalarProperty Name="point" ColumnName="point" />
+                <ScalarProperty Name="action" ColumnName="action" />
+                <ScalarProperty Name="controller" ColumnName="controller" />
                 <ScalarProperty Name="menu_name_tw" ColumnName="menu_name_tw" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

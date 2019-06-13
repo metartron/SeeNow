@@ -152,6 +152,7 @@
           <Property Name="student_auth" Type="bit" Nullable="false" />
           <Property Name="parent_auth" Type="bit" Nullable="false" />
           <Property Name="guest_auth" Type="bit" Nullable="false" />
+          <Property Name="icon_name" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="guardianship">
           <Key>
@@ -2658,6 +2659,7 @@
           <Property Name="student_auth" Type="Boolean" Nullable="false" />
           <Property Name="parent_auth" Type="Boolean" Nullable="false" />
           <Property Name="guest_auth" Type="Boolean" Nullable="false" />
+          <Property Name="icon_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3056,6 +3058,7 @@
           <EntitySetMapping Name="frontend_menu">
             <EntityTypeMapping TypeName="SeeNowModel.frontend_menu">
               <MappingFragment StoreEntitySet="frontend_menu">
+                <ScalarProperty Name="icon_name" ColumnName="icon_name" />
                 <ScalarProperty Name="guest_auth" ColumnName="guest_auth" />
                 <ScalarProperty Name="parent_auth" ColumnName="parent_auth" />
                 <ScalarProperty Name="student_auth" ColumnName="student_auth" />

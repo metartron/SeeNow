@@ -11,29 +11,31 @@ namespace SeeNow.Controllers
     {
         private SeeNowEntities db = new SeeNowEntities();
 
-        // GET: Navbar
-        public ActionResult TopNav(int role_type=0)
-        {
+        //#region TopNav
+        //// GET: Navbar
+        //public ActionResult TopNav(int role_type=0)
+        //{
          
-            List<frontend_menu> nav = new List<frontend_menu>();
+        //    List<frontend_menu> nav = new List<frontend_menu>();
 
-            switch(role_type)
-            { 
-                case 2:
-                    nav = db.frontend_menu.OrderBy(f => f.order_num).Where(f => f.student_auth == true).ToList();
-                    break;
-                case 3:
-                    nav = db.frontend_menu.OrderBy(f => f.order_num).Where(f => f.teacher_auth == true).ToList();
-                    break;
-                case 4:
-                    nav = db.frontend_menu.OrderBy(f => f.order_num).Where(f => f.parent_auth == true).ToList();
-                    break;
-                default:
-                    nav = db.frontend_menu.OrderBy(f => f.order_num).Where(f => f.guest_auth == true).ToList();
-                    break;
-            }
+        //    switch(role_type)
+        //    { 
+        //        case 2:
+        //            nav = db.frontend_menu.OrderBy(f => f.order_num).Where(f => f.student_auth == true).ToList();
+        //            break;
+        //        case 3:
+        //            nav = db.frontend_menu.OrderBy(f => f.order_num).Where(f => f.teacher_auth == true).ToList();
+        //            break;
+        //        case 4:
+        //            nav = db.frontend_menu.OrderBy(f => f.order_num).Where(f => f.parent_auth == true).ToList();
+        //            break;
+        //        default:
+        //            nav = db.frontend_menu.OrderBy(f => f.order_num).Where(f => f.guest_auth == true).ToList();
+        //            break;
+        //    }
 
-            return PartialView("_topNav", nav);
-        }
+        //    return PartialView("_topNav", nav);
+        //}
+        //#endregion
     }
 }
