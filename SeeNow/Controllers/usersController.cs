@@ -17,8 +17,17 @@ namespace SeeNow.Controllers
         // GET: users
         public ActionResult Index()
         {
-            var users = db.users.Include(u => u.profile).Include(u => u.role);
-            return View(users.ToList());
+            if (Session["user_id"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            //var users = db.users.Include(u => u.profile).Include(u => u.role).Where(u=>u.account== Session["user_id"].ToString()).FirstOrDefault();
+            //return View(users);
+            ViewBag.profile = new SelectList(db.profile, "profile_id", "profile_path");
+            ViewBag.role_id = new SelectList(db.role, "role_id", "role_desc");
+
+            users users = db.users.Find(Session["user_id"].ToString());
+            return View(users);
         }
 
         // GET: users/Details/5

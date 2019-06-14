@@ -1,94 +1,104 @@
-﻿@model IEnumerable<SeeNow.Models.users>
+﻿@model SeeNow.Models.users
 
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+                /**/
+
+                ViewBag.Title = "Index";
+                //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nick_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.e_mail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.score)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.energy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.bag_number)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.lock_flag)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.validation_flag)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.resetable)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.profile.profile_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.role.role_desc)
-        </th>
-        <th></th>
-    </tr>
+    <header class="masthead form">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nick_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.e_mail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.score)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.energy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.bag_number)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lock_flag)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.validation_flag)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.resetable)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.profile.profile_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.role.role_desc)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.account }) |
-            @Html.ActionLink("Details", "Details", new { id=item.account }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.account })
-        </td>
-    </tr>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="container">
+            <h2 class="text-center text-uppercase text-secondary mb-0">個人資料</h2>
+            <hr />
+            <div class="form-group row">
+
+                @Html.LabelFor(model => model.account, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.account, new { htmlAttributes = new { @class = "form-control readonly", placeholder = "請輸入帳號" } })
+                    @Html.ValidationMessageFor(model => model.account, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", placeholder = "密碼長度8~20碼" } })
+                    @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @*ConfirmPassword
+                @*<div class="form-group row">
+                    @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+            <div class="form-group row">
+                @Html.LabelFor(model => model.nick_name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.nick_name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.nick_name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.e_mail, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.e_mail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.e_mail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.role_id, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-3">
+                    @Html.DropDownList("role_id", null, htmlAttributes: new { @class = "form-control" })
+                    @*@Html.EditorFor(model => model.role_id, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @Html.ValidationMessageFor(model => model.role_id, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <!---->
+
+            <div class="form-group row">
+                <div class="control-label col-md-2">
+                    頭像選擇
+                </div>
+                <div class="col-md-10 btn-group btn-group-toggle" data-toggle="buttons">
+
+                    @foreach (var profile in ViewBag.profile)
+                    {
+                        <label class="btn btn-light" for="@profile.Value">
+                            <input id="@profile.Value" type="radio" name="profile_id" value="@profile.Value" />
+                            <img src="~/Image/@profile.Text" />
+                        </label>
+                    }
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="註冊" class="btn btn-info" />
+                    <input id="Reset1" type="reset" value="重填" class="btn btn-info" />
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+
 }
 
-</table>
+
+        @Html.ActionLink("Edit", "Edit", new { id = Model.account }) |
+       
+   
