@@ -215,6 +215,7 @@
     <Compile Include="Controllers\quiz_violationsController.cs" />
     <Compile Include="Controllers\SetSessionController.cs" />
     <Compile Include="Controllers\setting_menuController.cs" />
+    <Compile Include="Controllers\usersController.cs" />
     <Compile Include="Controllers\user_violationsController.cs" />
     <Compile Include="Controllers\use_recordController.cs" />
     <Compile Include="Extention\MailBox.cs" />
@@ -741,7 +742,6 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="Views\Game\canvas.html" />
     <Content Include="Views\Profiles\Create.cshtml" />
     <Content Include="Views\Profiles\Delete.cshtml" />
     <Content Include="Views\Profiles\Details.cshtml" />
@@ -897,12 +897,19 @@
     <Content Include="Views\QQA\QGAdd.cshtml" />
     <Content Include="Views\QQA\QuizzesIndex.cshtml" />
     <Content Include="Views\QQA\QZIndex.cshtml" />
-    <Content Include="Views\users\FEdit.cshtml" />
     <Content Include="Views\Game\HostStart.cshtml" />
     <Content Include="Views\Game\ScoreView.cshtml" />
     <Content Include="Views\QQA\QZAdd.cshtml" />
     <Content Include="Views\Game\TestView.cshtml" />
     <Content Include="Views\Shared\_GameLayout.cshtml" />
+    <Content Include="Views\QQA\QAAdd.cshtml" />
+    <Content Include="Views\QQA\QGEdit.cshtml" />
+    <Content Include="Views\QQA\QZEdit.cshtml" />
+    <Content Include="Views\users\Create.cshtml" />
+    <Content Include="Views\users\Delete.cshtml" />
+    <Content Include="Views\users\Details.cshtml" />
+    <Content Include="Views\users\Edit.cshtml" />
+    <Content Include="Views\users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

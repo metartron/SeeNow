@@ -221,7 +221,7 @@ function loop() {
     // lighter creates bright highlight points as the fireworks and particles overlap each other
     ctx.globalCompositeOperation = 'lighter';
 
-    var text = "HAPPY NEW YEAR !";
+    var text = "";
     ctx.font = "50px sans-serif";
     var textData = ctx.measureText(text);
     ctx.fillStyle = "rgba(" + parseInt(random(0, 255)) + "," + parseInt(random(0, 255)) + "," + parseInt(random(0,

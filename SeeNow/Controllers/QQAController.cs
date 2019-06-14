@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
@@ -15,15 +17,17 @@ namespace SeeNow.Controllers
         SeeNowEntities db = new SeeNowEntities();
 
         // GET: QQA，完成
-        public ActionResult Index(int id=12)
+        public ActionResult Index(int? id)
         {
+            if (id == null)
+                id = 12;
 
             QQA qqa = new QQA();
 
             qqa.quizzes = db.quizzes.ToList();
             qqa.answers = db.quiz_answer.Where(m => m.quiz_guid == id).ToList();
             qqa.quiz = db.quizzes.Where(m => m.quiz_guid == id).ToList();
-
+            ViewBag.qzid = id;
             return View(qqa);
             
 
@@ -143,7 +147,7 @@ namespace SeeNow.Controllers
         }
 
         //20180604新增，修改題目群組，完成
-        public ActionResult QGEdit(int id)
+        public ActionResult QGEdit(int? id)
         {
 
             //return View();
@@ -163,12 +167,12 @@ namespace SeeNow.Controllers
             return View(db.quiz_answer.ToList());
         }
 
-        //20180606新增，新增題目
+        //20180606新增，新增題目，完成
         public ActionResult QZAdd()
         {
 
             //return View();
-            //20190610新增
+            //20190610新增，完成
             ViewBag.difficulty_desc = new SelectList(db.difficulty_level, "difficulty_id", "difficulty_desc");
             ViewBag.group_name = new SelectList(db.quiz_group, "quiz_group1", "group_name",22);
             //ViewBag.group_name = new SelectList(db.quiz_group, "quiz_group1", "group_name", db.quiz_group.Where(m=>m.group_name=="綜合題").First().group_name);
@@ -209,6 +213,86 @@ namespace SeeNow.Controllers
             return View(db.quizzes.ToList());
 
 
+        }
+
+        //20180611新增，修改題目
+        public ActionResult QZEdit(int? id)
+        {
+            
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            }
+            quizzes qz = db.quizzes.Find(id);
+            if (qz == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.difficulty_desc = new SelectList(db.difficulty_level, "difficulty_id", "difficulty_desc",qz.difficulty_id);
+            ViewBag.group_name = new SelectList(db.quiz_group, "quiz_group1", "group_name",qz.quiz_group);
+
+            return View(qz);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult QZEdit(int quiz_guid, string tittle_text,short difficulty_desc, int time, short score, int energy, bool visible ,int group_name)
+        {
+            quizzes data = db.quizzes.Where(d => d.quiz_guid == quiz_guid).FirstOrDefault();
+            data.tittle_text = tittle_text;
+            data.difficulty_id = difficulty_desc;
+            data.time = time;
+            data.score = score;
+            data.energy = energy;
+            data.visible = visible;
+            data.quiz_group = group_name;
+            db.SaveChanges();
+            return RedirectToAction("QZIndex", "QQA");
+
+        }
+
+        // 20190613新增，
+        //新增答案，只列出沒有答案的題目
+        public ActionResult QAAdd(int? id)
+        {
+            quizzes qz = db.quizzes.Where(m => m.quiz_guid == id).FirstOrDefault();
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ViewBag.QZID = id;
+            ViewBag.Ttext = qz.tittle_text;
+            return View();
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult QAAdd(int id, string answer_text, bool is_correct)
+        {
+            quiz_answer qa = new quiz_answer();
+            var qaid = db.quiz_answer.Where(m => m.quiz_guid == id).ToList();
+
+            if (qaid.Count > 4)
+            {
+                ViewBag.Message = "遊戲答案數量過多!!";
+            }
+            else
+            {
+                qa.quiz_guid = id;
+                qa.type_id = "1";
+                qa.answer_text = answer_text;
+                qa.is_correct = is_correct;
+
+                db.quiz_answer.Add(qa);
+                db.SaveChanges();
+
+            }
+
+            return RedirectToAction("Index", new {id});
+            
         }
 
 

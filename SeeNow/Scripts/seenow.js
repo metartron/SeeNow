@@ -92,7 +92,7 @@ var hubCon = $.connection.gameHub;
 //QuizzesIndex disable
 $('#sendGroupBtn').attr("disabled", true);
 //PlayerStart disable
-$('#redBtn').attr("disabled", true);
+$('#redBtn').attr("disabled", "true");
 $('#blueBtn').attr("disabled", true);
 $('#greenBtn').attr("disabled", true);
 $('#yellowBtn').attr("disabled", true);
@@ -100,7 +100,7 @@ $('#yellowBtn').attr("disabled", true);
 
 //Start the connection.
 $.connection.hub.start().done(function () {
-    $('#sendGroupBtn').attr("disabled", false);
+    $('#sendGroupBtn').removeAttr("disabled");
 }).catch(function (err) {
     return console.error(err.toString());
 });
@@ -109,7 +109,7 @@ $.connection.hub.start().done(function () {
 $('#addGroupBtn').click(function (event) {
     var user = $('#nickname').val();
     var group = $('#group').val();
-    $('#autoBtn').attr("disabled", false);
+    $('#autoBtn').removeAttr("disabled");
     var msg2grp = { "group": group, "name": user};
     var msgJSON = JSON.stringify(msg2grp);
     hubCon.server.addGroup(msgJSON).catch(function (err) {
@@ -163,10 +163,10 @@ hubCon.client.groupScore = function (msgGroup) {
 //接收題目
 hubCon.client.receiveGroupQuiz = function (msgJSON) {
     //有接收題目,才enable答題button
-    $('#redBtn').attr("disabled", false).removeClass('btn-no-bg');
-    $('#blueBtn').attr("disabled", false).removeClass('btn-no-bg');
-    $('#greenBtn').attr("disabled", false).removeClass('btn-no-bg');
-    $('#yellowBtn').attr("disabled", false).removeClass('btn-no-bg');
+    $('#redBtn').removeAttr("disabled").removeClass('btn-no-bg');
+    $('#blueBtn').removeAttr("disabled").removeClass('btn-no-bg');
+    $('#greenBtn').removeAttr("disabled").removeClass('btn-no-bg');
+    $('#yellowBtn').removeAttr("disabled").removeClass('btn-no-bg');
     //reset time bar
     ctPrgs = 100;
     //
@@ -301,10 +301,10 @@ function endRound() {
 //接收4個答案鈕
 function choicBtn(choic) {
     //按下答題disable button
-    $('#redBtn').attr("disabled", true);
-    $('#blueBtn').attr("disabled", true);
-    $('#greenBtn').attr("disabled", true);
-    $('#yellowBtn').attr("disabled", true);
+    $('#redBtn').attr("disabled", "disabled");
+    $('#blueBtn').attr("disabled", "disabled");
+    $('#greenBtn').attr("disabled", "disabled");
+    $('#yellowBtn').attr("disabled", "disabled");
     var user = $('#name').val();
     var group = $('#group').val();//
     var select_answer = choic.name;//取得choicBtn的name 1,2,3,4
