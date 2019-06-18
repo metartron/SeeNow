@@ -27,12 +27,23 @@
         <div class="col-md-8">
             @*<input id="Button1" type="button" value="答案列表" class="btn btn-warning m-2" onclick="location.href='@Url.Action("QAIndex","QQA")'" />*@
 
-            @if (Model.answers.Count <4)
+            @if (Model.answers.Count == 0)
             {
                 <h4>尚無任何答案</h4>
+
                 <p>
                     @Html.ActionLink("答案列表", "QAIndex", null, new { @class = "btn btn-warning m-2" })
-                    @Html.ActionLink("新增答案", "QAAdd", new { id = ViewBag.qzid }, new { @class = "btn btn-success" })
+                    @Html.ActionLink("新增答案", "QAAdd", new { id = ViewBag.qzid }, new { @class = "btn btn-info" })
+
+                </p>
+
+            }
+            else if (Model.answers.Count < 4)
+            {
+                <p>
+                    @Html.ActionLink("答案列表", "QAIndex", null, new { @class = "btn btn-warning m-2" })
+                    @Html.ActionLink("新增答案", "QAAdd", new { id = ViewBag.qzid }, new { @class = "btn btn-info" })
+                    @*@Html.ActionLink("修改答案", "QAEdit", new { id = ViewBag.qzid }, new { @class = "btn btn-danger" })*@
 
                 </p>
 
@@ -41,10 +52,14 @@
             {
                 <p>
                     @Html.ActionLink("答案列表", "QAIndex", null, new { @class = "btn btn-warning m-2" })
-                    @Html.ActionLink("修改答案", "QAEdit", new { id = ViewBag.qzid }, new { @class = "btn btn-success" })
+                    @*@Html.ActionLink("修改答案", "QAEdit", new { id = ViewBag.qzid }, new { @class = "btn btn-success" })*@
                 </p>
 
             }
+
+            <div class="col-md-8 mb-4 text-primary">
+                <h5>@ViewBag.Ttext.tittle_text</h5>
+            </div>
 
             <table class="table">
                 <tr>
@@ -58,14 +73,17 @@
 
                 @foreach (var item in Model.answers)
                 {
-                    <tr>
-                        <td>@item.quiz_guid</td>
-                        <td>@item.answer_id</td>
-                        @*<td>@item.type_id</td>*@
-                        <td>@item.answer_text</td>
-                        @*<td>@item.answer_img_path</td>*@
-                        <td>@item.is_correct</td>
-                    </tr>
+                <tr>
+                    <td>@item.quiz_guid</td>
+                    <td>@item.answer_id</td>
+                    @*<td>@item.type_id</td>*@
+                    <td>@item.answer_text</td>
+                    @*<td>@item.answer_img_path</td>*@
+                    <td>@item.is_correct</td>
+                    <td>
+                        @Html.ActionLink("修改答案", "QAEdit", new { qzid = item.quiz_guid, qaid = item.answer_id }, new { @class = "btn btn-success" })
+                    </td>
+                </tr>
                 }
 
             </table>

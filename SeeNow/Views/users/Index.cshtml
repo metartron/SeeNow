@@ -22,7 +22,8 @@
 
                 @Html.LabelFor(model => model.account, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-3">
-                    @Html.EditorFor(model => model.account, new { htmlAttributes = new { @class = "form-control readonly", placeholder = "請輸入帳號" } })
+                    @*@Html.EditorFor(model => model.account, new { htmlAttributes = new { @class = "form-control readonly", placeholder = "請輸入帳號" } })*@
+                    <label class="form-control bg-light">@Model.account</label>
                     @Html.ValidationMessageFor(model => model.account, "", new { @class = "text-danger" })
                 </div>
             </div>

@@ -28,6 +28,7 @@ namespace SeeNow.Controllers
             qqa.answers = db.quiz_answer.Where(m => m.quiz_guid == id).ToList();
             qqa.quiz = db.quizzes.Where(m => m.quiz_guid == id).ToList();
             ViewBag.qzid = id;
+            ViewBag.Ttext = db.quizzes.Where(m => m.quiz_guid == id).FirstOrDefault();
             return View(qqa);
             
 
@@ -252,7 +253,7 @@ namespace SeeNow.Controllers
 
         }
 
-        // 20190613新增，
+        // 20190613新增，完成
         //新增答案，只列出沒有答案的題目
         public ActionResult QAAdd(int? id)
         {
@@ -295,6 +296,42 @@ namespace SeeNow.Controllers
             
         }
 
+        //20180614新增，修改答案，
+        public ActionResult QAEdit(int? qzid, int? qaid)
+        {
+            quiz_answer qa = db.quiz_answer.Where(m => m.quiz_guid == qzid && m.answer_id==qaid).FirstOrDefault();
+            quizzes qz = db.quizzes.Where(m => m.quiz_guid == qzid).FirstOrDefault();
+
+            if (qzid == null || qaid==null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ViewBag.QZID = qzid;
+            ViewBag.QAID = qaid;
+            ViewBag.Ttext = qz.tittle_text;
+
+            ViewBag.QZ = db.quizzes.Where(m => m.quiz_guid == qzid).FirstOrDefault();
+
+            return View(qa);
+            //return RedirectToAction("Index", new { id });
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult QAEdit(int quiz_guid, int answer_id, string answer_text, bool is_correct)
+        {
+            quiz_answer qaid = db.quiz_answer.Where(m => m.quiz_guid == quiz_guid && m.answer_id==answer_id).FirstOrDefault();
+
+            qaid.type_id = "1";
+            qaid.answer_text = answer_text;
+            qaid.is_correct = is_correct;
+
+            var id = quiz_guid;
+            db.SaveChanges();
+            
+
+            return RedirectToAction("Index", new { id });
+
+        }
 
     }
 }

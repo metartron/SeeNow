@@ -26,10 +26,11 @@ namespace SeeNow.Areas.Backend.Controllers
         #region Index
         public ActionResult FEdit()
         {
-            ViewBag.profile = new SelectList(db.profile, "profile_id", "profile_path");
-            ViewBag.role_id = new SelectList(db.role, "role_id", "role_desc");
 
             users users = db.users.Find(Session["user_id"].ToString());
+
+            ViewBag.profile = new SelectList(db.profile, "profile_id", "profile_path",users.profile_id);
+            ViewBag.role_id = new SelectList(db.role, "role_id", "role_desc",users.role_id);
             return View(users);
         }
         #endregion
