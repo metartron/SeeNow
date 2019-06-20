@@ -190,6 +190,7 @@
     <Compile Include="Areas\Backend\Controllers\UsersController.cs" />
     <Compile Include="Areas\Backend\Controllers\yyadminsController.cs" />
     <Compile Include="Areas\Backend\Controllers\HomeController.cs" />
+    <Compile Include="Controllers\announcementsController.cs" />
     <Compile Include="Controllers\BagsController.cs" />
     <Compile Include="Controllers\Buy_listController.cs" />
     <Compile Include="Controllers\ClassesController.cs" />
@@ -367,16 +368,23 @@
     <Content Include="assets\image\BTaKGEBec.gif" />
     <Content Include="assets\image\cancel.png" />
     <Content Include="assets\image\cat.gif" />
+    <Content Include="assets\image\CreationofAdam.jpg" />
+    <Content Include="assets\image\CreationoftheSun.jpg" />
     <Content Include="assets\image\dance.gif" />
     <Content Include="assets\image\Delete.png" />
     <Content Include="assets\image\farfar.jpg" />
     <Content Include="assets\image\gce5aozqi.gif" />
     <Content Include="assets\image\gwater.gif" />
+    <Content Include="assets\image\Irises.jpg" />
+    <Content Include="assets\image\LaBellaPrincipesa.jpg" />
+    <Content Include="assets\image\LastSupper.jpg" />
     <Content Include="assets\image\lucas.jpg" />
+    <Content Include="assets\image\MandolinAndGuitar.jpg" />
     <Content Include="assets\image\no.gif" />
     <Content Include="assets\image\P001.jpg" />
     <Content Include="assets\image\P001.png" />
     <Content Include="assets\image\pancil.jpg" />
+    <Content Include="assets\image\Paradise.jpg" />
     <Content Include="assets\image\people-dancing.gif" />
     <Content Include="assets\image\pinkcolor.gif" />
     <Content Include="assets\image\pinkpaper.jpg" />
@@ -391,12 +399,17 @@
     <Content Include="assets\image\sunmoon.gif" />
     <Content Include="assets\image\teacher-school.gif" />
     <Content Include="assets\image\teacher2-school.gif" />
+    <Content Include="assets\image\TheDream.jpg" />
+    <Content Include="assets\image\TheMonaLisa.jpg" />
+    <Content Include="assets\image\TheStarryNight.jpg" />
+    <Content Include="assets\image\VasewithTwelveSunflowers.jpg" />
     <Content Include="assets\image\water.gif" />
     <Content Include="assets\image\waterleaf.jpg" />
     <Content Include="assets\image\wave.gif" />
     <Content Include="assets\image\win.gif" />
     <Content Include="assets\image\window-witch.gif" />
     <Content Include="assets\image\witch.gif" />
+    <Content Include="assets\image\WomanwithaBook.jpg" />
     <Content Include="assets\image\yellow.gif" />
     <Content Include="assets\music\ajourneyawaits.mp3" />
     <Content Include="assets\music\ANewDay.mp3" />
@@ -911,6 +924,9 @@
     <Content Include="Views\users\Edit.cshtml" />
     <Content Include="Views\users\Index.cshtml" />
     <Content Include="Views\QQA\QAEdit.cshtml" />
+    <Content Include="Views\announcements\Details.cshtml" />
+    <Content Include="Views\Shared\_AnnouncementIndex.cshtml" />
+    <Content Include="Views\announcements\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

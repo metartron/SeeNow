@@ -17,7 +17,7 @@
 
         @*<form class="login-form" method="post" action='/Home/Login?ReturnUrl=@Request.QueryString["ReturnUrl"]' name="LoginForm">*@
         @*<form class="login-form" method="post" action='/backendHome/Login?ReturnUrl=@Request.QueryString["ReturnUrl"]' name="LoginForm">*@
-        <form class="login-form" method="post" @Url.Action("Login", "backendHome") name="LoginForm">
+        <form class="login-form" method="post" @Url.Action("Login", "Home") name="LoginForm">
             <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
             <div class="form-group">
                 <label class="control-label">管理者帳號</label>

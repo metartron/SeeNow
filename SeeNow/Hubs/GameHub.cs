@@ -13,7 +13,7 @@ namespace SeeNow
     public class GameHub : Hub
     {
         SeeNowEntities db = new SeeNowEntities();
-
+        
         //public void Send(string name, string message)
         //{
         //    // Call the addNewMessageToPage method to update clients.
@@ -116,10 +116,17 @@ namespace SeeNow
             Dictionary<string, int> intTotalScore = new Dictionary<string, int>();
             foreach (int r in msg.round)
             {
+                var playRec = (from u in db.users
+                                  join p in db.play_record
+                                 on u.account equals p.account
+                                  where p.round_no == r
+                                  select new {  u.account, u.nick_name, p.score }).ToList();
 
-                var playRec = (from p in db.play_record
-                               where p.round_no == r
-                               select p).ToList();
+
+
+                //var playRec = (from p in db.play_record
+                //               where p.round_no == r
+                //               select p).ToList();
 
                 var strPlayRec = "";
                 var strTotalPlayRec = "";
@@ -128,8 +135,8 @@ namespace SeeNow
                 {
                     //顯示單次成績
                     //strPlayRec += "<div>"+p.round_no + ":" + p.account + ":+" + p.score + "</div>";
-                    strPlayRec += "<div>" + p.account + ":+" + p.score + "</div>";
-
+                    //strPlayRec += "<div>" + p.account + ":+" + p.score + "</div>";
+                    strPlayRec += "<div>" + p.nick_name + ":+" + p.score + "</div>";
                     //新增一筆(p.account,value)
                     try
                     {
@@ -154,7 +161,12 @@ namespace SeeNow
                 //非連續題,顯示各別得分和各別總分
                 else
                 {
-                    await Clients.Group((string)msg.group).GroupScore(strPlayRec + " Total:" + strTotalPlayRec);
+                    var request = HttpContext.Current.Request;
+                    //await Clients.Group((string)msg.group).GroupScore(strPlayRec + " Total:" + strTotalPlayRec);
+                    //await Clients.Group((string)msg.group).GroupScore("<div><img src = '../assets/image/people-dancing.gif' /></div>" + strPlayRec);
+                    await Clients.Group((string)msg.group).GroupScore
+                        ("<div><img src = '"+request.Url.GetLeftPart(UriPartial.Authority)+"/assets/image/people-dancing.gif' /></div>"
+                        + strPlayRec);
                 }
             }
 
@@ -171,11 +183,16 @@ namespace SeeNow
             }
             //Redirect url to /Game/ScoreView
             var grpRound = msg.group + ":" + rounds;//準備頁面id參數/Game/ScoreView/?id=
-
             var request = HttpContext.Current.Request;
-
             var reDirUrl = "<div><script>confirm(location.href = '" + request.Url.GetLeftPart(UriPartial.Authority) + "/Game/ScoreView?id=" + grpRound + "');</script></div>";
             await Clients.Group((string)msg.group).GroupScore(reDirUrl);
+        }
+        public async Task SendGift(string msgJSON)
+        {
+            dynamic msg = JsonConvert.DeserializeObject(msgJSON);
+            //await Clients.Group((string)msg.group).FromGroupMsg(msg.group + "::" + msg.name + ":" + msg.select_answer + msg.message);
+            await Clients.Group((string)msg.group).RcvGift(msg.message);
+
         }
 
     }

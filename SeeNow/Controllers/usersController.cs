@@ -74,8 +74,11 @@ namespace SeeNow.Controllers
         }
 
         // GET: users/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit()
         {
+           
+
+            string id = Session["user_id"].ToString();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -85,7 +88,7 @@ namespace SeeNow.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.profile_id = new SelectList(db.profile, "profile_id", "profile_name", users.profile_id);
+            ViewBag.profile = new SelectList(db.profile, "profile_id", "profile_path", users.profile_id);
             ViewBag.role_id = new SelectList(db.role, "role_id", "role_desc", users.role_id);
             return View(users);
         }
@@ -95,17 +98,31 @@ namespace SeeNow.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "account,role_id,password,nick_name,e_mail,score,energy,profile_id,bag_number,lock_flag,validation_flag,resetable")] users users)
+        public ActionResult Edit(string account, string role_id, string password, string nick_name, string e_mail, short profile_id)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(users).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.profile_id = new SelectList(db.profile, "profile_id", "profile_name", users.profile_id);
-            ViewBag.role_id = new SelectList(db.role, "role_id", "role_desc", users.role_id);
-            return View(users);
+            
+            users user = db.users.Where(m => m.account == account).FirstOrDefault();
+
+            user.role_id = role_id;
+            user.password = password;
+            user.nick_name = nick_name;
+            user.e_mail = e_mail;
+            user.profile_id = profile_id;
+
+            db.SaveChanges();
+
+            ViewBag.profile = new SelectList(db.profile, "profile_id", "profile_path", user.profile_id);
+            ViewBag.role_id = new SelectList(db.role, "role_id", "role_desc", user.role_id);
+
+            Response.Write("<script>alert('儲存成功！');</script>");
+
+            return View(user);
+
+           
+
+            //ViewBag.profile_id = new SelectList(db.profile, "profile_id", "profile_name", users.profile_id);
+            //ViewBag.role_id = new SelectList(db.role, "role_id", "role_desc", users.role_id);
+            //return View(users);
         }
 
         // GET: users/Delete/5

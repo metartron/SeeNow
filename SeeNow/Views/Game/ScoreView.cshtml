@@ -15,6 +15,7 @@
         /*background: #000;*/
         margin: 0;
     }
+
     canvas {
         cursor: crosshair;
         display: block;
@@ -22,16 +23,28 @@
 </style>
 
 <header class="masthead form ">
-    @* err:@ViewBag.err*@
+    <marquee id="info" class="text-danger h2">
+        請拉道具至帳號~~~
+    </marquee>
     <div class="container" style="position:relative;">
-
-        <canvas id="canvas" style="position:absolute;z-index:4;width:inherit;height:inherit;left:0px;top:50px;"> </canvas>
-
-        <input type="Button" id="fire" class=" btn-primary " onclick="loop();" value="煙花"
-               style="position:absolute;z-index: 3;left: 0px;top:0px;">
+        <canvas id="canvas" style="position:absolute;z-index:-1;width:inherit;height:inherit;left:0px;top:50px;"> </canvas>
 
 
-        <table class="table table-striped table-dark table-hover" style="position:absolute;z-index:2;left:0px;top:50px;">
+        <div class="row">
+            <h3>
+                <span class="badge badge-warning m-2" draggable="true" id="dragflower" style="position:absolute;left: 0px;top:0px;cursor: grab;">
+                    煙花
+                </span>
+            </h3>
+            @*<h3>
+                <span class="badge badge-warning m-2" draggable="true" id="dragsandals" style="position:absolute;left:100px;top:0px;cursor: grab;">
+                    拖鞋
+                </span>
+            </h3>*@
+        </div>
+        <span id="my_nickname" class="d-none">@nickName</span>
+        <span id="my_account" class="d-none">@account</span>
+        <table class="table table-striped table-dark table-hover" style="position:absolute;left:0px;top:50px;">
             <tr>
                 <th>
                     圖像
@@ -43,26 +56,24 @@
                     分數
                 </th>
             </tr>
-
             @foreach (var u in userSort)
             {
                 <tr>
                     <td>
-                        <img src="~/Image/@u.GetType().GetProperty("pf").GetValue(u)" style="width:80px;height:80px" />
+                        <img src="~/Image/@u.GetType().GetProperty("pf").GetValue(u)"
+                             id="@u.GetType().GetProperty("nickname").GetValue(u)" class="droptarget"
+                             style="width:80px;height:80px" />
                     </td>
-                    <td>
+                    <td id="@u.GetType().GetProperty("nickname").GetValue(u)" class="droptarget">
                         @u.GetType().GetProperty("nickname").GetValue(u)
                     </td>
-                    <td>
+                    <td id="@u.GetType().GetProperty("nickname").GetValue(u)" class="droptarget">
                         @u.GetType().GetProperty("sco").GetValue(u)
-
                     </td>
                 </tr>
             }
-
         </table>
-
-        @*<div class="row" style="position:absolute;z-index: 4;left: 0px;top:220px;">
+        <div class="row d-none">
             <div class=" col-12 ">
                 <div class="input-group">
                     <div class="input-group-append">
@@ -80,7 +91,7 @@
             </div>
         </div>
 
-        <div class="row" style="position:absolute;z-index: 5;left: 0px;top:360px;">
+        <div class="row d-none">
             <div class=" col-12">
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -97,13 +108,13 @@
                     <input id="nickname" class="form-control bg-transparent" type="text" value="@nickName">
                     <input type="Button" id="addGroupBtn" class="form-control btn-primary text-danger" value="建立群組">
                 </div>
-                <div class="">
-                    @*<label for="showScore">離開</label>
-                    <input type="Button" id="showScore" class="form-control btn-warning" value="離開">
-                </div>
+                @*<div class="">
+                        <label for="showScore">離開</label>
+                        <input type="Button" id="showScore" class="form-control btn-warning" value="離開">
+                    </div>*@
             </div>
-        </div>*@
         </div>
+    </div>
 </header>
 @section scripts {
     <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>

@@ -46,6 +46,7 @@ namespace SeeNow.Controllers
                 {
                     strObj.Add("quiz_guid", qz.quizzes.quiz_guid);
                     strObj.Add("title", qz.quizzes.tittle_text);
+                    strObj.Add("img", qz.quizzes.title_img_path);
                     strObj.Add("time", qz.quizzes.time);
                     strObj.Add("score", qz.quizzes.score);
                 }
@@ -163,63 +164,71 @@ namespace SeeNow.Controllers
 
 
         //測試用,直接開TestView撈資料庫特定id(round_no)
-        //public ActionResult ScoreView(string id)
+        //public ActionResult TestView()
+        //{
+        //    var id = "211:215:217:216:218:222:224:225:226:228:229";
+        //    string[] rounds = id.Split(':');
+        //    string strRound = "";
+
+        //    List<play_record> allScoreList = new List<play_record>();
+        //    //這一局的所有題組參加的players放入scoreList
+        //    //最前的一組是pin r=1,最後一組空白不要r<=rounds.Length-2
+        //    for (var r = 0; r <= rounds.Length - 1; r++)
+        //    {
+        //        var r_no = int.Parse(rounds[r]);
+        //        var scoreList = (from score in db.play_record
+        //                         where score.round_no == r_no
+        //                         select score).ToList();
+        //        strRound += r_no + ";";
+        //        //將scoreList的list累加到allScoreList
+        //        foreach (var all in scoreList)
+        //        {
+        //            allScoreList.Add(all);
+        //        }
+        //    }
+        //    //scoreList中相同account的score相加,並Descending
+        //    var userSort = allScoreList
+        //    .GroupBy(t => t.account)
+        //    .Select(grp => new { grp.First().account, score = grp.Sum(t => t.score) })
+        //    .OrderByDescending(a => a.score);
+
+        //    //usr.account, usr.role_id, usr.password, usr.nick_name, usr.e_mail, usr.score, usr.energy, usr.profile_id, }))
+        //    users usr = db.users.Find("test2019");
+        //    //usr.score = u.score;
+        //    usr.score = 12345;
+        //    try
+        //    {
+        //        //db.SaveChanges();
+        //    }
+        //    catch (Exception dex)
+        //    {
+        //        //Log the error (uncomment dex variable name and add a line here to write a log.
+        //        ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+        //    }
+
+
+
+        //    var user_profile_score = (from us in userSort
+        //                              join u in db.users on us.account equals u.account
+        //                              join p in db.profile on u.profile_id equals p.profile_id
+        //                              select new { pf = p.profile_path, acc = u.account, sco = us.score })
+        //                             .ToList();
+
+        //    //以ViewBag.Round傳前頁面來的Pin碼,當ScoreView頁面開啟時,執行seeScore.js把round填入,並啟動新的signalR
+        //    ViewBag.Round = rounds[0];
+        //    ViewBag.strRound = strRound;
+        //    ViewBag.userSort = user_profile_score;
+        //    return View("TestView", allScoreList);
+        //}
         public ActionResult TestView()
         {
-            var id = "211:215:217:216:218:222:224:225:226:228:229";
-            string[] rounds = id.Split(':');
-            string strRound = "";
-
-            List<play_record> allScoreList = new List<play_record>();
-            //這一局的所有題組參加的players放入scoreList
-            //最前的一組是pin r=1,最後一組空白不要r<=rounds.Length-2
-            for (var r = 0; r <= rounds.Length - 1; r++)
-            {
-                var r_no = int.Parse(rounds[r]);
-                var scoreList = (from score in db.play_record
-                                 where score.round_no == r_no
-                                 select score).ToList();
-                strRound += r_no + ";";
-                //將scoreList的list累加到allScoreList
-                foreach (var all in scoreList)
-                {
-                    allScoreList.Add(all);
-                }
-            }
-            //scoreList中相同account的score相加,並Descending
-            var userSort = allScoreList
-            .GroupBy(t => t.account)
-            .Select(grp => new { grp.First().account, score = grp.Sum(t => t.score) })
-            .OrderByDescending(a => a.score);
-
-            //usr.account, usr.role_id, usr.password, usr.nick_name, usr.e_mail, usr.score, usr.energy, usr.profile_id, }))
-            users usr = db.users.Find("test2019");
-            //usr.score = u.score;
-            usr.score = 12345;
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (Exception dex)
-            {
-                //Log the error (uncomment dex variable name and add a line here to write a log.
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
-            }
-
-
-
-            var user_profile_score = (from us in userSort
-                                      join u in db.users on us.account equals u.account
-                                      join p in db.profile on u.profile_id equals p.profile_id
-                                      select new { pf = p.profile_path, acc = u.account, sco = us.score })
-                                     .ToList();
-
-            //以ViewBag.Round傳前頁面來的Pin碼,當ScoreView頁面開啟時,執行seeScore.js把round填入,並啟動新的signalR
-            ViewBag.Round = rounds[0];
-            ViewBag.strRound = strRound;
-            ViewBag.userSort = user_profile_score;
-            return View("TestView", allScoreList);
+            
+            Dictionary<string, string> user = new Dictionary<string, string>();
+            for (int i = 0; i < 5; i++) { 
+            user.Add("name" + i, "user"+i);
+            } 
+            ViewBag.u_list = user;
+            return View();
         }
-
     }
 }

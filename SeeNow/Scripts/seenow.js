@@ -1,8 +1,9 @@
 ﻿"use strict";
 
+var origin = window.location.origin; 
 //audio.play();
-var win1_sound = new Audio('../assets/music/win1.wav');
-var ans_snd = new Audio('../assets/music/symbollongring.mp3');
+var win1_sound = new Audio(origin+'/assets/music/win1.wav');
+var ans_snd = new Audio(origin +'/assets/music/symbollongring.mp3');
 //var musicArray = new Array("gone_fishin", "deredoc", "dollhouse", "ajourneyawaits", "dream2", "feat_v1", "feat_v2", "spookydungeon", "ANewDay", "AudiomachineBreath", "Psyche", "SoulSwitchbrusspup","TheRockRockHouseJail");
 var musicArray = new Array("gone_fishin", "deredoc", "dollhouse", "ajourneyawaits", "dream2", "spookydungeon", "ANewDay", "AudiomachineBreath", "Psyche", "SoulSwitchbrusspup", "TheRockRockHouseJail");
 var music = [];//儲存music
@@ -10,7 +11,7 @@ var player_account = [];//儲存玩家
 var round = [];//儲存回合
 //music push to array
 for (var i = 0; i < musicArray.length; i++) {
-    music.push(new Audio("../assets/music/" + musicArray[i] + ".mp3"));
+    music.push(new Audio(origin +"/assets/music/" + musicArray[i] + ".mp3"));
 }
 
 //產生亂數musicNum
@@ -175,7 +176,13 @@ hubCon.client.receiveGroupQuiz = function (msgJSON) {
     //push round_no to round at client site 
     round.push(tmpJson.round_no);
     //tmpJson.title
-    $('#quizDiv').html(mJson.title);
+    //$('#quizDiv').html("<img src=\"../assets/image/" + mJson.img
+    //    + "\" onerror='this.src = \"../assets/image/teacher2-school.gif\"' style=\"width:260px;height:260px;\" /> "
+    //    + mJson.title);
+    
+    $('#quizDiv').html("<img src=\"" + origin+"/assets/image/" + mJson.img
+        + "\" onerror='this.src = \"" + origin+"/assets/image/teacher2-school.gif\"' style=\"width:260px;height:260px;\" /> "
+        + mJson.title);
     //tmpJson.interval_Time
     $('#countTime').html(mJson.interval_Time);//countTime顯示interval_Time
     timerT(parseInt($('#countTime').html()));//timerT(c),c=countTime
@@ -236,6 +243,7 @@ function playQuiz(startNum, endNum, round_no) {
             yellowBtn_correct = $(tbRows[startRow]).find('td:eq(10)').text().trim();
             if (yellowBtn_correct.trim() === "True") rightAns = 4;
             var score = $(tbRows[startRow]).find('td:eq(11)').text().trim();
+            var img = $(tbRows[startRow]).find('td:eq(12)').text().trim();
             //rowid
             //rowid = $(tbRows[startRow]).find('td:eq(11)').html();
             sndNum = getSoundNum(musicArray.length);//Get a random number for play sound
@@ -257,7 +265,8 @@ function playQuiz(startNum, endNum, round_no) {
                 "rowid": startRow,
                 "round_no": round_no,
                 "rightAns": rightAns,
-                "score": score
+                "score": score,
+                "img": img
             };
             var msgJSON = JSON.stringify(msg2grp);
             hubCon.server.sendQuizToGroup(msgJSON).catch(function (err) {

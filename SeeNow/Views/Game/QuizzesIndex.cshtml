@@ -129,56 +129,58 @@
 
             @foreach (var qz in qzans)
             {
-                <tr>
-                    <td>
-                        @qz.quiz_guid
-                    </td>
-                    <td>
-                        @qz.title
-                    </td>
-                    <td class="hideANDseek">
-                        @qz.time
-                    </td>
-                    <td class="hideANDseek">
-                        @qz.ans1
-                    </td>
-                    <td class="hideANDseek">
-                        @qz.is_correct1
-                    </td>
-                    <td class="hideANDseek">
-                        @qz.ans2
-                    </td>
-                    <td class="hideANDseek">
-                        @qz.is_correct2
-                    </td>
-                    <td class="hideANDseek">
-                        @qz.ans3
-                    </td>
-                    <td class="hideANDseek">
-                        @qz.is_correct3
-                    </td>
-                    <td class="hideANDseek">
-                        @qz.ans4
-                    </td>
-                    <td class="hideANDseek">
-                        @qz.is_correct4
-                    </td>
-                    <td>
-                        @qz.score
-                    </td>
-                    <td>
-                        @*每列row做一Button帶參數rowid,rowid,round_no+=1*@
-                        <div class="form-group">
-                            <button type="Button" id="menuBtn@(rowid)" onclick="playQuiz(@(rowid),@(rowid),@(++round_no))" class="form-control btn-success">@(rowid)</button>
-                            @*下一列rowid加1*@
-                            @*@(rowid++)*@
-                            @{
-                                rowid++;
-                            }
-                        </div>
-
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @qz.quiz_guid
+                </td>
+                <td>
+                    @qz.title
+                </td>
+                <td class="hideANDseek">
+                    @qz.time
+                </td>
+                <td class="hideANDseek">
+                    @qz.ans1
+                </td>
+                <td class="hideANDseek">
+                    @qz.is_correct1
+                </td>
+                <td class="hideANDseek">
+                    @qz.ans2
+                </td>
+                <td class="hideANDseek">
+                    @qz.is_correct2
+                </td>
+                <td class="hideANDseek">
+                    @qz.ans3
+                </td>
+                <td class="hideANDseek">
+                    @qz.is_correct3
+                </td>
+                <td class="hideANDseek">
+                    @qz.ans4
+                </td>
+                <td class="hideANDseek">
+                    @qz.is_correct4
+                </td>
+                <td>
+                    @qz.score
+                </td>
+                <td>
+                    @qz.img
+                </td>
+                <td>
+                    @*每列row做一Button帶參數rowid,rowid,round_no+=1*@
+                    <div class="form-group">
+                        <button type="Button" id="menuBtn@(rowid)" onclick="playQuiz(@(rowid),@(rowid),@(++round_no))" class="form-control btn-success">@(rowid)</button>
+                        @*下一列rowid加1*@
+                        @*@(rowid++)*@
+                        @{
+                            rowid++;
+                        }
+                    </div>
+                </td>
+            </tr>
             }
         </table>
     </div>

@@ -4,8 +4,8 @@
 })();
 //2,建立與Server端的Hub的物件，注意Hub的開頭字母一定要為小寫
 var hubCon = $.connection.gameHub;
-function openCon () {
-   //將連線打開
+function openCon() {
+    //將連線打開
     $.connection.hub.start().done(function () {
         //3,加入群組
         addGroupBtn();
@@ -15,7 +15,7 @@ function openCon () {
 }
 
 //3,加入群組
-function addGroupBtn(){
+function addGroupBtn() {
     var user = $('#nickname').val();
     var group = $('#group').val();
     $('#autoBtn').attr("disabled", false);
@@ -57,4 +57,72 @@ hubCon.client.fromGroupMsg = function (msgGroup) {
     var msgTxtarea = $('#message');
     msgTxtarea.val(msgTxtarea.val() + msgGroup + "\n");
     $('#message').scrollTop($('#message')[0].scrollHeight);
+};
+
+//設定主機網址
+var origin = window.location.origin;
+
+//設定拖拉道具產生效果
+//document.ondragstart = function (event) {
+//    event.dataTransfer.setData("Text", event.target.id);
+//    document.getElementById("demo").innerHTML = "Started to drag the: " + event.target.id;
+//};
+document.addEventListener("dragstart", function (event) {
+    // The dataTransfer.setData() method sets the data type and the value of the dragged data
+    //save被抓取元素的id(為string值)
+    //event.dataTransfer.setData("Text", event.target.id);
+    event.dataTransfer.setData("Text", event.target.innerHTML);
+    // Output some text when starting to drag the p element
+    //document.getElementById("info").innerHTML = "Started to drag the p element.";
+    // Change the opacity of the draggable element
+    //event.target.style.opacity = "0.4";
+});
+
+document.ondragend = function (event) {
+
+    event.preventDefault();
+    //if (event.target.className === "droptarget") {
+    //    var data = event.dataTransfer.getData("Text");
+    //    document.getElementById("info").innerHTML = data + " : " + event.target.id;
+
+    //}
+};
+
+/* Events fired on the drop target */
+document.ondragover = function (event) {
+    event.preventDefault();
+};
+
+document.ondrop = function (event) {
+    event.preventDefault();
+    if (event.target.className === "droptarget") {
+        var data = event.dataTransfer.getData("Text");
+        //event.target.appendChild(document.getElementById(data));
+        document.getElementById("info").innerHTML = $('#my_nickname').html() +"送"+data+"給" + event.target.id+"! ";
+        sendGift();
+    }
+};
+
+//送禮物
+function sendGift() {
+    var user = $('#nickname').val();
+    var group = $('#group').val();
+    var message = document.getElementById("info").innerHTML;
+    var msg2grp = { "group": group, "name": user, "message": message };
+    var msgJSON = JSON.stringify(msg2grp);
+    hubCon.server.sendGift(msgJSON).catch(function (err) {
+        return console.error(err.toString());
+    });
+}
+
+//接收禮物
+hubCon.client.rcvGift = function (msgGroup) {
+    //var li = document.createElement("li");
+    //li.textContent = msg+"&#13;&#10;";
+    //$('#message').append(li);
+    var msgInfo = $('#info');
+    msgInfo.html(msgInfo.html() + ";" + msgGroup);
+    $('body').css("background-image", "url('" + origin + "/Image/castle.png')").css('opacity', 0.8);
+    //call loop() function in the canvas1.js for Fireworks
+    loop();
 };
