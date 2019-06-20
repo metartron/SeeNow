@@ -18,13 +18,25 @@
     </div>
 </header>
 
-
+<!-- Announcement Section -->
+<section class="" id="Announcement">
+    <div class="container">
+        <h2 class="text-center text-uppercase text-secondary mb-0">公告</h2>
+        <hr class="star-dark mb-5">
+        <p>
+            @Html.Action("_AnnouncementIndex", "announcements", new { number = 3 })
+        </p>
+        <p Align="Right">
+            @Html.ActionLink("更多公告", "Index", "announcements", null, new { @class = "text-secondary" })
+        </p>
+    </div>
+</section>
 
 <!-- Portfolio Grid Section -->
-<section class="portfolio " id="portfolio">
+<section class="portfolio bg-primary text-white mb-0" id="portfolio">
     <div class="container">
-        <h2 class="text-center text-uppercase text-secondary mb-0">風雲榜</h2>
-        <hr class="star-dark mb-5">
+        <h2 class="text-center text-uppercase text-white mb-0">風雲榜</h2>
+        <hr class="star-light mb-5">
         <div class="row">
             <div class="col-md-6 col-lg-4">
                 <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-1" style="width:350px;height:252.77px">
@@ -37,7 +49,7 @@
                         @*<img class="img-fluid" src="~/Image/freelancer/portfolio/cabin.png" alt="">*@
                         <img class="img-fluid" src="~/Image/antelope_icon_s.png" alt="" />
                         <div>
-                            <p class="text-center text-black-50 font-italic font-weight-bold display-4">夏奇拉</p>
+                            <p class="text-center text-white font-italic font-weight-bold display-4">夏奇拉</p>
                         </div>
                     </div>
                 </a>
@@ -51,7 +63,7 @@
                     </div>
                     <div>
                         <img class="img-fluid" src="~/Image/cow_icon-s.png" alt="" />
-                        <p class="text-center text-black-50 font-italic font-weight-bold display-4">蠻牛警長</p>
+                        <p class="text-center text-white font-italic font-weight-bold display-4">蠻牛警長</p>
                     </div>
                     @*<img class="img-fluid" src="~/Image/freelancer/portfolio/cake.png" alt="">*@
                 </a>
@@ -67,7 +79,7 @@
                     <div>
 
                         <img class="img-fluid" src="~/Image/fox_icon_s.png" alt="" />
-                        <p class="text-center text-black-50 font-italic font-weight-bold display-4">胡尼克</p>
+                        <p class="text-center text-white font-italic font-weight-bold display-4">胡尼克</p>
                     </div>
                 </a>
             </div>
@@ -81,7 +93,7 @@
                     @*<img class="img-fluid" src="~/Image/freelancer/portfolio/game.png" alt="">*@
                     <div>
                         <img class="img-fluid" src="~/Image/leopard_icon-s.png" alt="" />
-                        <p class="text-center text-black-50 font-italic font-weight-bold display-4">豹警長</p>
+                        <p class="text-center text-white font-italic font-weight-bold display-4">豹警長</p>
                     </div>
                 </a>
             </div>
@@ -95,7 +107,7 @@
                     @*<img class="img-fluid" src="~/Image/freelancer/portfolio/safe.png" alt="">*@
                     <div>
                         <img class="img-fluid" src="~/Image/rabi_icon-s.png" alt="" />
-                        <p class="text-center text-black-50 font-italic font-weight-bold display-4">兔朱蒂</p>
+                        <p class="text-center text-white font-italic font-weight-bold display-4">兔朱蒂</p>
                     </div>
                 </a>
             </div>
@@ -109,7 +121,7 @@
                     @*<img class="img-fluid" src="~/Image/freelancer/portfolio/submarine.png" alt="">*@
                     <div>
                         <img class="img-fluid" src="~/Image/sheep2_icon-s.png" alt="" />
-                        <p class="text-center text-black-50 font-italic font-weight-bold display-4">羊副市長</p>
+                        <p class="text-center text-white font-italic font-weight-bold display-4">羊副市長</p>
                     </div>
                 </a>
             </div>
@@ -117,19 +129,7 @@
     </div>
 </section>
 
-<!-- Announcement Section -->
-<section class="bg-primary text-white mb-0" id="Announcement">
-    <div class="container">
-        <h2 class="text-center text-uppercase text-white">公告</h2>
-        <hr class="star-light mb-5">
-        <p>
-            @Html.Action("_AnnouncementIndex", "announcements", new { number = 3 })
-        </p>
-        <p>
-            @Html.ActionLink("更多公告", "Index", "announcements", null, new { @class = "btn btn-light" })
-        </p>
-    </div>
-</section>
+
 <!-- About Section -->
 <section id="about">
     <div class="container">
