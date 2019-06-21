@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using SeeNow.Models;
 
-namespace SeeNow.Controllers
+namespace SeeNow.Areas.Backend.Controllers
 {
     public class quiz_groupController : Controller
     {
@@ -39,8 +39,11 @@ namespace SeeNow.Controllers
         // GET: quiz_group/Create
         public ActionResult Create()
         {
-            ViewBag.category = new SelectList(db.category, "category_id", "category_desc");
-            return View(db.quiz_group.ToList());
+            ViewBag.category_id = new SelectList(db.category, "category_id", "category_desc");
+            //ViewBag.account = new SelectList(db.users, "account", "role_id");
+            ViewBag.account = new SelectList(db.users, "account", "account");
+
+            return View();
         }
 
         // POST: quiz_group/Create
@@ -48,29 +51,19 @@ namespace SeeNow.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(int category, string group_name, string account)
+        public ActionResult Create([Bind(Include = "quiz_group1,group_name,account,category_id")] quiz_group quiz_group)
         {
-            var gname = db.quiz_group.Where(m => m.group_name == group_name).FirstOrDefault();
-
-            if (gname == null)
+            if (ModelState.IsValid)
             {
-                var qgid = db.quiz_group.OrderByDescending(m => m.quiz_group1).FirstOrDefault();
-
-                quiz_group qg = new quiz_group();
-                qg.category_id = category;
-                qg.quiz_group1 = qgid.quiz_group1 + 1;
-
-                qg.group_name = group_name;
-                qg.account = account;
-
-                db.quiz_group.Add(qg);
+                db.quiz_group.Add(quiz_group);
                 db.SaveChanges();
-
-                //return RedirectToAction("QGQAIndex");
-                return RedirectToAction("Index", "quiz_group");
+                return RedirectToAction("Index");
             }
-            ViewBag.Message = "遊戲題組名稱，已有人使用!!";
-            return View(db.quiz_group.ToList());
+
+            ViewBag.category_id = new SelectList(db.category, "category_id", "category_desc", quiz_group.category_id);
+            //ViewBag.account = new SelectList(db.users, "account", "role_id", quiz_group.account);
+            ViewBag.account = new SelectList(db.users, "account", "account", quiz_group.account);
+            return View(quiz_group);
         }
 
         // GET: quiz_group/Edit/5
@@ -81,15 +74,13 @@ namespace SeeNow.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             quiz_group quiz_group = db.quiz_group.Find(id);
-            string nick_name = db.users.Where(u => u.account == quiz_group.account).FirstOrDefault().nick_name;
             if (quiz_group == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.nick_name = nick_name;
-            ViewBag.category = new SelectList(db.category, "category_id", "category_desc", quiz_group.category_id);
+            ViewBag.category_id = new SelectList(db.category, "category_id", "category_desc", quiz_group.category_id);
             //ViewBag.account = new SelectList(db.users, "account", "role_id", quiz_group.account);
-            //ViewBag.account = new SelectList(db.users, "account", "account", quiz_group.account);
+            ViewBag.account = new SelectList(db.users, "account", "account", quiz_group.account);
 
             return View(quiz_group);
         }
@@ -99,18 +90,18 @@ namespace SeeNow.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int quiz_group1,int category, string group_name, string account)
+        public ActionResult Edit([Bind(Include = "quiz_group1,group_name,account,category_id")] quiz_group quiz_group)
         {
-            quiz_group qg = db.quiz_group.Where(q => q.quiz_group1 == quiz_group1).FirstOrDefault();
+            if (ModelState.IsValid)
+            {
+                db.Entry(quiz_group).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
 
-            qg.group_name = group_name;
-            qg.account = Session["user_id"].ToString();
-            qg.category_id = category;
-
-            db.SaveChanges();
-
-            return RedirectToAction("Index", "quiz_group");
-
+            }
+            ViewBag.category_id = new SelectList(db.category, "category_id", "category_desc", quiz_group.category_id);
+            ViewBag.account = new SelectList(db.users, "account", "role_id", quiz_group.account);
+            return View(quiz_group);
         }
 
         // GET: quiz_group/Delete/5

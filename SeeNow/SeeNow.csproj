@@ -185,6 +185,7 @@
     <Compile Include="Areas\Backend\Controllers\difficulty_levelController.cs" />
     <Compile Include="Areas\Backend\Controllers\difficulty_level_logController.cs" />
     <Compile Include="Areas\Backend\Controllers\managersController.cs" />
+    <Compile Include="Areas\Backend\Controllers\quiz_groupController.cs" />
     <Compile Include="Areas\Backend\Controllers\rolesController.cs" />
     <Compile Include="Areas\Backend\Controllers\role_logController.cs" />
     <Compile Include="Areas\Backend\Controllers\UsersController.cs" />
@@ -603,6 +604,11 @@
     <Content Include="Areas\Backend\Views\users\Edit.cshtml" />
     <Content Include="Areas\Backend\Views\users\FEdit.cshtml" />
     <Content Include="Areas\Backend\Views\users\Index.cshtml" />
+    <Content Include="Areas\Backend\Views\quiz_group\Create.cshtml" />
+    <Content Include="Areas\Backend\Views\quiz_group\Delete.cshtml" />
+    <Content Include="Areas\Backend\Views\quiz_group\Details.cshtml" />
+    <Content Include="Areas\Backend\Views\quiz_group\Edit.cshtml" />
+    <Content Include="Areas\Backend\Views\quiz_group\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\fontawesome-free\all.js" />
     <Content Include="Scripts\fontawesome-free\all.min.js" />

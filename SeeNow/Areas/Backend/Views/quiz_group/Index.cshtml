@@ -14,7 +14,7 @@
 
 
             <h5>
-                @Html.ActionLink("新增遊戲題組", "Create", "quiz_group", htmlAttributes: new { @class = "btn btn-primary" })
+                @Html.ActionLink("新增遊戲題組", "QGAdd", "QQA")
                 @*@Html.ActionLink("新增遊戲題組", "Create")*@
             </h5>
             <table class="table table-striped">
@@ -32,8 +32,8 @@
                         @*類別描述*@
                     </th>
                     <th>
-                        @*@Html.DisplayNameFor(model => model.users.account)*@
-                        建立者帳號
+                        @Html.DisplayNameFor(model => model.users.account)
+                        @*用戶*@
                     </th>
                     <th></th>
                 </tr>
@@ -55,7 +55,7 @@
                             @Html.DisplayFor(modelItem => item.users.account)
                         </td>
                         <td>
-                            @Html.ActionLink("編輯", "Edit", new { id = item.quiz_group1 }, htmlAttributes: new { @class = "btn btn-primary" }) @*|*@
+                            @Html.ActionLink("編輯", "Edit", new { id = item.quiz_group1 }) @*|*@
                             @*@Html.ActionLink("Details", "Details", new { id = item.quiz_group1 }) |*@
                             @*@Html.ActionLink("刪除", "Delete", new { id = item.quiz_group1 })*@
                         </td>

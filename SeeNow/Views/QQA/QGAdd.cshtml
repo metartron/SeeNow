@@ -52,13 +52,14 @@
                 <div class="form-group">
                     <label class="col-md-2 control-label" for="account">老師帳號</label>
                     <div class="col-md-10">
+                        <input id="account" name="account" type="text" class="form-control" value="@Session["user_id"]" readonly="readonly"/>
 
-                        <select id="account" name="account" class="form-control">
+                        @*<select id="account" name="account" class="form-control">
                             @foreach (var item in Model)
                             {
                                 <option value="@item.users.account">@item.users.account</option>
                             }
-                        </select>
+                        </select>*@
                     </div>
                 </div>
 

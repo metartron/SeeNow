@@ -24,7 +24,7 @@ namespace SeeNow.Controllers
 
             QQA qqa = new QQA();
 
-            qqa.quizzes = db.quizzes.ToList();
+            qqa.quizzes = db.quizzes.OrderBy(q=>q.quiz_group).ToList();
             qqa.answers = db.quiz_answer.Where(m => m.quiz_guid == id).ToList();
             qqa.quiz = db.quizzes.Where(m => m.quiz_guid == id).ToList();
             ViewBag.qzid = id;
