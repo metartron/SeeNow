@@ -8,12 +8,12 @@
 <header class="masthead form ">
 
     <div class="container">
-        <div class="col-2 btn  btn-outline-primary m-2">
-            @Html.ActionLink("新增題目", "QZAdd")
-        </div>
-        <div class="col-2 btn btn-outline-success m-2">
-            @Html.ActionLink("返回列表", "Index","QQA")
-        </div>
+        @*<div class="col-2 btn  btn-outline-primary m-2">*@
+            @Html.ActionLink("新增題目", "QZAdd",0,new { @class = "col-2 btn  btn-outline-primary m-2" })
+        @*</div>*@
+        @*<div class="col-2 btn btn-outline-success m-2">*@
+            @Html.ActionLink("返回列表", "Index","QQA", 0, new { @class = "col-2 btn  btn-outline-success m-2" })
+        @*</div>*@
     </div>
 
 

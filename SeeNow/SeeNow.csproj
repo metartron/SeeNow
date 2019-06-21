@@ -927,6 +927,8 @@
     <Content Include="Views\announcements\Details.cshtml" />
     <Content Include="Views\Shared\_AnnouncementIndex.cshtml" />
     <Content Include="Views\announcements\Index.cshtml" />
+    <Content Include="Views\users\_TopSixUsers.cshtml" />
+    <Content Include="Views\users\_TopSixUsers_model.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

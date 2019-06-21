@@ -14,6 +14,34 @@ namespace SeeNow.Controllers
     {
         private SeeNowEntities db = new SeeNowEntities();
 
+        public ActionResult _TopSixUsers()
+        {
+            var users = (from a in db.users
+                         join b in db.profile on a.profile_id equals b.profile_id
+                         orderby a.score descending
+                         select new { a.nick_name, a.score, b.profile_path }).Take(6);
+            ViewBag.topsix = users;
+
+            
+            return PartialView("_TopSixUsers");
+           
+            
+        }
+
+        public ActionResult _TopSixUsers_model()
+        {
+            var users = (from a in db.users
+                         join b in db.profile on a.profile_id equals b.profile_id
+                         orderby a.score descending
+                         select new { a.nick_name, a.score, b.profile_path }).Take(6);
+            ViewBag.topsix = users;
+
+            
+            return PartialView("_TopSixUsers_model");
+            
+
+        }
+
         // GET: users
         public ActionResult Index()
         {
