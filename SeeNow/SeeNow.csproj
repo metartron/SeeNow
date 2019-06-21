@@ -913,7 +913,6 @@
     <Content Include="Views\Home\ForgetPWD.cshtml" />
     <Content Include="Views\Shared\_UserNavPartial.cshtml" />
     <Content Include="Views\QQA\QAIndex.cshtml" />
-    <Content Include="Views\QQA\QGAdd.cshtml" />
     <Content Include="Views\QQA\QuizzesIndex.cshtml" />
     <Content Include="Views\QQA\QZIndex.cshtml" />
     <Content Include="Views\Game\HostStart.cshtml" />
@@ -922,7 +921,6 @@
     <Content Include="Views\Game\TestView.cshtml" />
     <Content Include="Views\Shared\_GameLayout.cshtml" />
     <Content Include="Views\QQA\QAAdd.cshtml" />
-    <Content Include="Views\QQA\QGEdit.cshtml" />
     <Content Include="Views\QQA\QZEdit.cshtml" />
     <Content Include="Views\users\Create.cshtml" />
     <Content Include="Views\users\Delete.cshtml" />
