@@ -208,7 +208,7 @@ namespace SeeNow.Controllers
                 db.quizzes.Add(qz);
                 db.SaveChanges();
 
-                return RedirectToAction("QZIndex", "QQA");
+                return RedirectToAction("Index", "QQA");
             }
             ViewBag.Message = "遊戲題組名稱，已有人使用!!";
             return View(db.quizzes.ToList());
@@ -249,7 +249,7 @@ namespace SeeNow.Controllers
             data.visible = visible;
             data.quiz_group = group_name;
             db.SaveChanges();
-            return RedirectToAction("QZIndex", "QQA");
+            return RedirectToAction("Index", "QQA");
 
         }
 
@@ -332,6 +332,23 @@ namespace SeeNow.Controllers
             return RedirectToAction("Index", new { id });
 
         }
+
+        //public ActionResult Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+
+        //    quiz_answer qa = db.quiz_answer.Find(id);
+        //    if (qa == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+
+        //    return View("Delete", qa);
+        //}
+
 
     }
 }

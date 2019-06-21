@@ -13,14 +13,19 @@
 
 
         <div class="col-md-4 col text-center">
-            <input id="Button1" type="button" value="題目列表" class="btn btn-info m-2" onclick="location.href='@Url.Action("QZIndex","QQA")'" />
+            @*<input id="Button1" type="button" value="題目列表" class="btn btn-info m-2" onclick="location.href='@Url.Action("QZIndex","QQA")'" />*@
+            <input id="Button1" type="button" value="新增題目" class="btn btn-info m-2" onclick="location.href='@Url.Action("QZAdd","QQA")'" />
 
             @foreach (var item in Model.quizzes)
             {
-                <p>
-                    @Html.ActionLink(item.tittle_text, "Index", new { id = item.quiz_guid })
-
-                </p>
+                <div class="row">
+                    <div class="col-10">
+                        @Html.ActionLink(item.tittle_text, "Index", new { id = item.quiz_guid })
+                    </div>
+                    <div class="col-2">
+                        @Html.ActionLink("編輯", "QZEdit", new { id = item.quiz_guid }, new { @class = "btn btn-warning" })
+                    </div>
+                </div>
             }
         </div>
 
@@ -32,7 +37,7 @@
                 <h4>尚無任何答案</h4>
 
                 <p>
-                    @Html.ActionLink("答案列表", "QAIndex", null, new { @class = "btn btn-warning m-2" })
+                    @*@Html.ActionLink("答案列表", "QAIndex", null, new { @class = "btn btn-warning m-2" })*@
                     @Html.ActionLink("新增答案", "QAAdd", new { id = ViewBag.qzid }, new { @class = "btn btn-info" })
 
                 </p>
@@ -41,7 +46,7 @@
             else if (Model.answers.Count < 4)
             {
                 <p>
-                    @Html.ActionLink("答案列表", "QAIndex", null, new { @class = "btn btn-warning m-2" })
+                    @*@Html.ActionLink("答案列表", "QAIndex", null, new { @class = "btn btn-warning m-2" })*@
                     @Html.ActionLink("新增答案", "QAAdd", new { id = ViewBag.qzid }, new { @class = "btn btn-info" })
                     @*@Html.ActionLink("修改答案", "QAEdit", new { id = ViewBag.qzid }, new { @class = "btn btn-danger" })*@
 
@@ -50,10 +55,10 @@
             }
             else
             {
-                <p>
-                    @Html.ActionLink("答案列表", "QAIndex", null, new { @class = "btn btn-warning m-2" })
+                <div class="m-2">
+                    @*@Html.ActionLink("答案列表", "QAIndex", null, new { @class = "btn btn-warning m-2" })*@
                     @*@Html.ActionLink("修改答案", "QAEdit", new { id = ViewBag.qzid }, new { @class = "btn btn-success" })*@
-                </p>
+                </div>
 
             }
 

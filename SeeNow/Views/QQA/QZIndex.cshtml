@@ -49,9 +49,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.quiz_group1.group_name)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.type.type_desc)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.type.type_id)
             </th>
@@ -91,16 +91,16 @@
             <td>
                 @Html.DisplayFor(modelItem => item.quiz_group1.group_name)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.type.type_desc)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.type.type_id)
             </td>
             <td>
-                @Html.ActionLink("編輯", "QZEdit", new { id = item.quiz_guid }) |
+                @Html.ActionLink("編輯", "QZEdit", new { id = item.quiz_guid }, new { @class = "btn btn-warning" }) @*|*@
                 @*@Html.ActionLink("Details", "Details", new { id=item.quiz_guid }) |*@
-                @Html.ActionLink("新增答案", "QAAdd", new { id = item.quiz_guid })
+                @*@Html.ActionLink("新增答案", "QAAdd", new { id = item.quiz_guid })*@
             </td>
         </tr>
         }
