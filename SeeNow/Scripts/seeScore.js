@@ -61,7 +61,7 @@ hubCon.client.fromGroupMsg = function (msgGroup) {
 
 //設定主機網址
 var origin = window.location.origin;
-
+var data;
 //設定拖拉道具產生效果
 //document.ondragstart = function (event) {
 //    event.dataTransfer.setData("Text", event.target.id);
@@ -71,7 +71,8 @@ document.addEventListener("dragstart", function (event) {
     // The dataTransfer.setData() method sets the data type and the value of the dragged data
     //save被抓取元素的id(為string值)
     //event.dataTransfer.setData("Text", event.target.id);
-    event.dataTransfer.setData("Text", event.target.innerHTML);
+    //event.dataTransfer.setData("Text", event.target.innerHTML);
+    event.dataTransfer.setData("Text", $(event.target).attr("title"));
     // Output some text when starting to drag the p element
     //document.getElementById("info").innerHTML = "Started to drag the p element.";
     // Change the opacity of the draggable element
@@ -96,9 +97,10 @@ document.ondragover = function (event) {
 document.ondrop = function (event) {
     event.preventDefault();
     if (event.target.className === "droptarget") {
-        var data = event.dataTransfer.getData("Text");
+        data = event.dataTransfer.getData("Text");
         //event.target.appendChild(document.getElementById(data));
         document.getElementById("info").innerHTML = $('#my_nickname').html() +"送"+data+"給" + event.target.id+"! ";
+        //送禮物
         sendGift();
     }
 };
@@ -108,7 +110,7 @@ function sendGift() {
     var user = $('#nickname').val();
     var group = $('#group').val();
     var message = document.getElementById("info").innerHTML;
-    var msg2grp = { "group": group, "name": user, "message": message };
+    var msg2grp = { "group": group, "name": user, "message": message,"data":data };
     var msgJSON = JSON.stringify(msg2grp);
     hubCon.server.sendGift(msgJSON).catch(function (err) {
         return console.error(err.toString());
@@ -116,13 +118,32 @@ function sendGift() {
 }
 
 //接收禮物
-hubCon.client.rcvGift = function (msgGroup) {
-    //var li = document.createElement("li");
-    //li.textContent = msg+"&#13;&#10;";
-    //$('#message').append(li);
+hubCon.client.rcvGift = function (msgJSON) {
+    var mJson = JSON.parse(msgJSON);
+
     var msgInfo = $('#info');
-    msgInfo.html(msgInfo.html() + ";" + msgGroup);
-    $('body').css("background-image", "url('" + origin + "/Image/castle.png')").css('opacity', 0.8);
-    //call loop() function in the canvas1.js for Fireworks
-    loop();
+    msgInfo.html(msgInfo.html() + ";" + mJson.message);
+    //$('body').css("background-image", "url('" + origin + "/Image/castle.png')").css('opacity', 1);
+
+    //call app.js particlesJS(tag,func) for gift effect
+    switch (mJson.data.trim()) {
+        case '花':
+            myPJS.particles.shape.image.src = "../assets/image/rose.png";
+            myPJS.particles.move.speed = 6;
+            break;
+        case '煙火':
+            myPJS.particles.shape.image.src = "../assets/image/fireworks.png";
+            myPJS.particles.move.speed = 0.3;
+            break;
+        case '踩':
+            myPJS.particles.shape.image.src = "../assets/image/sandals.png";
+            myPJS.particles.size.value = 100;
+            myPJS.particles.move.speed = 15;
+            break;
+        default:
+            myPJS.particles.shape.image.src = "../assets/image/flowers.png";
+            break;
+    }
+    $('#particles-js').css("background-image", "url('../Image/castle.png')");
+    particlesJS('particles-js', myPJS);
 };

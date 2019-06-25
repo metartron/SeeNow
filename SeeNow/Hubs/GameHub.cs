@@ -191,7 +191,7 @@ namespace SeeNow
         {
             dynamic msg = JsonConvert.DeserializeObject(msgJSON);
             //await Clients.Group((string)msg.group).FromGroupMsg(msg.group + "::" + msg.name + ":" + msg.select_answer + msg.message);
-            await Clients.Group((string)msg.group).RcvGift(msg.message);
+            await Clients.Group((string)msg.group).RcvGift(msgJSON);
 
         }
 

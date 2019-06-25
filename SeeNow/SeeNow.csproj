@@ -374,6 +374,7 @@
     <Content Include="assets\image\dance.gif" />
     <Content Include="assets\image\Delete.png" />
     <Content Include="assets\image\farfar.jpg" />
+    <Content Include="assets\image\fireworks.png" />
     <Content Include="assets\image\gce5aozqi.gif" />
     <Content Include="assets\image\gwater.gif" />
     <Content Include="assets\image\Irises.jpg" />
@@ -390,7 +391,9 @@
     <Content Include="assets\image\pinkcolor.gif" />
     <Content Include="assets\image\pinkpaper.jpg" />
     <Content Include="assets\image\ranbow.gif" />
+    <Content Include="assets\image\rose.png" />
     <Content Include="assets\image\runball.gif" />
+    <Content Include="assets\image\sandals.png" />
     <Content Include="assets\image\singleton-dancing.gif" />
     <Content Include="assets\image\spider-dancing.gif" />
     <Content Include="assets\image\squareline.gif" />
@@ -749,6 +752,12 @@
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\pace.min.js" />
+    <Content Include="Scripts\particles.js-master\demo\css\style.css" />
+    <Content Include="Scripts\particles.js-master\demo\index.html" />
+    <Content Include="Scripts\particles.js-master\demo\js\app.js" />
+    <Content Include="Scripts\particles.js-master\demo\js\lib\stats.js" />
+    <Content Include="Scripts\particles.js-master\particles.js" />
+    <Content Include="Scripts\particles.js-master\particles.min.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
@@ -933,6 +942,12 @@
     <Content Include="Views\announcements\Index.cshtml" />
     <Content Include="Views\users\_TopSixUsers.cshtml" />
     <Content Include="Views\users\_TopSixUsers_model.cshtml" />
+    <Content Include="Scripts\particles.js-master\bower.json" />
+    <Content Include="Scripts\particles.js-master\demo\particles.json" />
+    <Content Include="Scripts\particles.js-master\LICENSE.md" />
+    <Content Include="Scripts\particles.js-master\package.json" />
+    <Content Include="Scripts\particles.js-master\README.md" />
+    <Content Include="Scripts\particles.js-master\_gitignore" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
