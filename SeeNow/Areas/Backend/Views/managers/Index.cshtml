@@ -7,7 +7,7 @@
 @*<h2>後台管理--管理員</h2>*@
 
 
-@Styles.Render("~/Content/css")
+@Styles.Render("~/back/css")
 
 @*<p>
     @Html.ActionLink("新增管理員", "Create")
@@ -33,7 +33,8 @@
                         @Html.DisplayFor(modelItem => item.manager_id)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.password)
+                        *****
+                        @*@Html.DisplayFor(modelItem => item.password)*@
                     </td>
                     <td>
                         @Html.ActionLink("編輯", "Edit", new { id = item.manager_id }) |

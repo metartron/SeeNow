@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "";
 }
-@Styles.Render("~/Content/css")
+@Styles.Render("~/back/css")
 @*<p>*@
 @*@Html.ActionLink("新增最高管理者", "Create")*@
 @*</p>*@
@@ -26,7 +26,8 @@
                 @Html.DisplayFor(modelItem => item.admin_id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.password)
+                *****
+                @*@Html.DisplayFor(modelItem => item.password)*@
             </td>
             @*<td>
                     @Html.ActionLink("編輯", "Edit", new { id = item.admin_id }) |

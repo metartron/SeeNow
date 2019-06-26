@@ -5,13 +5,13 @@
 }
 
 <h2>編輯身分</h2>
-
+@Styles.Render("~/back/css")
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-    <h4>role</h4>
+    <h4></h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.role_id)

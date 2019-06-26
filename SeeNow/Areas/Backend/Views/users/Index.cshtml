@@ -3,11 +3,11 @@
 @{
     ViewBag.Title = "後台管理--會員列表";
 }
-@Styles.Render("~/Content/css")
+@Styles.Render("~/back/css")
 <h2>後台管理--會員列表</h2>
 
 <p>
-    @Html.ActionLink("新增會員", "Registered", "Home")
+    @*@Html.ActionLink("新增會員", "Registered", "Home")*@
 </p>
 <table class="table table-striped table-primary table-hover">
     <tr>
@@ -86,7 +86,7 @@
             <td>
                 @Html.ActionLink("編輯", "Edit", new { id = item.account }) |
                 @*@Html.ActionLink("Details", "Details", new { id=item.account }) |*@
-                @Html.ActionLink("刪除", "Delete", new { id = item.account })
+                @*@Html.ActionLink("刪除", "Delete", new { id = item.account })*@
             </td>
         </tr>
     }

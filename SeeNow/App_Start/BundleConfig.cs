@@ -27,6 +27,8 @@ namespace SeeNow
                       "~/Content/site.css"));
 
             //Meta 後台用
+            bundles.Add(new StyleBundle("~/back/css").Include(
+                      "~/Content/bootstrap.css"));
             bundles.Add(new StyleBundle("~/layui/css").Include(
                       "~/Scripts/layui/css/layui.css"));
             bundles.Add(new ScriptBundle("~/layui/js").Include(
