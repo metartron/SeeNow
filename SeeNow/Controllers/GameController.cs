@@ -39,7 +39,7 @@ namespace SeeNow.Controllers
             //{"title1":"10+10","ans1":"24","title2":"100+100","ans2":"201","title3":"100+100","ans3":"203"}
             //利用Dictionary<string, object>產出(key,value)
             //產出的List將只有留{"title":"10+10","ans1":"24","ans2":"201","ans3":"203"}
-            int i = 1;
+            //int i = 1;
             Dictionary<string, object> strObj = new Dictionary<string, object>();
             List<Dictionary<string, object>> qzansList = new List<Dictionary<string, object>>();
             foreach (var q_id in quiz_quid)
@@ -61,7 +61,7 @@ namespace SeeNow.Controllers
 
                 var qzans = db.quiz_answer.Where(q => q.quiz_guid == q_id.quiz_guid)
                    .ToList();
-
+                int i = 1;
                 foreach (var qzan in qzans)
                 {
                     strObj.Add("ans" + i, qzan.answer_text);
@@ -194,7 +194,7 @@ namespace SeeNow.Controllers
                              group qz by new { qz.quiz_guid, qz.tittle_text } into g
                              where g.Count() == 4
                              select new { g.Key.quiz_guid, g.Key.tittle_text }).ToList();
-            int i = 1;
+            //int i = 1;
             Dictionary<string, object> strObj = new Dictionary<string, object>();
             List<Dictionary<string, object>> qzansList = new List<Dictionary<string, object>>();
             foreach (var q_id in quiz_quid)
@@ -216,7 +216,7 @@ namespace SeeNow.Controllers
 
                 var qzans = db.quiz_answer.Where(q => q.quiz_guid == q_id.quiz_guid)
                    .ToList();
-
+                int i = 1;
                 foreach (var qzan in qzans)
                 {
                     strObj.Add("ans" + i, qzan.answer_text);

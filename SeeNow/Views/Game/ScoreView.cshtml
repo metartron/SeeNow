@@ -36,7 +36,7 @@
 </style>
 
 <header class="masthead form ">
-    <marquee id="info" class="text-danger h2">
+    <marquee id="info" class="text-light h2 ">
         請拉道具至帳號~~~
     </marquee>
     <div class="container" style="position:relative;">
@@ -64,13 +64,13 @@
         <span id="my_account" class="d-none">@account</span>
         <table class="table table-striped table-light table-hover bg-transparent" style="position:absolute;left:0px;top:50px;">
             <tr>
-                <th>
+                <th class="text-light h3 ">
                     圖像
                 </th>
-                <th>
+                <th class="text-light h3">
                     帳號
                 </th>
-                <th>
+                <th class="text-light h3"> 
                     分數
                 </th>
             </tr>
@@ -82,10 +82,10 @@
                              id="@u.GetType().GetProperty("nickname").GetValue(u)" class="droptarget"
                              style="width:80px;height:80px" />
                     </td>
-                    <td id="@u.GetType().GetProperty("nickname").GetValue(u)" class="droptarget">
+                    <td id="@u.GetType().GetProperty("nickname").GetValue(u)" class="droptarget text-light h3">
                         @u.GetType().GetProperty("nickname").GetValue(u)
                     </td>
-                    <td id="@u.GetType().GetProperty("nickname").GetValue(u)" class="droptarget">
+                    <td id="@u.GetType().GetProperty("nickname").GetValue(u)" class="droptarget text-light h3">
                         @u.GetType().GetProperty("sco").GetValue(u)
                     </td>
                 </tr>
